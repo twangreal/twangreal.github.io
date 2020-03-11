@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>https://twangreal.github.io/post/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Mar 2020 16:29:51 +0800</lastBuildDate>
+    
+	<atom:link href="https://twangreal.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blogtest</title>
+      <link>https://twangreal.github.io/post/blogtest/</link>
+      <pubDate>Wed, 11 Mar 2020 16:29:51 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/blogtest/</guid>
+      <description>关于平衡二叉树是不是二叉排序树 答案是 是的。
+平衡二叉树的定义 平衡二叉树或者是一棵空树，或者是具有下列性质的二叉树：它的左子树和右子树都是平衡二叉树，且左子树和右子树的高度差的绝对值不超过1 。
+从这个定义看，平衡二叉树应当是二叉树，不一定是二叉排序树，但是： “我们通常将平衡二叉树默认为二叉排序树，故平衡二叉树的概念包含两个方面：平衡、有序 ”。1
+AVL树 AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉查找树（即二叉排序树），一棵AVL树是其每个结点的左子树和右子树的高度最多差1的二叉查找树。2
+其实我们通常说的 平衡二叉树 指的就是AVL树，所以是二叉排序树。
+  引用自《2020年计算机专业基础综合考试真题思路分析》 &amp;#x21a9;&amp;#xfe0e;
+ 引用自《数据结构与算法分析——C语言描述》, Mark Allen Weiss. &amp;#x21a9;&amp;#xfe0e;
+   </description>
+    </item>
+    
+  </channel>
+</rss>
