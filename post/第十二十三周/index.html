@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title> // 汪佳铭的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="第十二、十三周 MOOC程序设计与算法（一） 第十二周、十三周学习总结 一、知识点 STL(standard template library) sort排序 常用格式 sort(数组名&#43;n1,数组名&#43;n2); 作用：对一个数组排序，默认排序方式——从小到大 实例：int a[4]={5,6,8,9}; sort(a,a&#43;4); 从大到小：sort(数组名&#43;n1,数组名&#43;n2,greater());//T为数组的类型 进阶——自定义规则排序：sort(数组名&#43;n1,数组名&#43;n2,自定义规则名());//T为数组的类型 自定义规则形式： struct 规则名{ bool operator() (const T &amp;a1, const T &amp;a2 ) const{ return ;//这里定义排序规则 } }; 示例1：//从大到小排 struct Rule{ bool operator() (const int &amp;a1, const int &amp;a2 ) const{ return a1&gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 } }; 示例2：//有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面 struct P{ char name[10]; int age; }; struct Rule{ bool operator() (const P &amp;a1, const P &amp;a2 ) const{ if(a1."/>
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="第十二、十三周 MOOC程序设计与算法（一） 第十二周、十三周学习总结 一、知识点 STL(standard template library) sort排序 常用格式 sort(数组名&#43;n1,数组名&#43;n2); 作用：对一个数组排序，默认排序方式——从小到大 实例：int a[4]={5,6,8,9}; sort(a,a&#43;4); 从大到小：sort(数组名&#43;n1,数组名&#43;n2,greater());//T为数组的类型 进阶——自定义规则排序：sort(数组名&#43;n1,数组名&#43;n2,自定义规则名());//T为数组的类型 自定义规则形式： struct 规则名{ bool operator() (const T &amp;a1, const T &amp;a2 ) const{ return ;//这里定义排序规则 } }; 示例1：//从大到小排 struct Rule{ bool operator() (const int &amp;a1, const int &amp;a2 ) const{ return a1&gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 } }; 示例2：//有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面 struct P{ char name[10]; int age; }; struct Rule{ bool operator() (const P &amp;a1, const P &amp;a2 ) const{ if(a1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%8D%81%E4%B8%89%E5%91%A8/" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>汪佳铭的博客</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title"></h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jan 1, 0001
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <p>第十二、十三周
+MOOC程序设计与算法（一） 第十二周、十三周学习总结
+一、知识点
+STL(standard template library)
+sort排序
+常用格式 sort(数组名+n1,数组名+n2);
+作用：对一个数组排序，默认排序方式——从小到大
+实例：int a[4]={5,6,8,9};
+sort(a,a+4);
+从大到小：sort(数组名+n1,数组名+n2,greater<!-- raw HTML omitted -->());//T为数组的类型
+进阶——自定义规则排序：sort(数组名+n1,数组名+n2,自定义规则名());//T为数组的类型
+自定义规则形式：
+struct 规则名{
+bool operator() (const T &amp;a1, const T &amp;a2 ) const{
+return ;//这里定义排序规则
+}
+};
+示例1：//从大到小排
+struct Rule{
+bool operator() (const int &amp;a1, const int &amp;a2 ) const{
+return a1&gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前
+}
+};
+示例2：//有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面
+struct P{
+char name[10];
+int age;
+};
+struct Rule{
+bool operator() (const P &amp;a1, const P &amp;a2 ) const{
+if(a1.age!=a2.age)
+return a1.age&gt;a2.age;//大的排前
+else
+return strcmp(a1.name,a2.name)&lt;0;//a1字典序小则strcmp返回值小于0，
+}
+};
+二分查找：binary_search lower_bound upper_bound//查找前需排序
+这三个使用方式和sort基本一致：binary_search(数组名+n1,数组名+n2,值)/binary_search(数组名+n1,数组名+n2,值,自定义规则名());//这里的自定义规则名和进行查找前排序时采用的规则一致
+容器：multiset set
+mulitiset&lt;T,Rule&gt; mst;//声明变量，规则定义方式见上，不定义规则默认从小到大
+set&lt;T,Rule&gt; st;
+区别：set中没有且不能有相同元素，insert时如果set容器里已有一个元素和要插入的值相同，那么插入失败
+PS.关于insert的返回值：
+返回值为 pair&lt;set&lt;T,Rule&gt;::iterator, bool&gt;类型的迭代器//这个说法有问题吗？
+示例 pair&lt;set<!-- raw HTML omitted -->::iterator, bool&gt; i = st.insert(tmp);//tmp值为3，如果st中已有3，则返回false和set<!-- raw HTML omitted -->::iterator迭代器（指向st中3的位置）；如果没有，插入成功，返回true和set<!-- raw HTML omitted -->::iterator迭代器（指向插入后所在的位置）
+PS.pair类型见下面map处</p>
+<pre><code>        st.insert(tmp)//插入到合适位置，按规则
+        st.find(tmp)//找到容器中第一个 值为tmp的元素，返回其位置
+        st.erase(tmp)//删除容器中所有 值为tmp的元素，返回其位置
+        st.begin()//返回容器第一个位置
+        st.end()//返回容器中最后一个元素后面的位置
+        迭代器set&lt;T,Rule&gt;::iterator p;//近似指针，有区别，只能做！=，== 比较，++，--操作
+  multimap map
+        multimap&lt;T,T&gt; mmp;
+        map&lt;T,T&gt; mp;
+        元素类型是pair，也可以自定义规则
+        PS.pair&lt;T,T&gt;等同于 
+        struct {
+              T first;
+              T second;
+        };
+        map中第一个，即first可以看作关键字，默认按关键字从小到大排序
+        map类型的变量可以用 []  ，下标为关键字，返回值为second的值
+              注意：mp[Amy] = 78;//若mp中有Amy，则将second的值设为78；若没有Amy，则插入一个元素（first为Amy，second为0），然后把78赋值给second
+        区别：和multiset,set区别类似，map不能有重复元素，所以插入也可能失败
+</code></pre>
+<p>二、OJ题：热血角斗场（第十二周第四题），冷血角斗场（第十三周）
+区别：
+十二周——实力差值相同找实力值小的；保证实力值都不同
+十三周——实力差值相同找ID小的；实力值可以相同</p>
+<p>十三周思路 用multimap的话在碰到插入位置左边的值有相同值时要找id最小的，比较麻烦；插入的值在容器中有相同的时候找最小id也很麻烦。所以采用map，实力值为first，每次插入，若插入的值在容器中有相同值，那么会插入失败，返回一个迭代器，这时比较second的值，修改为较小的，由于输出要求是按时间顺序，所有直接输出插入元素的id和容器中相同值对应的id；若插入的值没有相同值，插入成功，然后比较左右元素的实力差值大小，输出插入id和差值小的id，差值相同输出左边的。
+十二周思路 用set即可，题目说明保证实力值均不同，每次输入值后就插入到set容器中，利用insert的返回值中的迭代器来比较左右元素，按要求输出即可。</p>
+<p>错误点
+1.输入输出用scanf和printf，cin、cout可能超时；
+2.使用迭代器的时候没注意边界，指向第一个元素位置执行&ndash;或指向最后一个元素位置执行++ 之后，参与到正常的逻辑运算中可能会出错。
+PS.十二周的题我没判断边界，结果在cb上运行结果正确，在OJ上Wrong Answer，蒙蔽了好久，做了十三周的题，用了map的时候，cb运行结果反映出了边界的问题才明白。</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
