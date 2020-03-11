@@ -28,9 +28,9 @@ AVL树 AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉
     </item>
     
     <item>
-      <title></title>
+      <title>第十二、十三周</title>
       <link>https://twangreal.github.io/post/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%8D%81%E4%B8%89%E5%91%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 11 Mar 2020 16:29:51 +0800</pubDate>
       
       <guid>https://twangreal.github.io/post/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%8D%81%E4%B8%89%E5%91%A8/</guid>
       <description>第十二、十三周 MOOC程序设计与算法（一） 第十二周、十三周学习总结 一、知识点 STL(standard template library) sort排序 常用格式 sort(数组名+n1,数组名+n2); 作用：对一个数组排序，默认排序方式——从小到大 实例：int a[4]={5,6,8,9}; sort(a,a+4); 从大到小：sort(数组名+n1,数组名+n2,greater());//T为数组的类型 进阶——自定义规则排序：sort(数组名+n1,数组名+n2,自定义规则名());//T为数组的类型 自定义规则形式： struct 规则名{ bool operator() (const T &amp;amp;a1, const T &amp;amp;a2 ) const{ return ;//这里定义排序规则 } }; 示例1：//从大到小排 struct Rule{ bool operator() (const int &amp;amp;a1, const int &amp;amp;a2 ) const{ return a1&amp;gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 } }; 示例2：//有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面 struct P{ char name[10]; int age; }; struct Rule{ bool operator() (const P &amp;amp;a1, const P &amp;amp;a2 ) const{ if(a1.</description>
