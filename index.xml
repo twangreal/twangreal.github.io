@@ -28,6 +28,19 @@ AVL树 AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉
     </item>
     
     <item>
+      <title>week3 NO.4</title>
+      <link>https://twangreal.github.io/post/zhegezhizhen/</link>
+      <pubDate>Wed, 11 Mar 2020 16:29:51 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/zhegezhizhen/</guid>
+      <description>第三周 MOOC程序设计与算法（三） 作业第4题 这个指针哪来的
+#include using namespace std;
+struct A { int v; A(int vv):v(vv) { } // 在此处补充你的代码 A * getPointer() const{ return this;//this指向的是常量a，即返回的是const A类型的对象的地址，getPointer前为const A * } };
+int main() { int i; int * j= &amp;amp;i; const int *k = j;
+const A a(10);//由于这个对象a为常量，所以下面它调用的getPointer就要求是常量成员函数const A * p = a.getPointer();//指向常量的指针p，这就要求a.getPointer为 类A对象的地址/指向类A对象的指针q，而getPointer是常量成员函数cout &amp;lt;&amp;lt; p-&amp;gt;v &amp;lt;&amp;lt; endl;return 0; }</description>
+    </item>
+    
+    <item>
       <title>第十二、十三周</title>
       <link>https://twangreal.github.io/post/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%8D%81%E4%B8%89%E5%91%A8/</link>
       <pubDate>Wed, 11 Mar 2020 16:29:51 +0800</pubDate>
