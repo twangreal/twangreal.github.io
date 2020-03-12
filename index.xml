@@ -6,10 +6,22 @@
     <description>Recent content on 汪佳铭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Mar 2020 16:29:51 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2020 23:42:51 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>week3 NO.5</title>
+      <link>https://twangreal.github.io/post/mssj_beizhan/</link>
+      <pubDate>Thu, 12 Mar 2020 23:42:51 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/mssj_beizhan/</guid>
+      <description>第三周 MOOC程序设计与算法（三） 作业第5题 魔兽世界之一：备战
+#include#include#includeusing namespace std;
+struct headquarter { public: int life; int number; }; headquarter red; headquarter blue;
+struct dragon { public: static int strength; static int red_num; static int blue_num; dragon(char c) { if(c==0) { ++dragon::red_num; ++red.number; } else { ++dragon::blue_num; ++blue.number; } } }; struct ninja { public: static int strength; static int red_num; static int blue_num; ninja(char c) { if(c==0) { ++ninja::red_num; ++red.number; } else { ++ninja::blue_num; ++blue.</description>
+    </item>
     
     <item>
       <title>Blogtest</title>

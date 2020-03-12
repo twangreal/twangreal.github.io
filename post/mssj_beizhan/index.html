@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>week3 NO.5 // 汪佳铭的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="week3 NO.5"/>
+<meta name="twitter:description" content="第三周 MOOC程序设计与算法（三） 作业第5题 魔兽世界之一：备战
+#include#include#includeusing namespace std;
+struct headquarter { public: int life; int number; }; headquarter red; headquarter blue;
+struct dragon { public: static int strength; static int red_num; static int blue_num; dragon(char c) { if(c==0) { &#43;&#43;dragon::red_num; &#43;&#43;red.number; } else { &#43;&#43;dragon::blue_num; &#43;&#43;blue.number; } } }; struct ninja { public: static int strength; static int red_num; static int blue_num; ninja(char c) { if(c==0) { &#43;&#43;ninja::red_num; &#43;&#43;red.number; } else { &#43;&#43;ninja::blue_num; &#43;&#43;blue."/>
+
+    <meta property="og:title" content="week3 NO.5" />
+<meta property="og:description" content="第三周 MOOC程序设计与算法（三） 作业第5题 魔兽世界之一：备战
+#include#include#includeusing namespace std;
+struct headquarter { public: int life; int number; }; headquarter red; headquarter blue;
+struct dragon { public: static int strength; static int red_num; static int blue_num; dragon(char c) { if(c==0) { &#43;&#43;dragon::red_num; &#43;&#43;red.number; } else { &#43;&#43;dragon::blue_num; &#43;&#43;blue.number; } } }; struct ninja { public: static int strength; static int red_num; static int blue_num; ninja(char c) { if(c==0) { &#43;&#43;ninja::red_num; &#43;&#43;red.number; } else { &#43;&#43;ninja::blue_num; &#43;&#43;blue." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/mssj_beizhan/" />
+<meta property="article:published_time" content="2020-03-12T23:42:51+08:00" />
+<meta property="article:modified_time" content="2020-03-12T23:42:51+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>汪佳铭的博客</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">week3 NO.5</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 12, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <p>第三周
+MOOC程序设计与算法（三） 作业第5题 魔兽世界之一：备战</p>
+<p>#include<!-- raw HTML omitted -->
+#include<!-- raw HTML omitted -->
+#include<!-- raw HTML omitted -->
+using namespace std;</p>
+<p>struct headquarter
+{
+public:
+int life;
+int number;
+};
+headquarter red;
+headquarter blue;</p>
+<p>struct dragon
+{
+public:
+static int strength;
+static int red_num;
+static int blue_num;
+dragon(char c)
+{
+if(c==0)
+{
+++dragon::red_num;
+++red.number;
+}
+else
+{
+++dragon::blue_num;
+++blue.number;
+}
+}
+};
+struct ninja
+{
+public:
+static int strength;
+static int red_num;
+static int blue_num;
+ninja(char c)
+{
+if(c==0)
+{
+++ninja::red_num;
+++red.number;
+}
+else
+{
+++ninja::blue_num;
+++blue.number;
+}
+}
+};
+struct iceman
+{
+public:
+static int strength;
+static int red_num;
+static int blue_num;
+iceman(char c)
+{
+if(c==0)
+{
+++iceman::red_num;
+++red.number;
+}
+else
+{
+++iceman::blue_num;
+++blue.number;
+}
+}
+};
+struct lion
+{
+public:
+static int strength;
+static int red_num;
+static int blue_num;
+lion(char c)
+{
+if(c==0)
+{
+++lion::red_num;
+++red.number;
+}
+else
+{
+++lion::blue_num;
+++blue.number;
+}
+}
+};
+struct wolf
+{
+public:
+static int strength;
+static int red_num;
+static int blue_num;
+wolf(char c)
+{
+if(c==0)
+{
+++wolf::red_num;
+++red.number;
+}
+else
+{
+++wolf::blue_num;
+++blue.number;
+}
+}
+};
+int dragon::red_num=0;
+int dragon::blue_num=0;
+int ninja::red_num=0;
+int ninja::blue_num=0;
+int iceman::red_num=0;
+int iceman::blue_num=0;
+int lion::red_num=0;
+int lion::blue_num=0;
+int wolf::red_num=0;
+int wolf::blue_num=0;</p>
+<p>int dragon::strength=0;
+int ninja::strength=0;
+int iceman::strength=0;
+int lion::strength=0;
+int wolf::strength=0;</p>
+<p>//shunxu;
+int redwr[5]= {0,1,2,3,4};
+int bluewr[5]= {1,4,3,0,2};
+void buildWarriors(const char rob,bool &amp;isMake,const int min_m,int &amp;gw,const int time)
+{
+int * hdqt_life;
+int * hdqt_num;
+int *dragon_num;
+int *ninja_num;
+int *iceman_num;
+int *lion_num;
+int *wolf_num;
+char * hdqt;
+char hr[]=&quot;red&rdquo;;
+char hb[]=&quot;blue&rdquo;;
+int *sx;
+bool birth=false;
+if( rob == 0)
+{
+hdqt_life=&amp;red.life;
+hdqt_num=&amp;red.number;
+dragon_num=&amp;dragon::red_num;
+ninja_num=&amp;ninja::red_num;
+iceman_num=&amp;iceman::red_num;
+lion_num=&amp;lion::red_num;
+wolf_num=&amp;wolf::red_num;
+hdqt = hr;
+sx=redwr;
+}
+else
+{
+hdqt_life=&amp;blue.life;
+hdqt_num=&amp;blue.number;
+dragon_num=&amp;dragon::blue_num;
+ninja_num=&amp;ninja::blue_num;
+iceman_num=&amp;iceman::blue_num;
+lion_num=&amp;lion::blue_num;
+wolf_num=&amp;wolf::blue_num;
+hdqt = hb;
+sx = bluewr;
+}
+if(isMake)
+{
+if(<em>hdqt_life&gt;=min_m)
+{
+while(!birth)
+{
+gw = gw%5;
+switch(</em>(sx+gw))
+{
+case 0:
+if(*hdqt_life&gt;=iceman::strength)
+{
+iceman im(rob);//构造函数计数
+*hdqt_life-=iceman::strength;
+printf(&quot;%03d %s iceman %d born with strength %d,%d iceman in %s headquarter\n&rdquo;,time,hdqt,*hdqt_num,iceman::strength,*iceman_num,hdqt);
+++gw;
+birth = true;
+}
+else
+++gw;
+break;
+case 1:
+if(*hdqt_life&gt;=lion::strength)
+{
+lion ln(rob);
+*hdqt_life-=lion::strength;
+printf(&quot;%03d %s lion %d born with strength %d,%d lion in %s headquarter\n&rdquo;,time,hdqt,*hdqt_num,lion::strength,*lion_num,hdqt);
+++gw;
+birth = true;
+}
+else
+++gw;
+break;
+case 2:
+if(*hdqt_life&gt;=wolf::strength)
+{
+wolf wf(rob);
+*hdqt_life-=wolf::strength;
+printf(&quot;%03d %s wolf %d born with strength %d,%d wolf in %s headquarter\n&rdquo;,time,hdqt,*hdqt_num,wolf::strength,*wolf_num,hdqt);
+++gw;
+birth = true;
+}
+else
+++gw;
+break;
+case 3:
+if(*hdqt_life&gt;=ninja::strength)
+{
+ninja nj(rob);
+*hdqt_life-=ninja::strength;
+printf(&quot;%03d %s ninja %d born with strength %d,%d ninja in %s headquarter\n&rdquo;,time,hdqt,*hdqt_num,ninja::strength,*ninja_num,hdqt);
+++gw;
+birth = true;
+}
+else
+++gw;
+break;
+case 4:
+if(*hdqt_life&gt;=dragon::strength)
+{
+dragon dg(rob);
+*hdqt_life-=dragon::strength;
+printf(&quot;%03d %s dragon %d born with strength %d,%d dragon in %s headquarter\n&rdquo;,time,hdqt,*hdqt_num,dragon::strength,*dragon_num,hdqt);
+++gw;
+birth = true;
+}
+else
+++gw;
+break;
+}
+}
+}
+else
+{
+printf(&quot;%03d %s headquarter stops making warriors\n&rdquo;,time,hdqt);
+isMake = false;
+}
+}
+}</p>
+<p>int main()
+{
+int n,M;
+scanf(&quot;%d&rdquo;,&amp;n);
+for(int i=0; i&lt;n; ++i)
+{
+//循环数据重新初始化区
+bool isMake=true,isMake2=true;
+int min_m=10000;
+int time=0,gw=0,gw2=0;
+dragon::red_num=0;
+dragon::blue_num=0;
+ninja::red_num=0;
+ninja::blue_num=0;
+iceman::red_num=0;
+iceman::blue_num=0;
+lion::red_num=0;
+lion::blue_num=0;
+wolf::red_num=0;
+wolf::blue_num=0;
+//区
+scanf(&quot;%d&rdquo;,&amp;M);
+red.life = M;
+red.number=0;
+blue.life = M;
+blue.number=0;
+scanf(&quot;%d %d %d %d %d&rdquo;,&amp;dragon::strength,&amp;ninja::strength,&amp;iceman::strength,&amp;lion::strength,&amp;wolf::strength);
+min_m=min_m&lt;dragon::strength?min_m:dragon::strength;
+min_m=min_m&lt;ninja::strength?min_m:ninja::strength;
+min_m=min_m&lt;iceman::strength?min_m:iceman::strength;
+min_m=min_m&lt;lion::strength?min_m:lion::strength;
+min_m=min_m&lt;wolf::strength?min_m:wolf::strength;</p>
+<pre><code>    //start making
+    printf(&quot;Case:%d\n&quot;,i+1);
+
+    while(isMake||isMake2)
+    {
+        //red headquarter
+        if(isMake)
+        {
+            buildWarriors(0,isMake,min_m,gw,time);
+        }
+        //blue headquarter
+        if(isMake2)
+        {
+            buildWarriors(1,isMake2,min_m,gw2,time);
+        }
+        ++time;
+    }
+}
+return 0;
+</code></pre>
+<p>}</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

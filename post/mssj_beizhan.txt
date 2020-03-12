@@ -1,0 +1,317 @@
+---
+title: "week3 NO.5"
+date: 
+draft: false
+---
+
+第三周
+MOOC程序设计与算法（三） 作业第5题 魔兽世界之一：备战
+
+
+
+
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+using namespace std;
+
+struct headquarter
+{
+public:
+    int life;
+    int number;
+};
+headquarter red;
+headquarter blue;
+
+struct dragon
+{
+public:
+    static int strength;
+    static int red_num;
+    static int blue_num;
+    dragon(char c)
+    {
+        if(c==0)
+        {
+            ++dragon::red_num;
+            ++red.number;
+        }
+        else
+        {
+            ++dragon::blue_num;
+            ++blue.number;
+        }
+    }
+};
+struct ninja
+{
+public:
+    static int strength;
+    static int red_num;
+    static int blue_num;
+    ninja(char c)
+    {
+        if(c==0)
+        {
+            ++ninja::red_num;
+            ++red.number;
+        }
+        else
+        {
+            ++ninja::blue_num;
+            ++blue.number;
+        }
+    }
+};
+struct iceman
+{
+public:
+    static int strength;
+    static int red_num;
+    static int blue_num;
+    iceman(char c)
+    {
+        if(c==0)
+        {
+            ++iceman::red_num;
+            ++red.number;
+        }
+        else
+        {
+            ++iceman::blue_num;
+            ++blue.number;
+        }
+    }
+};
+struct lion
+{
+public:
+    static int strength;
+    static int red_num;
+    static int blue_num;
+    lion(char c)
+    {
+        if(c==0)
+        {
+            ++lion::red_num;
+            ++red.number;
+        }
+        else
+        {
+            ++lion::blue_num;
+            ++blue.number;
+        }
+    }
+};
+struct wolf
+{
+public:
+    static int strength;
+    static int red_num;
+    static int blue_num;
+    wolf(char c)
+    {
+        if(c==0)
+        {
+            ++wolf::red_num;
+            ++red.number;
+        }
+        else
+        {
+            ++wolf::blue_num;
+            ++blue.number;
+        }
+    }
+};
+int dragon::red_num=0;
+int dragon::blue_num=0;
+int ninja::red_num=0;
+int ninja::blue_num=0;
+int iceman::red_num=0;
+int iceman::blue_num=0;
+int lion::red_num=0;
+int lion::blue_num=0;
+int wolf::red_num=0;
+int wolf::blue_num=0;
+
+int dragon::strength=0;
+int ninja::strength=0;
+int iceman::strength=0;
+int lion::strength=0;
+int wolf::strength=0;
+
+//shunxu;
+int redwr[5]= {0,1,2,3,4};
+int bluewr[5]= {1,4,3,0,2};
+void buildWarriors(const char rob,bool &isMake,const int min_m,int &gw,const int time)
+{
+    int * hdqt_life;
+    int * hdqt_num;
+    int *dragon_num;
+    int *ninja_num;
+    int *iceman_num;
+    int *lion_num;
+    int *wolf_num;
+    char * hdqt;
+    char hr[]="red";
+    char hb[]="blue";
+    int *sx;
+    bool birth=false;
+    if( rob == 0)
+    {
+        hdqt_life=&red.life;
+        hdqt_num=&red.number;
+        dragon_num=&dragon::red_num;
+        ninja_num=&ninja::red_num;
+        iceman_num=&iceman::red_num;
+        lion_num=&lion::red_num;
+        wolf_num=&wolf::red_num;
+        hdqt = hr;
+        sx=redwr;
+    }
+    else
+    {
+        hdqt_life=&blue.life;
+        hdqt_num=&blue.number;
+        dragon_num=&dragon::blue_num;
+        ninja_num=&ninja::blue_num;
+        iceman_num=&iceman::blue_num;
+        lion_num=&lion::blue_num;
+        wolf_num=&wolf::blue_num;
+        hdqt = hb;
+        sx = bluewr;
+    }
+    if(isMake)
+    {
+        if(*hdqt_life>=min_m)
+        {
+            while(!birth)
+            {
+                gw = gw%5;
+                switch(*(sx+gw))
+                {
+                case 0:
+                    if(*hdqt_life>=iceman::strength)
+                    {
+                        iceman im(rob);//构造函数计数
+                        *hdqt_life-=iceman::strength;
+                        printf("%03d %s iceman %d born with strength %d,%d iceman in %s headquarter\n",time,hdqt,*hdqt_num,iceman::strength,*iceman_num,hdqt);
+                        ++gw;
+                        birth = true;
+                    }
+                    else
+                        ++gw;
+                    break;
+                case 1:
+                    if(*hdqt_life>=lion::strength)
+                    {
+                        lion ln(rob);
+                        *hdqt_life-=lion::strength;
+                        printf("%03d %s lion %d born with strength %d,%d lion in %s headquarter\n",time,hdqt,*hdqt_num,lion::strength,*lion_num,hdqt);
+                        ++gw;
+                        birth = true;
+                    }
+                    else
+                        ++gw;
+                    break;
+                case 2:
+                    if(*hdqt_life>=wolf::strength)
+                    {
+                        wolf wf(rob);
+                        *hdqt_life-=wolf::strength;
+                        printf("%03d %s wolf %d born with strength %d,%d wolf in %s headquarter\n",time,hdqt,*hdqt_num,wolf::strength,*wolf_num,hdqt);
+                        ++gw;
+                        birth = true;
+                    }
+                    else
+                        ++gw;
+                    break;
+                case 3:
+                    if(*hdqt_life>=ninja::strength)
+                    {
+                        ninja nj(rob);
+                        *hdqt_life-=ninja::strength;
+                        printf("%03d %s ninja %d born with strength %d,%d ninja in %s headquarter\n",time,hdqt,*hdqt_num,ninja::strength,*ninja_num,hdqt);
+                        ++gw;
+                        birth = true;
+                    }
+                    else
+                        ++gw;
+                    break;
+                case 4:
+                    if(*hdqt_life>=dragon::strength)
+                    {
+                        dragon dg(rob);
+                        *hdqt_life-=dragon::strength;
+                        printf("%03d %s dragon %d born with strength %d,%d dragon in %s headquarter\n",time,hdqt,*hdqt_num,dragon::strength,*dragon_num,hdqt);
+                        ++gw;
+                        birth = true;
+                    }
+                    else
+                        ++gw;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            printf("%03d %s headquarter stops making warriors\n",time,hdqt);
+            isMake = false;
+        }
+    }
+}
+
+int main()
+{
+    int n,M;
+    scanf("%d",&n);
+    for(int i=0; i<n; ++i)
+    {
+        //循环数据重新初始化区
+        bool isMake=true,isMake2=true;
+        int min_m=10000;
+        int time=0,gw=0,gw2=0;
+        dragon::red_num=0;
+        dragon::blue_num=0;
+        ninja::red_num=0;
+        ninja::blue_num=0;
+        iceman::red_num=0;
+        iceman::blue_num=0;
+        lion::red_num=0;
+        lion::blue_num=0;
+        wolf::red_num=0;
+        wolf::blue_num=0;
+        //区
+        scanf("%d",&M);
+        red.life = M;
+        red.number=0;
+        blue.life = M;
+        blue.number=0;
+        scanf("%d %d %d %d %d",&dragon::strength,&ninja::strength,&iceman::strength,&lion::strength,&wolf::strength);
+        min_m=min_m<dragon::strength?min_m:dragon::strength;
+        min_m=min_m<ninja::strength?min_m:ninja::strength;
+        min_m=min_m<iceman::strength?min_m:iceman::strength;
+        min_m=min_m<lion::strength?min_m:lion::strength;
+        min_m=min_m<wolf::strength?min_m:wolf::strength;
+
+        //start making
+        printf("Case:%d\n",i+1);
+
+        while(isMake||isMake2)
+        {
+            //red headquarter
+            if(isMake)
+            {
+                buildWarriors(0,isMake,min_m,gw,time);
+            }
+            //blue headquarter
+            if(isMake2)
+            {
+                buildWarriors(1,isMake2,min_m,gw2,time);
+            }
+            ++time;
+        }
+    }
+    return 0;
+}
