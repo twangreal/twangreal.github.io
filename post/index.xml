@@ -6,10 +6,20 @@
     <description>Recent content in Posts on 汪佳铭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Mar 2020 23:42:51 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2020 14:20:51 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>week3知识点总结</title>
+      <link>https://twangreal.github.io/post/week3/</link>
+      <pubDate>Fri, 13 Mar 2020 14:20:51 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week3/</guid>
+      <description>第三周 MOOC程序设计与算法（三）
+一、this指针 成员函数中用于指向当前对象的指针；静态成员函数中没有this指针。 二、静态成员变量 1.只有一份，所有同类对象共享； 2.必须在定义类的文件中，队静态成员变量进行一次声明或初始化；//？？ 3.静态成员变量本质上是全局变量； 4.静态成员函数本上是全局函数； 5.静态成员函数中不能访问非静态成员变量，也不能调用非静态成员函数； 三、成员对象和封闭类 一个类的成员变量是另一个类的对象，则该类为封闭类； 1.初始化：构造函数，初始化列表（建议） 2.封闭类构造函数和析构函数执行顺序：构造先成员对象后封闭类，析构先封闭类后成员对象 3.封闭类用默认复制构造函数（非自定义）初始化对象时，成员对象也会自动调用其所属类的复制构造函数来初始化 四、常量对象、常量成员函数 const A a；//原则：不允许修改对象的成员变量 常量成员函数，原则：不允许修改当前对象 基于这样的原则，可以方便记忆这几条特点： 1.常量对象只能调用 构造函数，析构函数，常量成员函数 2.常量成员函数不能调用同类 非常量成员函数，可以调用静态成员函数（不属于某个特定对象，所以不会修改常量对象，） PS. T 函数名() const { return ;//函数体 } PS2.常量成员函数的重载// 五、友元 声明友元可以让其他类或非成员函数调用私有变量。 1.全局函数，其他类的成员函数（非私有） 2.其他类 注意：友元关系不能传递，不能继承（也不相互，即A声明B为自己的友元，则B是A的友元，A不是B的友元）</description>
+    </item>
     
     <item>
       <title>week3 NO.5</title>
@@ -21,6 +31,19 @@
 #include#include#includeusing namespace std;
 struct headquarter { public: int life; int number; }; headquarter red; headquarter blue;
 struct dragon { public: static int strength; static int red_num; static int blue_num; dragon(char c) { if(c==0) { ++dragon::red_num; ++red.number; } else { ++dragon::blue_num; ++blue.number; } } }; struct ninja { public: static int strength; static int red_num; static int blue_num; ninja(char c) { if(c==0) { ++ninja::red_num; ++red.number; } else { ++ninja::blue_num; ++blue.</description>
+    </item>
+    
+    <item>
+      <title>week3 NO.4</title>
+      <link>https://twangreal.github.io/post/zhegezhizhen/</link>
+      <pubDate>Thu, 12 Mar 2020 17:49:51 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/zhegezhizhen/</guid>
+      <description>第三周 MOOC程序设计与算法（三） 作业第4题 这个指针哪来的
+#include using namespace std;
+struct A { int v; A(int vv):v(vv) { } // 在此处补充你的代码 A * getPointer() const{ return this;//this指向的是常量a，即返回的是const A类型的对象的地址，getPointer前为const A * } };
+int main() { int i; int * j= &amp;amp;i; const int *k = j;
+const A a(10);//由于这个对象a为常量，所以下面它调用的getPointer就要求是常量成员函数const A * p = a.getPointer();//指向常量的指针p，这就要求a.getPointer为 类A对象的地址/指向类A对象的指针q，而getPointer是常量成员函数cout &amp;lt;&amp;lt; p-&amp;gt;v &amp;lt;&amp;lt; endl;return 0; }</description>
     </item>
     
     <item>
@@ -37,19 +60,6 @@ AVL树 AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉
   引用自《2020年计算机专业基础综合考试真题思路分析》 &amp;#x21a9;&amp;#xfe0e;
  引用自《数据结构与算法分析——C语言描述》, Mark Allen Weiss. &amp;#x21a9;&amp;#xfe0e;
    </description>
-    </item>
-    
-    <item>
-      <title>week3 NO.4</title>
-      <link>https://twangreal.github.io/post/zhegezhizhen/</link>
-      <pubDate>Wed, 11 Mar 2020 16:29:51 +0800</pubDate>
-      
-      <guid>https://twangreal.github.io/post/zhegezhizhen/</guid>
-      <description>第三周 MOOC程序设计与算法（三） 作业第4题 这个指针哪来的
-#include using namespace std;
-struct A { int v; A(int vv):v(vv) { } // 在此处补充你的代码 A * getPointer() const{ return this;//this指向的是常量a，即返回的是const A类型的对象的地址，getPointer前为const A * } };
-int main() { int i; int * j= &amp;amp;i; const int *k = j;
-const A a(10);//由于这个对象a为常量，所以下面它调用的getPointer就要求是常量成员函数const A * p = a.getPointer();//指向常量的指针p，这就要求a.getPointer为 类A对象的地址/指向类A对象的指针q，而getPointer是常量成员函数cout &amp;lt;&amp;lt; p-&amp;gt;v &amp;lt;&amp;lt; endl;return 0; }</description>
     </item>
     
     <item>

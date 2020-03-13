@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>week3知识点总结 // 汪佳铭的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="week3知识点总结"/>
+<meta name="twitter:description" content="第三周 MOOC程序设计与算法（三）
+一、this指针 成员函数中用于指向当前对象的指针；静态成员函数中没有this指针。 二、静态成员变量 1.只有一份，所有同类对象共享； 2.必须在定义类的文件中，队静态成员变量进行一次声明或初始化；//？？ 3.静态成员变量本质上是全局变量； 4.静态成员函数本上是全局函数； 5.静态成员函数中不能访问非静态成员变量，也不能调用非静态成员函数； 三、成员对象和封闭类 一个类的成员变量是另一个类的对象，则该类为封闭类； 1.初始化：构造函数，初始化列表（建议） 2.封闭类构造函数和析构函数执行顺序：构造先成员对象后封闭类，析构先封闭类后成员对象 3.封闭类用默认复制构造函数（非自定义）初始化对象时，成员对象也会自动调用其所属类的复制构造函数来初始化 四、常量对象、常量成员函数 const A a；//原则：不允许修改对象的成员变量 常量成员函数，原则：不允许修改当前对象 基于这样的原则，可以方便记忆这几条特点： 1.常量对象只能调用 构造函数，析构函数，常量成员函数 2.常量成员函数不能调用同类 非常量成员函数，可以调用静态成员函数（不属于某个特定对象，所以不会修改常量对象，） PS. T 函数名() const { return ;//函数体 } PS2.常量成员函数的重载// 五、友元 声明友元可以让其他类或非成员函数调用私有变量。 1.全局函数，其他类的成员函数（非私有） 2.其他类 注意：友元关系不能传递，不能继承（也不相互，即A声明B为自己的友元，则B是A的友元，A不是B的友元）"/>
+
+    <meta property="og:title" content="week3知识点总结" />
+<meta property="og:description" content="第三周 MOOC程序设计与算法（三）
+一、this指针 成员函数中用于指向当前对象的指针；静态成员函数中没有this指针。 二、静态成员变量 1.只有一份，所有同类对象共享； 2.必须在定义类的文件中，队静态成员变量进行一次声明或初始化；//？？ 3.静态成员变量本质上是全局变量； 4.静态成员函数本上是全局函数； 5.静态成员函数中不能访问非静态成员变量，也不能调用非静态成员函数； 三、成员对象和封闭类 一个类的成员变量是另一个类的对象，则该类为封闭类； 1.初始化：构造函数，初始化列表（建议） 2.封闭类构造函数和析构函数执行顺序：构造先成员对象后封闭类，析构先封闭类后成员对象 3.封闭类用默认复制构造函数（非自定义）初始化对象时，成员对象也会自动调用其所属类的复制构造函数来初始化 四、常量对象、常量成员函数 const A a；//原则：不允许修改对象的成员变量 常量成员函数，原则：不允许修改当前对象 基于这样的原则，可以方便记忆这几条特点： 1.常量对象只能调用 构造函数，析构函数，常量成员函数 2.常量成员函数不能调用同类 非常量成员函数，可以调用静态成员函数（不属于某个特定对象，所以不会修改常量对象，） PS. T 函数名() const { return ;//函数体 } PS2.常量成员函数的重载// 五、友元 声明友元可以让其他类或非成员函数调用私有变量。 1.全局函数，其他类的成员函数（非私有） 2.其他类 注意：友元关系不能传递，不能继承（也不相互，即A声明B为自己的友元，则B是A的友元，A不是B的友元）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week3/" />
+<meta property="article:published_time" content="2020-03-13T14:20:51+08:00" />
+<meta property="article:modified_time" content="2020-03-13T14:20:51+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>汪佳铭的博客</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">week3知识点总结</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 13, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <p>第三周
+MOOC程序设计与算法（三）</p>
+<p>一、this指针
+成员函数中用于指向当前对象的指针；静态成员函数中没有this指针。
+二、静态成员变量
+1.只有一份，所有同类对象共享；
+2.必须在定义类的文件中，队静态成员变量进行一次声明或初始化；//？？
+3.静态成员变量本质上是全局变量；
+4.静态成员函数本上是全局函数；
+5.静态成员函数中不能访问非静态成员变量，也不能调用非静态成员函数；
+三、成员对象和封闭类
+一个类的成员变量是另一个类的对象，则该类为封闭类；
+1.初始化：构造函数，初始化列表（建议）
+2.封闭类构造函数和析构函数执行顺序：构造先成员对象后封闭类，析构先封闭类后成员对象
+3.封闭类用默认复制构造函数（非自定义）初始化对象时，成员对象也会自动调用其所属类的复制构造函数来初始化
+四、常量对象、常量成员函数
+const A a；//原则：不允许修改对象的成员变量
+常量成员函数，原则：不允许修改当前对象
+基于这样的原则，可以方便记忆这几条特点：
+1.常量对象只能调用 构造函数，析构函数，常量成员函数
+2.常量成员函数不能调用同类 非常量成员函数，可以调用静态成员函数（不属于某个特定对象，所以不会修改常量对象，）
+PS.  T 函数名() const {
+return ;//函数体
+}
+PS2.常量成员函数的重载//
+五、友元
+声明友元可以让其他类或非成员函数调用私有变量。
+1.全局函数，其他类的成员函数（非私有）
+2.其他类
+注意：友元关系不能传递，不能继承（也不相互，即A声明B为自己的友元，则B是A的友元，A不是B的友元）</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
