@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 汪佳铭的博客</title>
+    <title>Posts on twangreal的博客</title>
     <link>https://twangreal.github.io/post/</link>
-    <description>Recent content in Posts on 汪佳铭的博客</description>
+    <description>Recent content in Posts on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Mar 2020 17:19:51 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2020 21:25:51 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week4思考题</title>
+      <link>https://twangreal.github.io/post/week4sikaoti/</link>
+      <pubDate>Mon, 16 Mar 2020 21:25:51 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week4sikaoti/</guid>
+      <description>第四周 运算符重载 &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash; MOOC程序设计与算法（三） 4-2 为什么复制构造函数中不需要下面几条语句？ if(str==s.str)return;if(str)delete [] str;答：复制构造函数作用于初始化刚生成的对象，其中的指针str还没有指向任何空间。
+4-3 长度可变的整型数组类 每次在数组尾部添加一个元素都要重新分配内存并且复制原有内容，效率低下，有什么办法能够加快添加元素的速度？ 答：预先多分配一些存储空间，例如在用于初始化对象的构造函数中，分配size+32的空间大小，那么在后续插入的32个元素都不用重新分配空间。
+PS.可以参考vector容器的实现 vector//待续。。。。。。</description>
+    </item>
     
     <item>
       <title>Week4作业题错误点</title>
@@ -17,11 +28,21 @@
       <pubDate>Mon, 16 Mar 2020 17:19:51 +0800</pubDate>
       
       <guid>https://twangreal.github.io/post/week4zouye/</guid>
-      <description>第四周 MOOC程序设计与算法（三） Week4运算符重载
-001：MyString 1.动态内存分配，字符串，新建内存空间的时候，大小size要+1（&#39;\0&amp;rsquo;），用memcpy拷贝要把&amp;rsquo;\0&#39;拷进去，或者用strcpy PS.memcpy和strcpy比较//？？？
-2.浅拷贝和深拷贝复制构造函数赋值运算符=（需要重载）自定义复制函数（比如Copy()）动态分配一片新的内存空间，复制 002：看上去好坑的运算符重载 略 003：惊呆！Point竟然能这样输入输出 友元函数（全局）不一定是“在类中声明为友元，在类外定义函数”，可以一起写在定义类中 例如： class A( int price; public: friend int exp(A &amp;amp; a, int n){ return a.price+n; } ) 004：第四周程序填空题3 1.类中成员变量在内存中地址//？？ 2.指向指针的指针//？？ 3.动态内存分配， char *p; 怎么动态分配内存 p=new int[size1]; for(int i=0;i&amp;lt;size1;++i){ p[i]=new int[size2]; } 释放空间的时候，先释放p[i]，最后释放p for(int i=0;i&amp;lt;size1;++i){ delete[] p[i]; } delete[] p; 005：别叫，这个大整数已经很简化了! 1.字符串和整型求和=&amp;gt;sprintf()，把整型转换成字符串，然后两字符串逐位相加 2.自定义reverse()函数，让对象中字符串逆序存储，以便于逐位相加 PS1.sizeof()和strlen()比较//？？？
-PS2.sprintf和atof关系、区别//？？？
-PS3.数组和指针，这道题不必采用动态内存分配，直接声明一个较大够用的字符数组，这样更方便而且不必担心会出现由浅拷贝造成的Runtime Error</description>
+      <description>第四周 Week4运算符重载 MOOC程序设计与算法（三） 001：MyString 1.动态内存分配，字符串，新建内存空间的时候，大小size要+1（&#39;\0&amp;rsquo;），用memcpy拷贝要把&amp;rsquo;\0&#39;拷进去，或者用strcpy
+2.浅拷贝和深拷贝
+​	a.复制构造函数
+​	b.赋值运算符=（需要重载）
+​	c.自定义复制函数（比如Copy()）
+​	d.动态分配一片新的内存空间，复制
+PS.(问题)memcpy和strcpy比较 strcpy和memcpy主要有以下3方面的区别：
+(1)复制的内容不同。
+strcpy只能复制字符串，而memcpy可以复制任意内容，例如字符数组、整型、结构体、类等。
+(2)复制的方法不同。
+strcpy不需要指定长度，只用于字符串复制，不仅复制字符串内容，还复制字符串的结束符(&#39;\0&amp;rsquo;)。它遇到结束 符&amp;rdquo;\0&amp;quot;结束，容易溢出。memcpy则是根据其第3个参数决定复制的长度。
+(3)用途不同。
+通常在复制字符串时用strcpy，而需要复制其他类型数据时则一般用memcpy
+原型和实现： strcpy函数原型是：char* strcpy(char* dest, const char* src);
+char * strcpy(char * dest, const char * src) // 实现src到dest的复制{if ((src == NULL) || (dest == NULL)) //判断参数src和dest的有效性{return NULL;}char *strdest = dest; //保存目标字符串的首地址 while ((*strDest++ = *strSrc++)!=&amp;#39;\0&amp;#39;); //把src字符串的内容复制到dest下 return strdest;}memset实现：</description>
     </item>
     
     <item>
@@ -30,8 +51,26 @@ PS3.数组和指针，这道题不必采用动态内存分配，直接声明一�
       <pubDate>Fri, 13 Mar 2020 14:20:51 +0800</pubDate>
       
       <guid>https://twangreal.github.io/post/week3/</guid>
-      <description>第三周 MOOC程序设计与算法（三）
-一、this指针 成员函数中用于指向当前对象的指针；静态成员函数中没有this指针。 二、静态成员变量 1.只有一份，所有同类对象共享； 2.必须在定义类的文件中，队静态成员变量进行一次声明或初始化；//？？ 3.静态成员变量本质上是全局变量； 4.静态成员函数本上是全局函数； 5.静态成员函数中不能访问非静态成员变量，也不能调用非静态成员函数； 三、成员对象和封闭类 一个类的成员变量是另一个类的对象，则该类为封闭类； 1.初始化：构造函数，初始化列表（建议） 2.封闭类构造函数和析构函数执行顺序：构造先成员对象后封闭类，析构先封闭类后成员对象 3.封闭类用默认复制构造函数（非自定义）初始化对象时，成员对象也会自动调用其所属类的复制构造函数来初始化 四、常量对象、常量成员函数 const A a；//原则：不允许修改对象的成员变量 常量成员函数，原则：不允许修改当前对象 基于这样的原则，可以方便记忆这几条特点： 1.常量对象只能调用 构造函数，析构函数，常量成员函数 2.常量成员函数不能调用同类 非常量成员函数，可以调用静态成员函数（不属于某个特定对象，所以不会修改常量对象，） PS. T 函数名() const { return ;//函数体 } PS2.常量成员函数的重载// PS3.常量型成员变量和引用型成员变量必须用构造函数的初始化列表方式初始化，且常量型成员变量的值一旦初始化后不能再改变P55 五、友元 声明友元可以让其他类或非成员函数调用私有变量。 1.全局函数，其他类的成员函数（非私有） 2.其他类 注意：友元关系不能传递，不能继承（也不相互，即A声明B为自己的友元，则B是A的友元，A不是B的友元）</description>
+      <description>第三周 知识点 一、this指针 ​ 成员函数中用于指向当前对象的指针；静态成员函数中没有this指针。
+二、静态成员变量 ​ 1.只有一份，所有同类对象共享；
+​ 2.必须在定义类的文件中，对静态成员变量进行一次声明或初始化；//（重要）
+​ 3.静态成员变量本质上是全局变量；
+​ 4.静态成员函数本上是全局函数；
+​ 5.静态成员函数中不能访问非静态成员变量，也不能调用非静态成员函数；
+三、成员对象和封闭类 一个类的成员变量是另一个类的对象，则该类为封闭类。
+1.初始化：构造函数，初始化列表（建议）
+2.封闭类构造函数和析构函数执行顺序：构造先成员对象后封闭类，析构先封闭类后成员对象
+3.封闭类用默认复制构造函数（非自定义）初始化对象时，成员对象也会自动调用其所属类的复制构造函数来初始化
+四、常量对象、常量成员函数 常量对象const A a；//原则：不允许修改对象的成员变量
+常量成员函数，原则：不允许修改当前对象
+基于这样的原则，可以方便记忆这几条特点：
+1.常量对象只能调用 构造函数，析构函数，常量成员函数
+2.常量成员函数不能调用同类非常量成员函数，可以调用静态成员函数（因为静态成员函数不属于某个特定对象，所以不会修改常量对象，）
+PS1. 常量成员函数定义 T 函数名() const {return ;//函数体}PS2.常量成员函数的重载 ​	相同的函数名，一个常量一个非常量，非常量对象调用非常量的，常量对象调用常量的。
+PS3.常量型成员变量和引用型成员变量必须用构造函数的初始化列表方式初始化，且常量型成员变量的值一旦初始化后不能再改变P55 五、友元 声明友元可以让其他类或非成员函数调用私有变量。
+1.全局函数，其他类的成员函数（非私有）
+2.其他类
+注意：友元关系不能传递，不能继承（也不相互，即A声明B为自己的友元，则B是A的友元，A不是B的友元）</description>
     </item>
     
     <item>
@@ -40,10 +79,7 @@ PS3.数组和指针，这道题不必采用动态内存分配，直接声明一�
       <pubDate>Thu, 12 Mar 2020 23:42:51 +0800</pubDate>
       
       <guid>https://twangreal.github.io/post/mssj_beizhan/</guid>
-      <description>第三周 MOOC程序设计与算法（三） 作业第5题 魔兽世界之一：备战
-#include#include#includeusing namespace std;
-struct headquarter { public: int life; int number; }; headquarter red; headquarter blue;
-struct dragon { public: static int strength; static int red_num; static int blue_num; dragon(char c) { if(c==0) { ++dragon::red_num; ++red.number; } else { ++dragon::blue_num; ++blue.number; } } }; struct ninja { public: static int strength; static int red_num; static int blue_num; ninja(char c) { if(c==0) { ++ninja::red_num; ++red.number; } else { ++ninja::blue_num; ++blue.</description>
+      <description>第三周 作业第5题 魔兽世界之一：备战 #include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring&amp;gt;using namespace std;struct headquarter{public:int life;int number;};headquarter red;headquarter blue;struct dragon{public:static int strength;static int red_num;static int blue_num;dragon(char c){if(c==0){++dragon::red_num;++red.number;}else{++dragon::blue_num;++blue.number;}}};struct ninja{public:static int strength;static int red_num;static int blue_num;ninja(char c){if(c==0){++ninja::red_num;++red.number;}else{++ninja::blue_num;++blue.</description>
     </item>
     
     <item>
@@ -52,17 +88,29 @@ struct dragon { public: static int strength; static int red_num; static int blue
       <pubDate>Thu, 12 Mar 2020 17:49:51 +0800</pubDate>
       
       <guid>https://twangreal.github.io/post/zhegezhizhen/</guid>
-      <description>第三周 MOOC程序设计与算法（三） 作业第4题 这个指针哪来的
-#include using namespace std;
-struct A { int v; A(int vv):v(vv) { } // 在此处补充你的代码 A * getPointer() const{ return this;//this指向的是常量a，即返回的是const A类型的对象的地址，getPointer前为const A * } };
-int main() { int i; int * j= &amp;amp;i; const int *k = j;
-const A a(10);//由于这个对象a为常量，所以下面它调用的getPointer就要求是常量成员函数const A * p = a.getPointer();//指向常量的指针p，这就要求a.getPointer为 类A对象的地址/指向类A对象的指针q，而getPointer是常量成员函数cout &amp;lt;&amp;lt; p-&amp;gt;v &amp;lt;&amp;lt; endl;return 0; }</description>
+      <description>第三周 作业第4题 这个指针哪来的 #include &amp;lt;iostream&amp;gt;using namespace std;struct A{int v;A(int vv):v(vv) { }// 在此处补充你的代码 A * getPointer() const{return this;//this指向的是常量a，即返回的是const A类型的对象的地址，getPointer前为const A * }//补充代码};int main(){int i;int * j= &amp;amp;i;const int *k = j;const A a(10);//由于这个对象a为常量，所以下面它调用的getPointer就要求是常量成员函数	const A * p = a.getPointer();//指向常量的指针p，这就要求a.getPointer为 类A对象的地址/指向类A对象的指针q，而getPointer是常量成员函数	cout &amp;lt;&amp;lt; p-&amp;gt;v &amp;lt;&amp;lt; endl;return 0;}</description>
     </item>
     
     <item>
-      <title>Blogtest</title>
-      <link>https://twangreal.github.io/post/blogtest/</link>
+      <title>第十二、十三周</title>
+      <link>https://twangreal.github.io/post/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%8D%81%E4%B8%89%E5%91%A8/</link>
       <pubDate>Wed, 11 Mar 2020 16:29:51 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%8D%81%E4%B8%89%E5%91%A8/</guid>
+      <description>第十二、十三周学习总结 MOOC程序设计与算法（一） 一、知识点 1.STL(standard template library) sort排序 :
+常用格式 sort(数组名+n1,数组名+n2);
+作用：对一个数组排序，默认排序方式——从小到大
+实例：int a[4]={5,6,8,9};sort(a,a+4);
+从大到小：sort(数组名+n1,数组名+n2,greater&amp;lt;T&amp;gt;());//T为数组的类型
+进阶——自定义规则排序：sort(数组名+n1,数组名+n2,自定义规则名());//T为数组的类型
+自定义规则形式：
+struct 规则名{bool operator() (const T &amp;amp;a1, const T &amp;amp;a2 ) const{return ;//这里定义排序规则	}};//示例1：从大到小排struct Rule{bool operator() (const int &amp;amp;a1, const int &amp;amp;a2 ) const{return a1&amp;gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 }};//示例2：有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面struct P{char name[10];int age;};//结构Pstruct Rule{bool operator() (const P &amp;amp;a1, const P &amp;amp;a2 ) const{if(a1.</description>
+    </item>
+    
+    <item>
+      <title>平衡二叉树</title>
+      <link>https://twangreal.github.io/post/blogtest/</link>
+      <pubDate>Fri, 11 Oct 2019 16:29:51 +0800</pubDate>
       
       <guid>https://twangreal.github.io/post/blogtest/</guid>
       <description>关于平衡二叉树是不是二叉排序树 答案是 是的。
@@ -73,15 +121,6 @@ AVL树 AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉
   引用自《2020年计算机专业基础综合考试真题思路分析》 &amp;#x21a9;&amp;#xfe0e;
  引用自《数据结构与算法分析——C语言描述》, Mark Allen Weiss. &amp;#x21a9;&amp;#xfe0e;
    </description>
-    </item>
-    
-    <item>
-      <title>第十二、十三周</title>
-      <link>https://twangreal.github.io/post/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%8D%81%E4%B8%89%E5%91%A8/</link>
-      <pubDate>Wed, 11 Mar 2020 16:29:51 +0800</pubDate>
-      
-      <guid>https://twangreal.github.io/post/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%8D%81%E4%B8%89%E5%91%A8/</guid>
-      <description>第十二、十三周 MOOC程序设计与算法（一） 第十二周、十三周学习总结 一、知识点 STL(standard template library) sort排序 常用格式 sort(数组名+n1,数组名+n2); 作用：对一个数组排序，默认排序方式——从小到大 实例：int a[4]={5,6,8,9}; sort(a,a+4); 从大到小：sort(数组名+n1,数组名+n2,greater());//T为数组的类型 进阶——自定义规则排序：sort(数组名+n1,数组名+n2,自定义规则名());//T为数组的类型 自定义规则形式： struct 规则名{ bool operator() (const T &amp;amp;a1, const T &amp;amp;a2 ) const{ return ;//这里定义排序规则 } }; 示例1：//从大到小排 struct Rule{ bool operator() (const int &amp;amp;a1, const int &amp;amp;a2 ) const{ return a1&amp;gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 } }; 示例2：//有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面 struct P{ char name[10]; int age; }; struct Rule{ bool operator() (const P &amp;amp;a1, const P &amp;amp;a2 ) const{ if(a1.</description>
     </item>
     
   </channel>

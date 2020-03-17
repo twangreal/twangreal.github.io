@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-    <title>Blogtest // 汪佳铭的博客</title>
+    <title>平衡二叉树 // twangreal的博客</title>
     <meta charset="utf-8" />
     <meta name="generator" content="Hugo 0.67.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,7 +11,7 @@
 
     
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Blogtest"/>
+<meta name="twitter:title" content="平衡二叉树"/>
 <meta name="twitter:description" content="关于平衡二叉树是不是二叉排序树 答案是 是的。
 平衡二叉树的定义 平衡二叉树或者是一棵空树，或者是具有下列性质的二叉树：它的左子树和右子树都是平衡二叉树，且左子树和右子树的高度差的绝对值不超过1 。
 从这个定义看，平衡二叉树应当是二叉树，不一定是二叉排序树，但是： “我们通常将平衡二叉树默认为二叉排序树，故平衡二叉树的概念包含两个方面：平衡、有序 ”。1
@@ -21,7 +21,7 @@ AVL树 AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉
  引用自《数据结构与算法分析——C语言描述》, Mark Allen Weiss. &#x21a9;&#xfe0e;
    "/>
 
-    <meta property="og:title" content="Blogtest" />
+    <meta property="og:title" content="平衡二叉树" />
 <meta property="og:description" content="关于平衡二叉树是不是二叉排序树 答案是 是的。
 平衡二叉树的定义 平衡二叉树或者是一棵空树，或者是具有下列性质的二叉树：它的左子树和右子树都是平衡二叉树，且左子树和右子树的高度差的绝对值不超过1 。
 从这个定义看，平衡二叉树应当是二叉树，不一定是二叉排序树，但是： “我们通常将平衡二叉树默认为二叉排序树，故平衡二叉树的概念包含两个方面：平衡、有序 ”。1
@@ -32,15 +32,15 @@ AVL树 AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉
    " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://twangreal.github.io/post/blogtest/" />
-<meta property="article:published_time" content="2020-03-11T16:29:51+08:00" />
-<meta property="article:modified_time" content="2020-03-11T16:29:51+08:00" />
+<meta property="article:published_time" content="2019-10-11T16:29:51+08:00" />
+<meta property="article:modified_time" content="2019-10-11T16:29:51+08:00" />
 
 
   </head>
   <body>
     <header class="app-header">
       <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
-      <h1>汪佳铭的博客</h1>
+      <h1>twangreal的博客</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
       <div class="app-header-social">
         
@@ -50,14 +50,14 @@ AVL树 AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">Blogtest</h1>
+      <h1 class ="post-title">平衡二叉树</h1>
       <div class="post-meta">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
   <title>calendar</title>
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
 </svg>
-          Mar 11, 2020
+          Oct 11, 2019
         </div>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
@@ -68,13 +68,13 @@ AVL树 AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉
         </div></div>
     </header>
     <div class="post-content">
-      <h4 id="关于平衡二叉树是不是二叉排序树">关于平衡二叉树是不是二叉排序树</h4>
+      <h3 id="关于平衡二叉树是不是二叉排序树">关于平衡二叉树是不是二叉排序树</h3>
 <p>答案是 是的。</p>
-<h4 id="平衡二叉树的定义">平衡二叉树的定义</h4>
+<h3 id="平衡二叉树的定义">平衡二叉树的定义</h3>
 <p>平衡二叉树或者是一棵空树，或者是具有下列性质的二叉树：它的左子树和右子树都是平衡二叉树，且左子树和右子树的高度差的绝对值不超过1 。</p>
 <p>从这个定义看，平衡二叉树应当是二叉树，不一定是二叉排序树，但是：
 <em>“我们通常将平衡二叉树默认为二叉排序树，故平衡二叉树的概念包含两个方面：<strong>平衡</strong>、<strong>有序</strong>  ”。</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
-<h4 id="avl树">AVL树</h4>
+<h3 id="avl树">AVL树</h3>
 <p>AVL树：AVL(Adelson-Velskii 和 Landis)树是带有平衡条件的二叉查找树（即二叉排序树），一棵AVL树是其每个结点的左子树和右子树的高度最多差1的二叉查找树。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 <p><strong>其实我们通常说的 平衡二叉树 指的就是AVL树，所以是二叉排序树。</strong></p>
 <section class="footnotes" role="doc-endnotes">

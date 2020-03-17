@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Week4思考题 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week4思考题"/>
+<meta name="twitter:description" content="第四周 运算符重载 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; MOOC程序设计与算法（三） 4-2 为什么复制构造函数中不需要下面几条语句？ if(str==s.str)return;if(str)delete [] str;答：复制构造函数作用于初始化刚生成的对象，其中的指针str还没有指向任何空间。
+4-3 长度可变的整型数组类 每次在数组尾部添加一个元素都要重新分配内存并且复制原有内容，效率低下，有什么办法能够加快添加元素的速度？ 答：预先多分配一些存储空间，例如在用于初始化对象的构造函数中，分配size&#43;32的空间大小，那么在后续插入的32个元素都不用重新分配空间。
+PS.可以参考vector容器的实现 vector//待续。。。。。。"/>
+
+    <meta property="og:title" content="Week4思考题" />
+<meta property="og:description" content="第四周 运算符重载 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; MOOC程序设计与算法（三） 4-2 为什么复制构造函数中不需要下面几条语句？ if(str==s.str)return;if(str)delete [] str;答：复制构造函数作用于初始化刚生成的对象，其中的指针str还没有指向任何空间。
+4-3 长度可变的整型数组类 每次在数组尾部添加一个元素都要重新分配内存并且复制原有内容，效率低下，有什么办法能够加快添加元素的速度？ 答：预先多分配一些存储空间，例如在用于初始化对象的构造函数中，分配size&#43;32的空间大小，那么在后续插入的32个元素都不用重新分配空间。
+PS.可以参考vector容器的实现 vector//待续。。。。。。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week4sikaoti/" />
+<meta property="article:published_time" content="2020-03-16T21:25:51+08:00" />
+<meta property="article:modified_time" content="2020-03-16T21:25:51+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>twangreal的博客</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Week4思考题</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 16, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h2 id="第四周-运算符重载">第四周 运算符重载</h2>
+<h3 id="--------------------------------------------">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h3>
+<h3 id="mooc程序设计与算法三">MOOC程序设计与算法（三）</h3>
+<h4 id="4-2-为什么复制构造函数中不需要下面几条语句">4-2 为什么复制构造函数中不需要下面几条语句？</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">if</span>(str<span style="color:#f92672">==</span>s.str)
+        <span style="color:#66d9ef">return</span>;
+    <span style="color:#66d9ef">if</span>(str)
+        <span style="color:#66d9ef">delete</span> [] str;
+</code></pre></div><p>答：复制构造函数作用于初始化刚生成的对象，其中的指针str还没有指向任何空间。</p>
+<h4 id="4-3-长度可变的整型数组类--每次在数组尾部添加一个元素都要重新分配内存并且复制原有内容效率低下有什么办法能够加快添加元素的速度">4-3 长度可变的整型数组类  每次在数组尾部添加一个元素都要重新分配内存并且复制原有内容，效率低下，有什么办法能够加快添加元素的速度？</h4>
+<p>答：预先多分配一些存储空间，例如在用于初始化对象的构造函数中，分配size+32的空间大小，那么在后续插入的32个元素都不用重新分配空间。</p>
+<p>PS.可以参考vector容器的实现
+vector//待续。。。。。。</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
