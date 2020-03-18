@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>week5_继承与派生 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="week5_继承与派生"/>
+<meta name="twitter:description" content="继承与派生 一、基本概念 1.继承：在定义一个新的类B时，如果该类与某个已有的类A相似(指的是B拥有A的全部特点)，那么就可以把A作为一个基类，而把B作为基类的一个派生类(也称子类)。
+​	a.派生类是通过对基类进行修改和扩充得到的。在派生类中，可以扩充新的成员变量和成员函数。
+​	b.派生类一经定义后，可以独立使用，不依赖于基类。
+2.派生类拥有基类的全部成员函数和成员变量，不论是private、protected、public 。
+​	在派生类的各个成员函数中，不能访问基类中的private成员。
+//派生类的写法class 派生类名：public 基类名{};//示例class CStudent {private:string sName;int nAge;public:bool IsThreeGood() { };void SetName( const string &amp; name ) { sName = name; }//......}; class CUndergraduateStudent: public CStudent {private: int nDepartment;public:bool IsThreeGood() { ...... }; //覆盖，相同函数名	bool CanBaoYan() { .... };}; // 派生类的写法是：类名: public 基类名class CGraduatedStudent:public CStudent {private:int nDepartment;char szMentorName[20];public:int CountSalary() { ."/>
+
+    <meta property="og:title" content="week5_继承与派生" />
+<meta property="og:description" content="继承与派生 一、基本概念 1.继承：在定义一个新的类B时，如果该类与某个已有的类A相似(指的是B拥有A的全部特点)，那么就可以把A作为一个基类，而把B作为基类的一个派生类(也称子类)。
+​	a.派生类是通过对基类进行修改和扩充得到的。在派生类中，可以扩充新的成员变量和成员函数。
+​	b.派生类一经定义后，可以独立使用，不依赖于基类。
+2.派生类拥有基类的全部成员函数和成员变量，不论是private、protected、public 。
+​	在派生类的各个成员函数中，不能访问基类中的private成员。
+//派生类的写法class 派生类名：public 基类名{};//示例class CStudent {private:string sName;int nAge;public:bool IsThreeGood() { };void SetName( const string &amp; name ) { sName = name; }//......}; class CUndergraduateStudent: public CStudent {private: int nDepartment;public:bool IsThreeGood() { ...... }; //覆盖，相同函数名	bool CanBaoYan() { .... };}; // 派生类的写法是：类名: public 基类名class CGraduatedStudent:public CStudent {private:int nDepartment;char szMentorName[20];public:int CountSalary() { ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week5_%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%B4%BE%E7%94%9F/" />
+<meta property="article:published_time" content="2020-03-17T16:03:51+08:00" />
+<meta property="article:modified_time" content="2020-03-17T16:03:51+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/gohugoio" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">week5_继承与派生</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 17, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="继承与派生">继承与派生</h3>
+<h4 id="一基本概念">一、基本概念</h4>
+<p>1.继承：在定义一个新的类B时，如果该类与某个已有的类A相似(指的是B拥有A的全部特点)，那么就可以把A作为一个基类，而把B作为基类的一个派生类(也称子类)。</p>
+<p>​	a.派生类是通过对基类进行修改和扩充得到的。在派生类中，可以扩充新的成员变量和成员函数。</p>
+<p>​	b.派生类一经定义后，可以独立使用，不依赖于基类。</p>
+<p>2.派生类拥有基类的全部成员函数和成员变量，不论是private、protected、public 。</p>
+<p>​	 在派生类的各个成员函数中，不能访问基类中的private成员。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//派生类的写法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">派生类名：</span><span style="color:#a6e22e">public</span> <span style="color:#960050;background-color:#1e0010">基类名</span>
+{
+};
+
+<span style="color:#75715e">//示例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CStudent</span> {
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+	string sName;
+	<span style="color:#66d9ef">int</span> nAge;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">bool</span> IsThreeGood() { };
+	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetName</span>( <span style="color:#66d9ef">const</span> string <span style="color:#f92672">&amp;</span> name ) 
+	{ sName <span style="color:#f92672">=</span> name; }
+	<span style="color:#75715e">//......
+</span><span style="color:#75715e"></span>}; 
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CUndergraduateStudent</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> CStudent {
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span> 
+	<span style="color:#66d9ef">int</span> nDepartment;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">bool</span> IsThreeGood() { ...... }; <span style="color:#75715e">//覆盖，相同函数名
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">CanBaoYan</span>() { .... };
+}; <span style="color:#75715e">// 派生类的写法是：类名: public 基类名
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CGraduatedStudent</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> CStudent {
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">int</span> nDepartment;
+	<span style="color:#66d9ef">char</span> szMentorName[<span style="color:#ae81ff">20</span>];
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">int</span> CountSalary() { ... };
+};
+</code></pre></div><h4 id="二派生类对象的内存空间">二、派生类对象的内存空间</h4>
+<p>派生类对象的体积，等于基类对象的体积，再加上派生类对象自己的成员变量的体积。</p>
+<p>在派生类对象中，包含着基类对象，而且基类对象的存储位置位于派生类对象新增的成员变量之前。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CBase</span>
+{
+<span style="color:#66d9ef">int</span> v1,v2;
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CDerived</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> CBase
+{
+<span style="color:#66d9ef">int</span> v3;
+};
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//继承实例程序:学籍管理 (P228)
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CStudent</span> {
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+	string name;
+	string id; <span style="color:#75715e">//学号
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">char</span> gender; <span style="color:#75715e">//性别,&#39;F&#39;代表女，&#39;M&#39;代表男
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> age;<span style="color:#75715e">//年龄
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">void</span> PrintInfo();<span style="color:#75715e">//输出学生的具体信息
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetInfo</span>( <span style="color:#66d9ef">const</span> string <span style="color:#f92672">&amp;</span> name_,<span style="color:#66d9ef">const</span> string <span style="color:#f92672">&amp;</span> id_,
+		<span style="color:#66d9ef">int</span> age_, <span style="color:#66d9ef">char</span> gender_ );<span style="color:#75715e">//设置学生的信息
+</span><span style="color:#75715e"></span>	string <span style="color:#a6e22e">GetName</span>() { <span style="color:#66d9ef">return</span> name; }<span style="color:#75715e">//返回学生的姓名
+</span><span style="color:#75715e"></span>};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CUndergraduateStudent</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> CStudent 
+{<span style="color:#75715e">//本科生类，继承了CStudent类
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+	string department; <span style="color:#75715e">//学生所属的系的名称
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">void</span> QualifiedForBaoyan() { <span style="color:#75715e">//给予保研资格
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#960050;background-color:#1e0010">“</span>qualified <span style="color:#66d9ef">for</span> baoyan<span style="color:#960050;background-color:#1e0010">”</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintInfo</span>() {<span style="color:#75715e">//覆盖
+</span><span style="color:#75715e"></span>        CStudent<span style="color:#f92672">::</span>PrintInfo(); <span style="color:#75715e">//调用基类的PrintInfo
+</span><span style="color:#75715e"></span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#960050;background-color:#1e0010">“</span>Department:<span style="color:#960050;background-color:#1e0010">”</span> <span style="color:#f92672">&lt;&lt;</span> department <span style="color:#f92672">&lt;&lt;</span>endl;
+    }
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SetInfo</span>( <span style="color:#66d9ef">const</span> string <span style="color:#f92672">&amp;</span> name_,<span style="color:#66d9ef">const</span> string <span style="color:#f92672">&amp;</span> id_,<span style="color:#66d9ef">int</span> age_,<span style="color:#66d9ef">char</span> gender_ 			,<span style="color:#66d9ef">const</span> string <span style="color:#f92672">&amp;</span> department_) {
+        CStudent<span style="color:#f92672">::</span>SetInfo(name_,id_,age_,gender_); <span style="color:#75715e">//调用基类的SetInfo
+</span><span style="color:#75715e"></span>        department <span style="color:#f92672">=</span> department_;
+    }
+};
+<span style="color:#66d9ef">void</span> CStudent<span style="color:#f92672">::</span>PrintInfo()
+{
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Name:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> name <span style="color:#f92672">&lt;&lt;</span> endl;
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ID:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> id <span style="color:#f92672">&lt;&lt;</span> endl;
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Age:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> age <span style="color:#f92672">&lt;&lt;</span> endl;
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Gender:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> gender <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#66d9ef">void</span> CStudent<span style="color:#f92672">::</span>SetInfo( <span style="color:#66d9ef">const</span> string <span style="color:#f92672">&amp;</span> name_,<span style="color:#66d9ef">const</span> string <span style="color:#f92672">&amp;</span> id_, 
+	<span style="color:#66d9ef">int</span> age_,<span style="color:#66d9ef">char</span> gender_ )
+{
+	name <span style="color:#f92672">=</span> name_;
+	id <span style="color:#f92672">=</span> id_;
+	age <span style="color:#f92672">=</span> age_;
+	gender <span style="color:#f92672">=</span> gender_;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+	CUndergraduateStudent s2;
+	s2.SetInfo(<span style="color:#960050;background-color:#1e0010">“</span>Harry Potter <span style="color:#960050;background-color:#1e0010">”</span>, <span style="color:#960050;background-color:#1e0010">“</span><span style="color:#ae81ff">118829212</span><span style="color:#960050;background-color:#1e0010">”</span>,<span style="color:#ae81ff">19</span>,<span style="color:#960050;background-color:#1e0010">‘</span>M<span style="color:#960050;background-color:#1e0010">’</span>,<span style="color:#960050;background-color:#1e0010">“</span>Computer Science<span style="color:#960050;background-color:#1e0010">”</span>);
+	cout <span style="color:#f92672">&lt;&lt;</span> s2.GetName() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#960050;background-color:#1e0010">“</span> <span style="color:#960050;background-color:#1e0010">”</span> ;
+	s2.QualifiedForBaoyan ();
+	s2.PrintInfo ();
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+
+<span style="color:#75715e">//输出结果：
+</span><span style="color:#75715e">//Harry Potter qualified for baoyan
+</span><span style="color:#75715e">//Name:Harry Potter
+</span><span style="color:#75715e">//ID:118829212
+</span><span style="color:#75715e">//Age:19
+</span><span style="color:#75715e">//Gender:M
+</span><span style="color:#75715e">//Department:Computer Science
+</span></code></pre></div>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

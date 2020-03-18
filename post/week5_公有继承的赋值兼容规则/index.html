@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Week5_公有继承的赋值兼容规则 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week5_公有继承的赋值兼容规则"/>
+<meta name="twitter:description" content="一、public继承 class base { }; class derived : public base { };//public-&gt;公有派生，还可以写private、protected，但不常用 base b; derived d; public继承的赋值兼容规则：
+1） 派生类的对象可以赋值给基类对象
+b = d;//派生类对象d中包含的基类对象赋值给b2） 派生类对象可以初始化基类引用
+base &amp; br = d;//br引用了派生类对象d中包含的基类对象3） 派生类对象的地址可以赋值给基类指针
+base * pb = &amp; d;//基类指针指向了派生类对象d中包含的基类对象注意：如果派生方式是 private或protected，则上述三条不可行，下面的这条结论也不成立。
+在公有派生的情况下，可以说，派生类对象也是基类对象，任何本该出现基类对象的地方，如果出现的是派生类对象，也是没有问题的。
+二、protected继承和private继承 class base { }; class derived : protected base { }; base b; derived d; /*protected继承时，基类的public成员和protected成员成为派生类的protected成员。 • private继承时，基类的public成员成为派生类的private成员，基类的protected成员成 为派生类的不可访问成员。 • protected和private继承不是“是”的关系。*///待定 三、直接基类和间接基类（多层次的派生） (1)类A派生类B，类B派生类C，类C派生类D，……A &ndash;&gt; B &ndash;&gt; C &ndash;&gt; D
+– 类A是类B的直接基类
+– 类B是类C的直接基类，类A是类C的间接基类"/>
+
+    <meta property="og:title" content="Week5_公有继承的赋值兼容规则" />
+<meta property="og:description" content="一、public继承 class base { }; class derived : public base { };//public-&gt;公有派生，还可以写private、protected，但不常用 base b; derived d; public继承的赋值兼容规则：
+1） 派生类的对象可以赋值给基类对象
+b = d;//派生类对象d中包含的基类对象赋值给b2） 派生类对象可以初始化基类引用
+base &amp; br = d;//br引用了派生类对象d中包含的基类对象3） 派生类对象的地址可以赋值给基类指针
+base * pb = &amp; d;//基类指针指向了派生类对象d中包含的基类对象注意：如果派生方式是 private或protected，则上述三条不可行，下面的这条结论也不成立。
+在公有派生的情况下，可以说，派生类对象也是基类对象，任何本该出现基类对象的地方，如果出现的是派生类对象，也是没有问题的。
+二、protected继承和private继承 class base { }; class derived : protected base { }; base b; derived d; /*protected继承时，基类的public成员和protected成员成为派生类的protected成员。 • private继承时，基类的public成员成为派生类的private成员，基类的protected成员成 为派生类的不可访问成员。 • protected和private继承不是“是”的关系。*///待定 三、直接基类和间接基类（多层次的派生） (1)类A派生类B，类B派生类C，类C派生类D，……A &ndash;&gt; B &ndash;&gt; C &ndash;&gt; D
+– 类A是类B的直接基类
+– 类B是类C的直接基类，类A是类C的间接基类" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week5_%E5%85%AC%E6%9C%89%E7%BB%A7%E6%89%BF%E7%9A%84%E8%B5%8B%E5%80%BC%E5%85%BC%E5%AE%B9%E8%A7%84%E5%88%99/" />
+<meta property="article:published_time" content="2020-03-18T15:24:10+08:00" />
+<meta property="article:modified_time" content="2020-03-18T15:24:10+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/gohugoio" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Week5_公有继承的赋值兼容规则</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 18, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="一public继承">一、public继承</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">base</span> { };
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">derived</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> base { };<span style="color:#75715e">//public-&gt;公有派生，还可以写private、protected，但不常用
+</span><span style="color:#75715e"></span>base b;
+derived d;
+</code></pre></div><p><strong>public继承的赋值兼容规则：</strong></p>
+<p>1） 派生类的对象可以赋值给基类对象</p>
+<p>b = d;//<!-- raw HTML omitted -->派生类对象d中包含的基类对象赋值给b<!-- raw HTML omitted --></p>
+<p>2） 派生类对象可以初始化基类引用</p>
+<p>base &amp; br = d;//<!-- raw HTML omitted -->br引用了派生类对象d中包含的基类对象<!-- raw HTML omitted --></p>
+<p>3） 派生类对象的地址可以赋值给基类指针</p>
+<p>base * pb = &amp; d;//<!-- raw HTML omitted -->基类指针指向了派生类对象d中包含的基类对象<!-- raw HTML omitted --></p>
+<p><strong>注意</strong>：如果派生方式是 private或protected，则上述三条不可行，下面的这条结论也不成立。</p>
+<p><strong>在公有派生的情况下，可以说，派生类对象也是基类对象，任何本该出现基类对象的地方，如果出现的是派生类对象，也是没有问题的。</strong></p>
+<h3 id="二protected继承和private继承">二、protected继承和private继承</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">base</span> {
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">derived</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">protected</span> base {
+};
+base b;
+derived d;
+<span style="color:#75715e">/*protected继承时，基类的public成员和protected成员成为派生类的protected成员。
+</span><span style="color:#75715e">• private继承时，基类的public成员成为派生类的private成员，基类的protected成员成
+</span><span style="color:#75715e">为派生类的不可访问成员。
+</span><span style="color:#75715e">• protected和private继承不是“是”的关系。*/</span><span style="color:#75715e">//待定
+</span></code></pre></div><h3 id="三直接基类和间接基类多层次的派生">三、直接基类和间接基类（多层次的派生）</h3>
+<p>(1)类A派生类B，类B派生类C，类C派生类D，……<strong>A &ndash;&gt; B &ndash;&gt; C &ndash;&gt; D</strong></p>
+<p>– 类A是类B的直接基类<br>
+– 类B是类C的直接基类，类A是类C的间接基类<br>
+– 类C是类D的直接基类，类A、B是类D的间接基类</p>
+<p>(2)在声明派生类时，只需要列出它的<strong>直接基类</strong></p>
+<p>– 派生类沿着类的层次自动向上继承它的间接基类<br>
+– 派生类的成员包括 :</p>
+<p>​	• 派生类自己定义的成员<br>
+​	• 直接基类中的所有成员<br>
+​	• 所有间接基类的全部成员</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">int</span> n;
+	Base(<span style="color:#66d9ef">int</span> i)<span style="color:#f92672">:</span>n(i) {<span style="color:#75715e">//构造函数
+</span><span style="color:#75715e"></span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Base &#34;</span> <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; constructed&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+	<span style="color:#f92672">~</span>Base() {<span style="color:#75715e">//析构函数
+</span><span style="color:#75715e"></span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Base &#34;</span> <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; destructed&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Derived</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> Base
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	Derived(<span style="color:#66d9ef">int</span> i)<span style="color:#f92672">:</span>Base(i) {<span style="color:#75715e">//构造函数
+</span><span style="color:#75715e"></span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Derived constructed&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+	<span style="color:#f92672">~</span>Derived() {<span style="color:#75715e">//析构函数
+</span><span style="color:#75715e"></span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Derived destructed&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MoreDerived</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> Derived {<span style="color:#75715e">//只需要列出直接基类Derived，不用列出间接基类Base
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	MoreDerived()<span style="color:#f92672">:</span>Derived(<span style="color:#ae81ff">4</span>) {<span style="color:#75715e">//构造函数，只需要指明直接基类怎么初始化
+</span><span style="color:#75715e"></span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;More Derived constructed&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+	<span style="color:#f92672">~</span>MoreDerived() {
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;More Derived destructed&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+};
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+	MoreDerived Obj; 
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+
+<span style="color:#75715e">//输出结果：
+</span><span style="color:#75715e">//Base 4 constructed
+</span><span style="color:#75715e">//Derived constructed
+</span><span style="color:#75715e">//More Derived constructed
+</span><span style="color:#75715e">//More Derived destructed
+</span><span style="color:#75715e">//Derived destructed
+</span><span style="color:#75715e">//Base 4 destructed
+</span></code></pre></div><p><strong>注意</strong>：</p>
+<p>当派生类的对象生成时，会从最顶层的基类开始逐层往下执行所有基类的构造函数，最后再执行自身的构造函数；<strong>A &ndash;&gt; B &ndash;&gt; C &ndash;&gt; D</strong></p>
+<p>当派生类对象消亡时，会先执行自身的析构函数，然后从底向上依次执行各个基类的析构函数。<strong>A &lt;&ndash; B &lt;&ndash; C &lt;&ndash; D</strong></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

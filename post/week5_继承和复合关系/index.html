@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Week5_继承和复合关系 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week5_继承和复合关系"/>
+<meta name="twitter:description" content="一、类之间的两种关系 继承：“是” 关系。
+– 基类 A，B是基类A的派生类。
+– 逻辑上要求：“一个B对象也是一个A对象”。
+复合：“有” 关系。
+– 类C中“有”成员变量k，k是类D的对象，则C和D是复合关系。
+– 一般逻辑上要求：“D对象是C对象的固有属性或组成部分”。
+PS.则C为封闭类
+二、继承关系的使用 写了一个 CMan 类代表男人
+后来又发现需要一个CWoman类来代表女人
+CWoman类和CMan类有共同之处，就让CWoman类从CMan类派生而来，是否合适？
+是不合理的!
+因为“一个女人也是一个男人”从逻辑上不成立!
+好的做法是概括男人和女人共同特点，
+写一个 CHuman类，代表“人”, 然后CMan和CWoman都从CHuman派生。
+三、复合关系的使用 （1）几何形体程序中，需要写“点”类，也需要写“圆”类，两者的关系就是复合关系 &mdash;- 每一个“圆”对象里都包含(有)一个“点”对象，这个“点”对象就是圆心。
+class CPoint { double x,y; friend class CCircle; //便于Ccirle类操作其圆心 }; class CCircle { double r; CPoint center; }; （2）如果要写一个小区养狗管理程序，需要写一个“业主”类，还需要写一个“狗”类。 而狗是有 “主人” 的，主人当然是业主(假定狗只有一个主人，但一个业主可以有最多10条狗）
+//！错误，循环定义！ class CDog; class CMaster { CDog dogs[10]; }; class CDog { CMaster m; }; 注意：避免循环定义的方法是 在一个类中使用另一个类的指针，而不是对象作为成员变量。"/>
+
+    <meta property="og:title" content="Week5_继承和复合关系" />
+<meta property="og:description" content="一、类之间的两种关系 继承：“是” 关系。
+– 基类 A，B是基类A的派生类。
+– 逻辑上要求：“一个B对象也是一个A对象”。
+复合：“有” 关系。
+– 类C中“有”成员变量k，k是类D的对象，则C和D是复合关系。
+– 一般逻辑上要求：“D对象是C对象的固有属性或组成部分”。
+PS.则C为封闭类
+二、继承关系的使用 写了一个 CMan 类代表男人
+后来又发现需要一个CWoman类来代表女人
+CWoman类和CMan类有共同之处，就让CWoman类从CMan类派生而来，是否合适？
+是不合理的!
+因为“一个女人也是一个男人”从逻辑上不成立!
+好的做法是概括男人和女人共同特点，
+写一个 CHuman类，代表“人”, 然后CMan和CWoman都从CHuman派生。
+三、复合关系的使用 （1）几何形体程序中，需要写“点”类，也需要写“圆”类，两者的关系就是复合关系 &mdash;- 每一个“圆”对象里都包含(有)一个“点”对象，这个“点”对象就是圆心。
+class CPoint { double x,y; friend class CCircle; //便于Ccirle类操作其圆心 }; class CCircle { double r; CPoint center; }; （2）如果要写一个小区养狗管理程序，需要写一个“业主”类，还需要写一个“狗”类。 而狗是有 “主人” 的，主人当然是业主(假定狗只有一个主人，但一个业主可以有最多10条狗）
+//！错误，循环定义！ class CDog; class CMaster { CDog dogs[10]; }; class CDog { CMaster m; }; 注意：避免循环定义的方法是 在一个类中使用另一个类的指针，而不是对象作为成员变量。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week5_%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB/" />
+<meta property="article:published_time" content="2020-03-17T17:40:07+08:00" />
+<meta property="article:modified_time" content="2020-03-17T17:40:07+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/gohugoio" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Week5_继承和复合关系</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 17, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="一类之间的两种关系">一、类之间的两种关系</h3>
+<p>继承：“<em><strong>是</strong></em>”  关系。</p>
+<p>– 基类 A，B是基类A的派生类。<br>
+– 逻辑上要求：“一个B对象也是一个A对象”。</p>
+<p>复合：“<em><strong>有</strong></em>”  关系。</p>
+<p>– 类C中“有”成员变量k，k是类D的对象，则C和D是复合关系。<br>
+– 一般逻辑上要求：“D对象是C对象的固有属性或组成部分”。</p>
+<p>PS.则C为封闭类</p>
+<h3 id="二继承关系的使用">二、继承关系的使用</h3>
+<p>写了一个 CMan 类代表男人<br>
+后来又发现需要一个CWoman类来代表女人<br>
+CWoman类和CMan类有共同之处，就让CWoman类从CMan类派生而来，是否合适？</p>
+<p>是不合理的!</p>
+<p>因为“一个女人也是一个男人”从逻辑上不成立!</p>
+<p>好的做法是概括男人和女人共同特点，<br>
+写一个 CHuman类，代表“人”, 然后CMan和CWoman都从CHuman派生。</p>
+<h3 id="三复合关系的使用">三、复合关系的使用</h3>
+<p>（1）几何形体程序中，需要写“点”类，也需要写“圆”类，两者的关系就是<strong>复合关系</strong> &mdash;- 每一个“圆”对象里都包含(有)一个“点”对象，这个“点”对象就是圆心。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CPoint</span>
+{
+	<span style="color:#66d9ef">double</span> x,y;
+	<span style="color:#66d9ef">friend</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CCircle</span>; <span style="color:#75715e">//便于Ccirle类操作其圆心
+</span><span style="color:#75715e"></span>};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CCircle</span>
+{
+	<span style="color:#66d9ef">double</span> r;
+	CPoint center;
+};
+</code></pre></div><p>（2）如果要写一个小区养狗管理程序，需要写一个“业主”类，还需要写一个“狗”类。 而狗是有 “主人” 的，主人当然是业主(假定狗只有一个主人，但一个业主可以有最多10条狗）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">//！错误，循环定义！
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CDog</span>;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CMaster</span>
+{
+	CDog dogs[<span style="color:#ae81ff">10</span>];
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CDog</span>
+{
+	CMaster m;
+}; 
+</code></pre></div><p><strong>注意</strong>：避免循环定义的方法是 在一个类中使用另一个类的指针，而不是对象作为成员变量。</p>
+<p><strong>注意2</strong>：指针就是地址，大小固定为4个字节。————《新标准C++程序设计》郭炜.编著.P91.</p>
+<p>正确的写法：</p>
+<p>为“狗”类设一个“业主”类的对象指针；<br>
+为“业主”类设一个“狗”类的对象指针数组。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CMaster</span>; <span style="color:#75715e">//CMaster必须提前声明，不能先写CMaster类后写Cdog类
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CDog</span> {
+	CMaster <span style="color:#f92672">*</span> pm;<span style="color:#75715e">//这里用指针的原因：1.逻辑上直接包含CMaster对象的话就成了“狗中有人”，不太好
+</span><span style="color:#75715e"></span>};               <span style="color:#75715e">//实际使用时，若有多条狗对应同一个主人，当主人信息需要更改时，就需要将与其对应的、
+</span><span style="color:#75715e"></span>					<span style="color:#75715e">//位于多个CDog对象中的CMaster成员变量都找出来修改，非常麻烦。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CMaster</span> {
+	CDog <span style="color:#f92672">*</span> dogs[<span style="color:#ae81ff">10</span>];
+};
+</code></pre></div><p>这种情况可以成为 “类A知道类B”，两个类之间是<em><strong>知道</strong></em> 关系。</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

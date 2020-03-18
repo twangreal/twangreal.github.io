@@ -6,10 +6,102 @@
     <description>Recent content on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Mar 2020 21:25:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2020 16:05:22 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week5_其他</title>
+      <link>https://twangreal.github.io/post/week5_%E5%85%B6%E4%BB%96/</link>
+      <pubDate>Wed, 18 Mar 2020 16:05:22 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week5_%E5%85%B6%E4%BB%96/</guid>
+      <description>一、基类和派生类指针的互相转换 （1）公有派生的情况下,派生类对象的指针可以直接赋值给基类指针
+（2）基类的指针不能赋值给派生类的指针，除非强制类型转换，
+Base * ptrBase = &amp;amp;objDerived;//本来就指向一个派生类的对象 Derived *ptrDerived = (Derived * ) ptrBase; 注意 ：需要保证被转换的基类指针本来就指向一个派生类的对象。
+注意2 ：即便基类指针指向的是一个派生类对象，也不能通过基类指针访问基类没有而派生类中有的成员。
+二、派生类和赋值运算符 如果基类重载了赋值运算符= 而派生类没有，
+那么在派生类对象之间赋值，或用派生类对象对基类对象进行赋值时，
+其中基类部分的赋值操作时调用被基类重载的“=”完成的。</description>
+    </item>
+    
+    <item>
+      <title>Week5_公有继承的赋值兼容规则</title>
+      <link>https://twangreal.github.io/post/week5_%E5%85%AC%E6%9C%89%E7%BB%A7%E6%89%BF%E7%9A%84%E8%B5%8B%E5%80%BC%E5%85%BC%E5%AE%B9%E8%A7%84%E5%88%99/</link>
+      <pubDate>Wed, 18 Mar 2020 15:24:10 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week5_%E5%85%AC%E6%9C%89%E7%BB%A7%E6%89%BF%E7%9A%84%E8%B5%8B%E5%80%BC%E5%85%BC%E5%AE%B9%E8%A7%84%E5%88%99/</guid>
+      <description>一、public继承 class base { }; class derived : public base { };//public-&amp;gt;公有派生，还可以写private、protected，但不常用 base b; derived d; public继承的赋值兼容规则：
+1） 派生类的对象可以赋值给基类对象
+b = d;//派生类对象d中包含的基类对象赋值给b2） 派生类对象可以初始化基类引用
+base &amp;amp; br = d;//br引用了派生类对象d中包含的基类对象3） 派生类对象的地址可以赋值给基类指针
+base * pb = &amp;amp; d;//基类指针指向了派生类对象d中包含的基类对象注意：如果派生方式是 private或protected，则上述三条不可行，下面的这条结论也不成立。
+在公有派生的情况下，可以说，派生类对象也是基类对象，任何本该出现基类对象的地方，如果出现的是派生类对象，也是没有问题的。
+二、protected继承和private继承 class base { }; class derived : protected base { }; base b; derived d; /*protected继承时，基类的public成员和protected成员成为派生类的protected成员。 • private继承时，基类的public成员成为派生类的private成员，基类的protected成员成 为派生类的不可访问成员。 • protected和private继承不是“是”的关系。*///待定 三、直接基类和间接基类（多层次的派生） (1)类A派生类B，类B派生类C，类C派生类D，……A &amp;ndash;&amp;gt; B &amp;ndash;&amp;gt; C &amp;ndash;&amp;gt; D
+– 类A是类B的直接基类
+– 类B是类C的直接基类，类A是类C的间接基类</description>
+    </item>
+    
+    <item>
+      <title>Week5_派生类的构造函数</title>
+      <link>https://twangreal.github.io/post/week5_%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Wed, 18 Mar 2020 14:52:10 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week5_%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</guid>
+      <description>一、构造函数 class Bug { private : int nLegs; int nColor; public: int nType; Bug ( int legs, int color); void PrintBug (){ }; }; class FlyBug: public Bug // FlyBug是Bug的派生类 { int nWings; public: FlyBug( int legs,int color, int wings); }; Bug::Bug( int legs, int color) { nLegs = legs; nColor = color; } //错误的FlyBug构造函数 FlyBug::FlyBug ( int legs,int color, int wings) { nLegs = legs; // 不能访问**nLegs是私有成员** 	nColor = color; // 不能访问**nColor是私有成员** 	nType = 1; // ok**nType是公有成员** 	nWings = wings; } //正确的FlyBug构造函数： FlyBug::FlyBug ( int legs, int color, int wings):Bug( legs, color)//初始化列表中， {	//调用基类的构造函数 nWings = wings; } int main() { FlyBug fb ( 2,3,4); fb.</description>
+    </item>
+    
+    <item>
+      <title>Week5_覆盖和保护成员</title>
+      <link>https://twangreal.github.io/post/week5_%E8%A6%86%E7%9B%96%E5%92%8C%E4%BF%9D%E6%8A%A4%E6%88%90%E5%91%98/</link>
+      <pubDate>Wed, 18 Mar 2020 14:30:02 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week5_%E8%A6%86%E7%9B%96%E5%92%8C%E4%BF%9D%E6%8A%A4%E6%88%90%E5%91%98/</guid>
+      <description>覆盖 一、覆盖 派生类可以定义一个和基类成员同名的成员，这叫覆盖。
+在派生类中访问这类成员时，缺省的情况是访问派生类中定义的成员。要在派生类中访问由基类定义的同名成员时，要使用作用域符号:: 。
+基类和派生类有同名成员的情况：
+//**一般来说，基类和派生类不定义同名成员变量。**定义同名成员函数是常见的。 class base { int j; public: int i; void func(); }; class derived :public base{ public: int i; void access(); void func(); }; void derived::access() { j = 5; //error 	i = 5; //引用的是派生类的 i 	base::i = 5; //引用的是基类的 i 	func(); //派生类的 	base::func(); //基类的 } derived obj; obj.i = 1; obj.base::i = 1; //obj占用的存储空间: //Base::j //Base::i //i 二、类的保护成员 另一种存取权限说明符：protected</description>
+    </item>
+    
+    <item>
+      <title>Week5_继承和复合关系</title>
+      <link>https://twangreal.github.io/post/week5_%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Tue, 17 Mar 2020 17:40:07 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week5_%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB/</guid>
+      <description>一、类之间的两种关系 继承：“是” 关系。
+– 基类 A，B是基类A的派生类。
+– 逻辑上要求：“一个B对象也是一个A对象”。
+复合：“有” 关系。
+– 类C中“有”成员变量k，k是类D的对象，则C和D是复合关系。
+– 一般逻辑上要求：“D对象是C对象的固有属性或组成部分”。
+PS.则C为封闭类
+二、继承关系的使用 写了一个 CMan 类代表男人
+后来又发现需要一个CWoman类来代表女人
+CWoman类和CMan类有共同之处，就让CWoman类从CMan类派生而来，是否合适？
+是不合理的!
+因为“一个女人也是一个男人”从逻辑上不成立!
+好的做法是概括男人和女人共同特点，
+写一个 CHuman类，代表“人”, 然后CMan和CWoman都从CHuman派生。
+三、复合关系的使用 （1）几何形体程序中，需要写“点”类，也需要写“圆”类，两者的关系就是复合关系 &amp;mdash;- 每一个“圆”对象里都包含(有)一个“点”对象，这个“点”对象就是圆心。
+class CPoint { double x,y; friend class CCircle; //便于Ccirle类操作其圆心 }; class CCircle { double r; CPoint center; }; （2）如果要写一个小区养狗管理程序，需要写一个“业主”类，还需要写一个“狗”类。 而狗是有 “主人” 的，主人当然是业主(假定狗只有一个主人，但一个业主可以有最多10条狗）
+//！错误，循环定义！ class CDog; class CMaster { CDog dogs[10]; }; class CDog { CMaster m; }; 注意：避免循环定义的方法是 在一个类中使用另一个类的指针，而不是对象作为成员变量。</description>
+    </item>
+    
+    <item>
+      <title>week5_继承与派生</title>
+      <link>https://twangreal.github.io/post/week5_%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%B4%BE%E7%94%9F/</link>
+      <pubDate>Tue, 17 Mar 2020 16:03:51 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week5_%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%B4%BE%E7%94%9F/</guid>
+      <description>继承与派生 一、基本概念 1.继承：在定义一个新的类B时，如果该类与某个已有的类A相似(指的是B拥有A的全部特点)，那么就可以把A作为一个基类，而把B作为基类的一个派生类(也称子类)。
+​	a.派生类是通过对基类进行修改和扩充得到的。在派生类中，可以扩充新的成员变量和成员函数。
+​	b.派生类一经定义后，可以独立使用，不依赖于基类。
+2.派生类拥有基类的全部成员函数和成员变量，不论是private、protected、public 。
+​	在派生类的各个成员函数中，不能访问基类中的private成员。
+//派生类的写法class 派生类名：public 基类名{};//示例class CStudent {private:string sName;int nAge;public:bool IsThreeGood() { };void SetName( const string &amp;amp; name ) { sName = name; }//......}; class CUndergraduateStudent: public CStudent {private: int nDepartment;public:bool IsThreeGood() { ...... }; //覆盖，相同函数名	bool CanBaoYan() { .... };}; // 派生类的写法是：类名: public 基类名class CGraduatedStudent:public CStudent {private:int nDepartment;char szMentorName[20];public:int CountSalary() { .</description>
+    </item>
     
     <item>
       <title>Week4思考题</title>
@@ -57,6 +149,7 @@ char * strcpy(char * dest, const char * src) // 实现src到dest的复制{if (
 ​ 3.静态成员变量本质上是全局变量；
 ​ 4.静态成员函数本上是全局函数；
 ​ 5.静态成员函数中不能访问非静态成员变量，也不能调用非静态成员函数；
+注意 ：关于静态成员变量的 初始化，不是静态成员变量是public还是private还是protected都是在类外初始化，没有影响；但是对于静态成员变量的访问、值的修改 和public还是private还是protected有关。
 三、成员对象和封闭类 一个类的成员变量是另一个类的对象，则该类为封闭类。
 1.初始化：构造函数，初始化列表（建议）
 2.封闭类构造函数和析构函数执行顺序：构造先成员对象后封闭类，析构先封闭类后成员对象
