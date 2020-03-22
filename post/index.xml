@@ -6,10 +6,37 @@
     <description>Recent content in Posts on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Mar 2020 16:05:22 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 16:33:31 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week5_魔兽世界2装备</title>
+      <link>https://twangreal.github.io/post/week5_%E9%AD%94%E5%85%BD%E4%B8%96%E7%95%8C2%E8%A3%85%E5%A4%87/</link>
+      <pubDate>Sun, 22 Mar 2020 16:33:31 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week5_%E9%AD%94%E5%85%BD%E4%B8%96%E7%95%8C2%E8%A3%85%E5%A4%87/</guid>
+      <description>类之间关系分析 司令部类Headquarter，武士类Warrior，Dragon、Ninja、Iceman、Lion、Wolf，武器类Weapon
+Headquarter和Warrior类似“狗和主人”的复合关系，不是对方的一部分，但是又属于和拥有的关系。
+Warrior和Dragon……是继承关系。
+Weapon，Dragon有一把武器，即拥有一个Weapon类的成员，Dragon是一个封闭派生类。
+代码： #include &amp;lt;iostream&amp;gt;#include &amp;lt;cstdio&amp;gt;#include &amp;lt;cstring&amp;gt;using namespace std; enum{DRAGON,NINJA,ICEMAN,LION,WOLF}; const int WarriorKindNum = 5; const int WeaponKindNum = 3; const int MaxWarriorNum = 1000; class Warrior; class Weapon{ public: int wpKindNo; static const char * wpName[WeaponKindNum]; }; class Headquater{ private: int hTotalLifeValue; int hTotalWarriorNum;//&amp;lt;MaxWarriorNum  bool isStop; int Color;//0red,1blue  Warrior *pWarrior[MaxWarriorNum]; static int hMakingWarriorSeq[2][WarriorKindNum]; int hCurMakingWarSeqIndex; public: int eachKindWarriorNum[WarriorKindNum]; void init(int color,int lifeValue); int produce(int hTime); int getTotalLV(){return hTotalLifeValue;} int getColor(){return Color;} ~Headquater(){ for(int i=0;i&amp;lt;hTotalWarriorNum;++i) delete pWarrior[i]; } }; class Warrior{ private: static const char * warNames[WarriorKindNum]; protected: Headquater *pHeadquater;//指向所属司令部  int warNo;//第几个降生 public: static int InitLifeValue[WarriorKindNum]; Warrior(Headquater *ph,int totalWarNum):pHeadquater(ph),warNo(totalWarNum){} virtual void PrintResult(int htime)=0; void PrintResult(int htime,int kindNo); virtual ~Warrior(){} }; class Dragon:public Warrior{ private: Weapon wp; double morale; public: Dragon(Headquater *ph,int totalWarNum):Warrior(ph,totalWarNum){ wp.</description>
+    </item>
+    
+    <item>
+      <title>Week5_思考题</title>
+      <link>https://twangreal.github.io/post/week5_%E6%80%9D%E8%80%83%E9%A2%98/</link>
+      <pubDate>Thu, 19 Mar 2020 13:18:02 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week5_%E6%80%9D%E8%80%83%E9%A2%98/</guid>
+      <description>一、如何实现string类，可以使得sizeof(string) = 4？这样实现的string类如何才能在常数时间内求得string对象中字符串的长度？ 答：考虑到一般情况指针都是4个字节大小，所有让string类中包含一个char *指针，指向字符串，来实现。
+要在常数时间内求得长度，显然strlen不行，那么就在字符串开头增加4个字节（int的大小）来存储字符串长度。
+二、派生类对象生成时要先执行基类构造函数，消亡时要先执行自身析构函数，在执行基类析构函数，为什么？ 答：派生类对象生成和消亡时分别执行构造函数和析构函数，而这两个函数执行时有可能会用到从基类继承过来的成员变量，所以要先基类构造，后基类析构。
+PS.关于对象占用的空间大小 按理说，对象占用空间大小等于各成员变量占用的存储空间大小之和。
+class CStudent{ private: string name; string id; char gender; int age; public: ....... }//string 4，int 4， char 1，合计13 //但是sizeof（CStudent）返回16，？？ 原因：计算机内部CPU和内存之间传送数据都是以4字节（32位，64位8字节）为单位进行的，处于传输效率的考虑，应该尽量使对象的成员变量的地址是4或8的整数倍，这叫做对齐。编译器位CStudent对象中的char gender补齐3个字节，使得age能够对齐，因此CStudent变成了16字节。
+三、访问控制和继承（公有、私有、保护继承） class A{ public: int pub_num; private: int pri_num; protected: int prot_num; //A类中记作区域（1） }; class B:private A{//类派生列表，（private 派生访问说明符）  int f(){return pub_num;} //int g(){return pri_num;}//error,private成员变量不能访问  int h(){return prot_num;} //B类，A类的直接派生类，记作区域（2） }; //其他地方，例如main中、B的派生类中，记作区域（3） int main() { B b; //	b.pub_num=1; //	b.</description>
+    </item>
     
     <item>
       <title>Week5_其他</title>
@@ -38,7 +65,7 @@ b = d;//派生类对象d中包含的基类对象赋值给b2） 派生类对象�
 base &amp;amp; br = d;//br引用了派生类对象d中包含的基类对象3） 派生类对象的地址可以赋值给基类指针
 base * pb = &amp;amp; d;//基类指针指向了派生类对象d中包含的基类对象注意：如果派生方式是 private或protected，则上述三条不可行，下面的这条结论也不成立。
 在公有派生的情况下，可以说，派生类对象也是基类对象，任何本该出现基类对象的地方，如果出现的是派生类对象，也是没有问题的。
-二、protected继承和private继承 class base { }; class derived : protected base { }; base b; derived d; /*protected继承时，基类的public成员和protected成员成为派生类的protected成员。 • private继承时，基类的public成员成为派生类的private成员，基类的protected成员成 为派生类的不可访问成员。 • protected和private继承不是“是”的关系。*///待定 三、直接基类和间接基类（多层次的派生） (1)类A派生类B，类B派生类C，类C派生类D，……A &amp;ndash;&amp;gt; B &amp;ndash;&amp;gt; C &amp;ndash;&amp;gt; D
+二、protected继承和private继承 class base { }; class derived : protected base { }; base b; derived d; /*protected继承时，基类的public成员和protected成员成为派生类的protected成员。 • private继承时，基类的public成员和protected成员成为派生类的private成员。 • protected和private继承不是“是”的关系。 三、直接基类和间接基类（多层次的派生） (1)类A派生类B，类B派生类C，类C派生类D，……A &amp;ndash;&amp;gt; B &amp;ndash;&amp;gt; C &amp;ndash;&amp;gt; D
 – 类A是类B的直接基类
 – 类B是类C的直接基类，类A是类C的间接基类</description>
     </item>
@@ -58,10 +85,11 @@ base * pb = &amp;amp; d;//基类指针指向了派生类对象d中包含的基�
       <pubDate>Wed, 18 Mar 2020 14:30:02 +0800</pubDate>
       
       <guid>https://twangreal.github.io/post/week5_%E8%A6%86%E7%9B%96%E5%92%8C%E4%BF%9D%E6%8A%A4%E6%88%90%E5%91%98/</guid>
-      <description>覆盖 一、覆盖 派生类可以定义一个和基类成员同名的成员，这叫覆盖。
+      <description>一、覆盖 派生类可以定义一个和基类成员同名的成员，这叫覆盖。
 在派生类中访问这类成员时，缺省的情况是访问派生类中定义的成员。要在派生类中访问由基类定义的同名成员时，要使用作用域符号:: 。
 基类和派生类有同名成员的情况：
-//**一般来说，基类和派生类不定义同名成员变量。**定义同名成员函数是常见的。 class base { int j; public: int i; void func(); }; class derived :public base{ public: int i; void access(); void func(); }; void derived::access() { j = 5; //error 	i = 5; //引用的是派生类的 i 	base::i = 5; //引用的是基类的 i 	func(); //派生类的 	base::func(); //基类的 } derived obj; obj.i = 1; obj.base::i = 1; //obj占用的存储空间: //Base::j //Base::i //i 二、类的保护成员 另一种存取权限说明符：protected</description>
+//**一般来说，基类和派生类不定义同名成员变量。**定义同名成员函数是常见的。 class base { int j; public: int i; void func(); }; class derived :public base{ public: int i; void access(); void func(); }; void derived::access() { j = 5; //error,private 	i = 5; //引用的是派生类的 i 	base::i = 5; //引用的是基类的 i 	func(); //派生类的 	base::func(); //基类的 } derived obj; obj.i = 1; obj.base::i = 1; //obj占用的存储空间: //Base::j //Base::i //i 二、类的保护成员 另一种存取权限说明符：protected
+• 基类的private成员：可以被下列函数访问</description>
     </item>
     
     <item>

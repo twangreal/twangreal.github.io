@@ -18,7 +18,7 @@ b = d;//派生类对象d中包含的基类对象赋值给b2） 派生类对象�
 base &amp; br = d;//br引用了派生类对象d中包含的基类对象3） 派生类对象的地址可以赋值给基类指针
 base * pb = &amp; d;//基类指针指向了派生类对象d中包含的基类对象注意：如果派生方式是 private或protected，则上述三条不可行，下面的这条结论也不成立。
 在公有派生的情况下，可以说，派生类对象也是基类对象，任何本该出现基类对象的地方，如果出现的是派生类对象，也是没有问题的。
-二、protected继承和private继承 class base { }; class derived : protected base { }; base b; derived d; /*protected继承时，基类的public成员和protected成员成为派生类的protected成员。 • private继承时，基类的public成员成为派生类的private成员，基类的protected成员成 为派生类的不可访问成员。 • protected和private继承不是“是”的关系。*///待定 三、直接基类和间接基类（多层次的派生） (1)类A派生类B，类B派生类C，类C派生类D，……A &ndash;&gt; B &ndash;&gt; C &ndash;&gt; D
+二、protected继承和private继承 class base { }; class derived : protected base { }; base b; derived d; /*protected继承时，基类的public成员和protected成员成为派生类的protected成员。 • private继承时，基类的public成员和protected成员成为派生类的private成员。 • protected和private继承不是“是”的关系。 三、直接基类和间接基类（多层次的派生） (1)类A派生类B，类B派生类C，类C派生类D，……A &ndash;&gt; B &ndash;&gt; C &ndash;&gt; D
 – 类A是类B的直接基类
 – 类B是类C的直接基类，类A是类C的间接基类"/>
 
@@ -29,7 +29,7 @@ b = d;//派生类对象d中包含的基类对象赋值给b2） 派生类对象�
 base &amp; br = d;//br引用了派生类对象d中包含的基类对象3） 派生类对象的地址可以赋值给基类指针
 base * pb = &amp; d;//基类指针指向了派生类对象d中包含的基类对象注意：如果派生方式是 private或protected，则上述三条不可行，下面的这条结论也不成立。
 在公有派生的情况下，可以说，派生类对象也是基类对象，任何本该出现基类对象的地方，如果出现的是派生类对象，也是没有问题的。
-二、protected继承和private继承 class base { }; class derived : protected base { }; base b; derived d; /*protected继承时，基类的public成员和protected成员成为派生类的protected成员。 • private继承时，基类的public成员成为派生类的private成员，基类的protected成员成 为派生类的不可访问成员。 • protected和private继承不是“是”的关系。*///待定 三、直接基类和间接基类（多层次的派生） (1)类A派生类B，类B派生类C，类C派生类D，……A &ndash;&gt; B &ndash;&gt; C &ndash;&gt; D
+二、protected继承和private继承 class base { }; class derived : protected base { }; base b; derived d; /*protected继承时，基类的public成员和protected成员成为派生类的protected成员。 • private继承时，基类的public成员和protected成员成为派生类的private成员。 • protected和private继承不是“是”的关系。 三、直接基类和间接基类（多层次的派生） (1)类A派生类B，类B派生类C，类C派生类D，……A &ndash;&gt; B &ndash;&gt; C &ndash;&gt; D
 – 类A是类B的直接基类
 – 类B是类C的直接基类，类A是类C的间接基类" />
 <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@ base * pb = &amp; d;//基类指针指向了派生类对象d中包含的基类对
     <header class="app-header">
       <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="twangreal" /></a>
       <h1>twangreal的博客</h1>
-      <p>后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
       <div class="app-header-social">
         
           <a target="_blank" href="https://github.com/gohugoio" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
@@ -97,9 +97,8 @@ derived d;
 base b;
 derived d;
 <span style="color:#75715e">/*protected继承时，基类的public成员和protected成员成为派生类的protected成员。
-</span><span style="color:#75715e">• private继承时，基类的public成员成为派生类的private成员，基类的protected成员成
-</span><span style="color:#75715e">为派生类的不可访问成员。
-</span><span style="color:#75715e">• protected和private继承不是“是”的关系。*/</span><span style="color:#75715e">//待定
+</span><span style="color:#75715e">• private继承时，基类的public成员和protected成员成为派生类的private成员。
+</span><span style="color:#75715e">• protected和private继承不是“是”的关系。
 </span></code></pre></div><h3 id="三直接基类和间接基类多层次的派生">三、直接基类和间接基类（多层次的派生）</h3>
 <p>(1)类A派生类B，类B派生类C，类C派生类D，……<strong>A &ndash;&gt; B &ndash;&gt; C &ndash;&gt; D</strong></p>
 <p>– 类A是类B的直接基类<br>
