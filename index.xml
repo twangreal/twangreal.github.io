@@ -19,10 +19,12 @@
       <guid>https://twangreal.github.io/post/week6_%E5%A4%9A%E6%80%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</guid>
       <description>实现原理 思考 “多态”的关键 在于通过基类指针或引用调用一个虚函数时，编译时不确定到底调用的是基类还是派生类的函数，运行时才确定 &amp;mdash;- 这叫**“动态联编”**。
 “动态联编” 底是怎么实现的呢？
-多态实现的关键 &amp;mdash; 虚函数表
-每一个有虚函数的类（或有虚函数的类的派生类）都有一个虚函数表，该类的任何对象中都放着虚函数表的指针。
-虚函数表中列出了该类的虚函数地址。
-多出来的4个字节就是用来放虚函数表的地址的。</description>
+多态实现的关键 &amp;mdash; 虚函数表 1.“每一个有虚函数的类（或有虚函数的类的派生类）都有一个虚函数表，该类的任何对象中都放着虚函数表的指针。”
+2.虚函数表中列出了该类的虚函数地址。
+注意：有虚函数的类的每个对象的大小都会多4个字节，多出来的4个字节就是用来放虚函数表的地址的。 （4个字节即指针的大小，64位为8字节）
+示意图：
+多态的函数调用语句被编译成 一系列根据基类指针所指向的（或基类引用所引用的）对象中存放的虚函数表的地址，在虚函数表中查找虚函数地址，并调用虚函数的指令。
+验证对象开头存放虚函数表地址： #include &amp;lt;iostream&amp;gt;using namespace std; class A { public: virtual void Func() { cout &amp;lt;&amp;lt; &amp;#34;A::Func&amp;#34; &amp;lt;&amp;lt; endl; } }; class B:public A { public: virtual void Func() { cout &amp;lt;&amp;lt; &amp;#34;B::Func&amp;#34; &amp;lt;&amp;lt; endl; } }; int main() { A a; A * pa = new B(); pa-&amp;gt;Func();//输出B::Func 	//64位程序指针为8字节，这里假设运行再64位计算机上，如果是32位，long long改为int 	long long * p1 = (long long * ) &amp;amp; a;//long long正好8字节，所以*p1，*p2正好包含对象的 	long long * p2 = (long long * ) pa;//前8个字节，即虚函数表地址 	* p2 = * p1;//把pa指向的B类对象的开头虚函数表的地址改为了A类的虚函数表地址 	pa-&amp;gt;Func();//输出A::Func 	return 0; } //B::Func //A::Func 安照之前的原理 pa-&amp;gt;Func()语句编译后，将会去寻找pa指向的对象中存放的虚函数表的地址，然后到该地址找名为Func的虚函数，由于地址被语句“* p2 = * p1;”改为了A类的虚函数表地址，所以最后是在A类的虚函数表中找的Func，那么输出的自然就是A::Func 。</description>
     </item>
     
     <item>

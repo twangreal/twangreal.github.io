@@ -47,10 +47,15 @@ class CBase { public: virtual void SomeVirtualFunction() { } }; class CDerived:p
   </head>
   <body>
     <header class="app-header">
-      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="twangreal" /></a>
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
       <h1>twangreal的博客</h1>
       <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
       <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
         
       </div>
     </header>
@@ -264,9 +269,7 @@ pBase<span style="color:#f92672">-&gt;</span>fun1();
 <p>1.在非构造函数，非析构函数的成员函数中调用虚函数，是多态!!!</p>
 <p>2.在构造函数和析构函数中调用虚函数，不是多态。</p>
 <p>3.编译时即可确定，调用的函数是自己的类或基类中定义的函数，不会等到运行时才决定调用自己的还是派生类的函数。</p>
-<ol start="4">
-<li><em><strong>派生类中和基类中虚函数同名同参数表的函数，不加virtual也自动成为虚函数</strong></em> 。</li>
-</ol>
+<p>4.<em><strong>派生类中和基类中虚函数同名同参数表的函数，不加virtual也自动成为虚函数</strong></em> 。</p>
 
     </div>
     <div class="post-footer">
