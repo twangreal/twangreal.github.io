@@ -6,10 +6,44 @@
     <description>Recent content in Posts on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Mar 2020 16:33:31 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 25 Mar 2020 15:57:17 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week6_多态的实现原理</title>
+      <link>https://twangreal.github.io/post/week6_%E5%A4%9A%E6%80%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Wed, 25 Mar 2020 15:57:17 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week6_%E5%A4%9A%E6%80%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</guid>
+      <description>实现原理 思考 “多态”的关键 在于通过基类指针或引用调用一个虚函数时，编译时不确定到底调用的是基类还是派生类的函数，运行时才确定 &amp;mdash;- 这叫**“动态联编”**。
+“动态联编” 底是怎么实现的呢？
+多态实现的关键 &amp;mdash; 虚函数表
+每一个有虚函数的类（或有虚函数的类的派生类）都有一个虚函数表，该类的任何对象中都放着虚函数表的指针。
+虚函数表中列出了该类的虚函数地址。
+多出来的4个字节就是用来放虚函数表的地址的。</description>
+    </item>
+    
+    <item>
+      <title>Week6_多态</title>
+      <link>https://twangreal.github.io/post/week6_%E5%A4%9A%E6%80%81/</link>
+      <pubDate>Tue, 24 Mar 2020 17:11:36 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week6_%E5%A4%9A%E6%80%81/</guid>
+      <description>虚函数：类中声明时前面加了virtual关键字的成员函数。 class base { virtual int get() ; }; int base::get(){ } 注意：virtual 关键字只用在类定义里的函数声明中，写函数体时不用。
+多态类：包含虚函数的类称为多态类。 注意：静态成员函数不能是虚函数，构造函数不能是虚函数。
+注意：虚函数可以参与多态，普通函数不行。
+表现形式：基类指针和基类引用。（即通过基类的指针或基类的引用调用虚函数的语句是多态的） 一、派生类的指针可以赋给基类指针。
+通过基类指针调用基类和派生类中的同名虚函数时:
+（1）若该指针指向一个基类的对象，那么被调用是基类的虚函数；
+（2）若该指针指向一个派生类的对象，那么被调用的是派生类的虚函数。这种机制就叫做“多态”。
+class CBase { public: virtual void SomeVirtualFunction() { } }; class CDerived:public CBase { public : virtual void SomeVirtualFunction() { } }; int main() { CDerived ODerived; CBase * p = &amp;amp; ODerived; p -&amp;gt; SomeVirtualFunction(); //调用哪个虚函数取决于p指向哪种类型的对象 	return 0; } 二、派生类的对象可以赋给基类引用
+通过基类引用调用基类和派生类中的同名虚函数时:
+（1）若该引用引用的是一个基类的对象，那么被调用是基类的虚函数；
+（2）若该引用引用的是一个派生类的对象，那么被调用的是派生类的虚函数。这种机制也叫做“多态”。
+class CBase { public: virtual void SomeVirtualFunction() { } }; class CDerived:public CBase { public : virtual void SomeVirtualFunction() { } }; int main() { CDerived ODerived; CBase &amp;amp; r = ODerived; r.</description>
+    </item>
     
     <item>
       <title>Week5_魔兽世界2装备</title>
