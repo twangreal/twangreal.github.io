@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Week7_流操纵算子 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week7_流操纵算子"/>
+<meta name="twitter:description" content="zheng整数流的基数：流操纵算子dec ， oct ， hex ，setbase
+一、整数流的基数： 流操纵算子dec ， oct ， hex ，setbase。
+dec十进制，oct八进制，hex十六进制，setbase自定义任意进制
+#include&lt;iostream&gt;#include&lt;iomanip&gt;//整数流的基数：流操纵算子dec,oct,hex int n = 10; cout &lt;&lt; n &lt;&lt; endl; cout &lt;&lt; hex &lt;&lt; n &lt;&lt; “\n”//流操作算子是长效的， 	&lt;&lt; dec &lt;&lt; n &lt;&lt; “\n”//即“一旦设置后就一直起作用，直到用另一个流操作算子来替代”。 	&lt;&lt; oct &lt;&lt; n &lt;&lt; endl; //输出结果： //10 //a //10 //12 注意： 使用流操纵算子需要 #include 。
+二、浮点数的精度 precision是成员函数，
+​	cout.precision(5);
+setprecision是流操纵算子
+​	cout &laquo; setprecision(5); // 可以连续输出
+它们的功能相同。
+指定输出浮点数的有效位数（非定点方式输出时）
+指定输出浮点数的小数点后的位数（定点方式输出时）
+定点方式：小数点必须出现在个位数后面
+setiosflags(ios::fixed)//设置ios标记"/>
+
+    <meta property="og:title" content="Week7_流操纵算子" />
+<meta property="og:description" content="zheng整数流的基数：流操纵算子dec ， oct ， hex ，setbase
+一、整数流的基数： 流操纵算子dec ， oct ， hex ，setbase。
+dec十进制，oct八进制，hex十六进制，setbase自定义任意进制
+#include&lt;iostream&gt;#include&lt;iomanip&gt;//整数流的基数：流操纵算子dec,oct,hex int n = 10; cout &lt;&lt; n &lt;&lt; endl; cout &lt;&lt; hex &lt;&lt; n &lt;&lt; “\n”//流操作算子是长效的， 	&lt;&lt; dec &lt;&lt; n &lt;&lt; “\n”//即“一旦设置后就一直起作用，直到用另一个流操作算子来替代”。 	&lt;&lt; oct &lt;&lt; n &lt;&lt; endl; //输出结果： //10 //a //10 //12 注意： 使用流操纵算子需要 #include 。
+二、浮点数的精度 precision是成员函数，
+​	cout.precision(5);
+setprecision是流操纵算子
+​	cout &laquo; setprecision(5); // 可以连续输出
+它们的功能相同。
+指定输出浮点数的有效位数（非定点方式输出时）
+指定输出浮点数的小数点后的位数（定点方式输出时）
+定点方式：小数点必须出现在个位数后面
+setiosflags(ios::fixed)//设置ios标记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week7_%E6%B5%81%E6%93%8D%E7%BA%B5%E7%AE%97%E5%AD%90/" />
+<meta property="article:published_time" content="2020-03-27T16:29:17+08:00" />
+<meta property="article:modified_time" content="2020-03-27T16:29:17+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Week7_流操纵算子</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 27, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <p>zheng整数流的基数：流操纵算子dec ， oct ， hex ，setbase</p>
+<h4 id="一整数流的基数">一、整数流的基数：</h4>
+<p>流操纵算子dec ， oct ， hex ，setbase。</p>
+<p><strong>dec十进制，oct八进制，hex十六进制，setbase自定义任意进制</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iomanip&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">//整数流的基数：流操纵算子dec,oct,hex
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+cout <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> endl;
+cout <span style="color:#f92672">&lt;&lt;</span> hex <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#960050;background-color:#1e0010">“\</span>n<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#75715e">//流操作算子是长效的，
+</span><span style="color:#75715e"></span>	<span style="color:#f92672">&lt;&lt;</span> dec <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#960050;background-color:#1e0010">“\</span>n<span style="color:#960050;background-color:#1e0010">”</span><span style="color:#75715e">//即“一旦设置后就一直起作用，直到用另一个流操作算子来替代”。
+</span><span style="color:#75715e"></span>	<span style="color:#f92672">&lt;&lt;</span> oct <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> endl;
+<span style="color:#75715e">//输出结果：
+</span><span style="color:#75715e">//10
+</span><span style="color:#75715e">//a
+</span><span style="color:#75715e">//10
+</span><span style="color:#75715e">//12
+</span></code></pre></div><p>注意： 使用流操纵算子需要  <strong>#include<!-- raw HTML omitted --></strong> 。</p>
+<h4 id="二浮点数的精度">二、浮点数的精度</h4>
+<p>precision是成员函数，</p>
+<p>​	cout.precision(5);</p>
+<p>setprecision是流操纵算子</p>
+<p>​	cout &laquo; setprecision(5); // 可以连续输出</p>
+<p>它们的功能相同。</p>
+<p>指定输出浮点数的有效位数（非定点方式输出时）</p>
+<p>指定输出浮点数的小数点后的位数（定点方式输出时）</p>
+<p><strong>定点方式：小数点必须出现在个位数后面</strong></p>
+<p><strong>setiosflags(ios::fixed)//设置ios标记</strong></p>
+<p><strong>resetiosflags(ios::fixed)//取消</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iomanip&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+	<span style="color:#66d9ef">double</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234567.89</span>,y <span style="color:#f92672">=</span> <span style="color:#ae81ff">12.34</span>;
+	<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234567</span>;
+	<span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>;
+	cout <span style="color:#f92672">&lt;&lt;</span> setprecision(<span style="color:#ae81ff">6</span>) <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> endl<span style="color:#75715e">//缺省是非定点方式，对浮点数起效，对整型不起效
+</span><span style="color:#75715e"></span>		<span style="color:#f92672">&lt;&lt;</span> y <span style="color:#f92672">&lt;&lt;</span> endl <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> endl <span style="color:#f92672">&lt;&lt;</span> m;
+}
+<span style="color:#75715e">//输出：
+</span><span style="color:#75715e">//1.23457e+006     //6个有效位数
+</span><span style="color:#75715e">//12.34           //非定点方式，位数不够小数部分不补0
+</span><span style="color:#75715e">//1234567
+</span><span style="color:#75715e">//12
+</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iomanip&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+	<span style="color:#66d9ef">double</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">12.3456789</span>,y <span style="color:#f92672">=</span> <span style="color:#ae81ff">12.03456</span>;<span style="color:#75715e">//六位补一个0
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234567</span>;
+	<span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>;
+	cout <span style="color:#f92672">&lt;&lt;</span> setiosflags(ios<span style="color:#f92672">::</span>fixed) <span style="color:#f92672">&lt;&lt;</span>
+		setprecision(<span style="color:#ae81ff">6</span>) <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> endl
+		<span style="color:#f92672">&lt;&lt;</span> y <span style="color:#f92672">&lt;&lt;</span> endl <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> endl <span style="color:#f92672">&lt;&lt;</span> m<span style="color:#f92672">&lt;&lt;</span>endl
+        <span style="color:#f92672">&lt;&lt;</span>resetiosflags(ios<span style="color:#f92672">::</span>fixed) <span style="color:#f92672">&lt;&lt;</span> x ;
+}
+<span style="color:#75715e">//输出：
+</span><span style="color:#75715e">//12.345679     //太长会四舍五入
+</span><span style="color:#75715e">//12.034560      //六位补一个0
+</span><span style="color:#75715e">//1234567
+</span><span style="color:#75715e">//12
+</span><span style="color:#75715e">//12.3457      //六位有效位数，非定点
+</span></code></pre></div><h4 id="三设置域宽">三、设置域宽</h4>
+<p>setw， width</p>
+<p>两者功能相同，一个是成员函数，另一个是流操作算子，调用方式不同：</p>
+<p>cin &raquo; setw(4); 或者 cin.width(5);</p>
+<p>cout &laquo; setw(4); 或者 cout.width(5);</p>
+<p><strong>宽度设置有效性是一次性的，在每次读入和 输出之前都要设置宽度。</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> w <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+<span style="color:#66d9ef">char</span> string[<span style="color:#ae81ff">10</span>];
+cin.width(<span style="color:#ae81ff">5</span>);<span style="color:#75715e">//一次性，输入宽度为5，
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">while</span>(cin <span style="color:#f92672">&gt;&gt;</span> string){ <span style="color:#75715e">//输入字符串，包含&#39;\0&#39;,所以只输入了宽度-1位有效字符，string中是&#34;1234&#39;\0&#39;&#34;
+</span><span style="color:#75715e"></span>	cout.width(w<span style="color:#f92672">++</span>);<span style="color:#75715e">//输出宽度为4，一次性，然后w+=1
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> string <span style="color:#f92672">&lt;&lt;</span> endl;<span style="color:#75715e">//输出了string中的w位
+</span><span style="color:#75715e"></span>	cin.width(<span style="color:#ae81ff">5</span>);<span style="color:#75715e">//再次设置输入宽度
+</span><span style="color:#75715e"></span>}
+<span style="color:#75715e">//输入: 1234567890
+</span><span style="color:#75715e">//输出:
+</span><span style="color:#75715e">//1234
+</span><span style="color:#75715e">// 5678    //空格+5678，输出宽度为5，不够左边补空格
+</span><span style="color:#75715e">//    90   //4空格+90，输出宽度为6，不够左边补空格
+</span></code></pre></div><p>PS.输出设置宽度，超出宽度不截断，不足宽度补空格；</p>
+<p>输入设置宽度，不足不补，超出只从流中读入宽度大小的数据。</p>
+<h4 id="四综合示例">四、综合示例</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iomanip&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">141</span>;
+	<span style="color:#75715e">//1) 分别以十六进制、十进制、八进制先后输出 n
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;1) &#34;</span> <span style="color:#f92672">&lt;&lt;</span> hex <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> dec <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> oct <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> endl;
+	<span style="color:#66d9ef">double</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234567.89</span>,y <span style="color:#f92672">=</span> <span style="color:#ae81ff">12.34567</span>;
+	<span style="color:#75715e">//2) 保留5位有效数字
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;2) &#34;</span> <span style="color:#f92672">&lt;&lt;</span> setprecision(<span style="color:#ae81ff">5</span>) <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> y <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	<span style="color:#75715e">//3) 保留小数点后面5位
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;3) &#34;</span> <span style="color:#f92672">&lt;&lt;</span> fixed <span style="color:#f92672">&lt;&lt;</span> setprecision(<span style="color:#ae81ff">5</span>) <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> y <span style="color:#f92672">&lt;&lt;</span> endl ;
+	<span style="color:#75715e">//4) 科学计数法输出，且保留小数点后面5位
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;4) &#34;</span> <span style="color:#f92672">&lt;&lt;</span> scientific <span style="color:#f92672">&lt;&lt;</span> setprecision(<span style="color:#ae81ff">5</span>) <span style="color:#f92672">&lt;&lt;</span>x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">&lt;&lt;</span> y <span style="color:#f92672">&lt;&lt;</span> endl ;
+	<span style="color:#75715e">//1) 8d 141 215
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//2) 1.2346e+006 12.346
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//3) 1234567.89000 12.34567
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//4) 1.23457e+006 1.23457e+001
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//5) 非负数要显示正号，输出宽度为12字符，宽度不足则用&#39;*&#39;填补
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;5) &#34;</span> <span style="color:#f92672">&lt;&lt;</span> showpos <span style="color:#f92672">&lt;&lt;</span> fixed <span style="color:#f92672">&lt;&lt;</span> setw(<span style="color:#ae81ff">12</span>) <span style="color:#f92672">&lt;&lt;</span> setfill(<span style="color:#e6db74">&#39;*&#39;</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">12.1</span><span style="color:#f92672">&lt;&lt;</span> endl;
+	<span style="color:#75715e">//6) 非负数不显示正号，输出宽度为12字符，宽度不足则右边用填充字符填充
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;6) &#34;</span> <span style="color:#f92672">&lt;&lt;</span> noshowpos <span style="color:#f92672">&lt;&lt;</span> setw(<span style="color:#ae81ff">12</span>) <span style="color:#f92672">&lt;&lt;</span> left <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">12.1</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	<span style="color:#75715e">//7) 输出宽度为12字符，宽度不足则左边用填充字符填充
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;7) &#34;</span> <span style="color:#f92672">&lt;&lt;</span> setw(<span style="color:#ae81ff">12</span>) <span style="color:#f92672">&lt;&lt;</span> right <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">12.1</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	<span style="color:#75715e">//8) 宽度不足时，负号和数值分列左右，中间用填充字符填充
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;8) &#34;</span> <span style="color:#f92672">&lt;&lt;</span> setw(<span style="color:#ae81ff">12</span>) <span style="color:#f92672">&lt;&lt;</span> internal <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">12.1</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;9) &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">12.1</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	<span style="color:#75715e">//5) ***+12.10000
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//6) 12.10000****
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//7) ****12.10000
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//8) -***12.10000
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">//9) 12.10000
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+} 
+
+</code></pre></div><h4 id="五用户自定义的流操纵算子">五、用户自定义的流操纵算子</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">ostream <span style="color:#f92672">&amp;</span>tab(ostream <span style="color:#f92672">&amp;</span>output){
+	<span style="color:#66d9ef">return</span> output <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\t&#39;</span>;
+}
+cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#960050;background-color:#1e0010">“</span>aa<span style="color:#960050;background-color:#1e0010">”</span> <span style="color:#f92672">&lt;&lt;</span> tab <span style="color:#f92672">&lt;&lt;</span> <span style="color:#960050;background-color:#1e0010">“</span>bb<span style="color:#960050;background-color:#1e0010">”</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+<span style="color:#75715e">//输出：aa bb    为什么可以？
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">//因为 iostream 里对 &lt;&lt; 进行了重载(成员函数）
+</span><span style="color:#75715e"></span>ostream <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">&lt;&lt;</span>( ostream <span style="color:#f92672">&amp;</span> ( <span style="color:#f92672">*</span> p ) ( ostream <span style="color:#f92672">&amp;</span> ) ) ;
+<span style="color:#75715e">//该函数内部会调用p所指向的函数，且以 *this 作为参数
+</span><span style="color:#75715e">//hex 、dec 、oct 都是函数
+</span></code></pre></div><p><img src="https://twangreal.github.io/C++_image/zidingyi.jpg" alt=""></p>
+<p><img src="https://twangreal.github.io/C++_image/manipulator_table.jpg" alt=""></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
