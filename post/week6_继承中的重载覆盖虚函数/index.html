@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>week6_继承中的重载、覆盖、虚函数 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="week6_继承中的重载、覆盖、虚函数"/>
+<meta name="twitter:description" content="一、重载和覆盖（派生类中覆盖基类中重载的函数） “派生类可以覆盖重载函数的0个或多个实例。”
+“如果派生类希望所有的重载版本对于它来说都是可见的，那么它需要覆盖所有的版本，或者一个也不覆盖。”
+PS.using 15.5节 P546//待补充
+二、虚函数和覆盖 虚函数覆盖后还是虚函数。
+“当我们在派生类中覆盖了某个虚函数时，可以再一次使用virtual关键字指出该函数的性质。然而这么做并非必须，因为一旦某个函数被声明成虚函数，则在所有派生类中它都是虚函数。” PS.这个它指 同名同参数表的函数。
+“一个派生类的函数如果覆盖了某个继承而来的虚函数，则它的形参类型必须与被它覆盖的基类函数完全一致。”
+示例：
+#include&lt;iostream&gt;using namespace std; class Base { public: virtual void print(int a) { cout &lt;&lt; &#34;Base print int &#34; &lt;&lt; a &lt;&lt; endl; } void print(char a,char b) { cout &lt;&lt; &#34;Base print char &#34; &lt;&lt; a &lt;&lt; endl; } virtual void print(double a) { cout &lt;&lt; &#34;Base print double &#34; &lt;&lt; a &lt;&lt; endl; } }; class Derived :public Base { public: void print(int a)//覆盖了基类中的虚函数， 	{ cout &lt;&lt; &#34;Derived print int &#34; &lt;&lt; a &lt;&lt; endl; } void print(double a)//覆盖了基类中的虚函数， 	{ Base::print(&#39;d&#39;,&#39;d&#39;);//不加Base::就会报错，因为基类Base中的void print(char a,char b)不可见 	cout &lt;&lt; &#34;Derived print double &#34; &lt;&lt; a &lt;&lt; endl; } }; int main() { Derived d; Base *bp = &amp;d; bp-&gt;print(5."/>
+
+    <meta property="og:title" content="week6_继承中的重载、覆盖、虚函数" />
+<meta property="og:description" content="一、重载和覆盖（派生类中覆盖基类中重载的函数） “派生类可以覆盖重载函数的0个或多个实例。”
+“如果派生类希望所有的重载版本对于它来说都是可见的，那么它需要覆盖所有的版本，或者一个也不覆盖。”
+PS.using 15.5节 P546//待补充
+二、虚函数和覆盖 虚函数覆盖后还是虚函数。
+“当我们在派生类中覆盖了某个虚函数时，可以再一次使用virtual关键字指出该函数的性质。然而这么做并非必须，因为一旦某个函数被声明成虚函数，则在所有派生类中它都是虚函数。” PS.这个它指 同名同参数表的函数。
+“一个派生类的函数如果覆盖了某个继承而来的虚函数，则它的形参类型必须与被它覆盖的基类函数完全一致。”
+示例：
+#include&lt;iostream&gt;using namespace std; class Base { public: virtual void print(int a) { cout &lt;&lt; &#34;Base print int &#34; &lt;&lt; a &lt;&lt; endl; } void print(char a,char b) { cout &lt;&lt; &#34;Base print char &#34; &lt;&lt; a &lt;&lt; endl; } virtual void print(double a) { cout &lt;&lt; &#34;Base print double &#34; &lt;&lt; a &lt;&lt; endl; } }; class Derived :public Base { public: void print(int a)//覆盖了基类中的虚函数， 	{ cout &lt;&lt; &#34;Derived print int &#34; &lt;&lt; a &lt;&lt; endl; } void print(double a)//覆盖了基类中的虚函数， 	{ Base::print(&#39;d&#39;,&#39;d&#39;);//不加Base::就会报错，因为基类Base中的void print(char a,char b)不可见 	cout &lt;&lt; &#34;Derived print double &#34; &lt;&lt; a &lt;&lt; endl; } }; int main() { Derived d; Base *bp = &amp;d; bp-&gt;print(5." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week6_%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E9%87%8D%E8%BD%BD%E8%A6%86%E7%9B%96%E8%99%9A%E5%87%BD%E6%95%B0/" />
+<meta property="article:published_time" content="2020-03-28T14:11:44+08:00" />
+<meta property="article:modified_time" content="2020-03-28T14:11:44+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">week6_继承中的重载、覆盖、虚函数</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 28, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="一重载和覆盖派生类中覆盖基类中重载的函数">一、重载和覆盖（派生类中覆盖基类中重载的函数）</h3>
+<p>“派生类可以覆盖重载函数的0个或多个实例。”</p>
+<p>“如果派生类希望所有的重载版本对于它来说都是可见的，那么它需要覆盖所有的版本，或者一个也不覆盖。”</p>
+<p>PS.using 15.5节 P546//待补充</p>
+<h3 id="二虚函数和覆盖">二、虚函数和覆盖</h3>
+<p>虚函数覆盖后还是虚函数。</p>
+<p>“当我们在派生类中覆盖了某个虚函数时，可以再一次使用virtual关键字指出该函数的性质。然而这么做并非必须，因为一旦某个函数被声明成虚函数，则在所有派生类中它都是虚函数。” PS.这个它指 同名同参数表的函数。</p>
+<p>“一个派生类的函数如果覆盖了某个继承而来的虚函数，则它的形参类型必须与被它覆盖的基类函数完全一致。”</p>
+<p>示例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> print(<span style="color:#66d9ef">int</span> a)
+	{
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Base print int &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+
+	 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">char</span> a,<span style="color:#66d9ef">char</span> b)
+	{
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Base print char &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+
+	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">double</span> a)
+	{
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Base print double &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+};
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Derived</span> <span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> Base
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">void</span> print(<span style="color:#66d9ef">int</span> a)<span style="color:#75715e">//覆盖了基类中的虚函数，
+</span><span style="color:#75715e"></span>	{
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Derived print int &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">double</span> a)<span style="color:#75715e">//覆盖了基类中的虚函数，
+</span><span style="color:#75715e"></span>	{
+		Base<span style="color:#f92672">::</span>print(<span style="color:#e6db74">&#39;d&#39;</span>,<span style="color:#e6db74">&#39;d&#39;</span>);<span style="color:#75715e">//不加Base::就会报错，因为基类Base中的void print(char a,char b)不可见
+</span><span style="color:#75715e"></span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Derived print double &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+};
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+	Derived d;
+	Base <span style="color:#f92672">*</span>bp <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>d;
+	bp<span style="color:#f92672">-&gt;</span>print(<span style="color:#ae81ff">5.88</span>);<span style="color:#75715e">//输出：
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;       <span style="color:#75715e">//Base print char d
+</span><span style="color:#75715e"></span>}                   <span style="color:#75715e">//Derived print double 5.88
+</span></code></pre></div><h3 id="三虚函数和重载问题虚函数的重载是不是虚函数">三、虚函数和重载（问题——虚函数的重载是不是虚函数？）</h3>
+<p>已知：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> print(<span style="color:#66d9ef">int</span> a)
+	{
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Base print int &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">double</span> a)
+	{
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Base print double &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Derived</span> <span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> Base
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">void</span> print(<span style="color:#66d9ef">int</span> a)
+	{
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Derived print int &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">double</span> a)
+	{
+		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Derived print double &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+	}
+};
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+	Derived d;
+	Base <span style="color:#f92672">*</span>bp <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>d;
+	bp<span style="color:#f92672">-&gt;</span>print(<span style="color:#ae81ff">10</span>);
+	bp<span style="color:#f92672">-&gt;</span>print(<span style="color:#ae81ff">5.88</span>);<span style="color:#75715e">//根据输出可知调用Base的print(double),而不是Derived中的print(double)，
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;       <span style="color:#75715e">//假设Base::print(double)是虚函数，
+</span><span style="color:#75715e"></span>}                 <span style="color:#75715e">//已知“在非构造函数，非析构函数的成员函数中调用虚函数，是多态!!!”
+</span><span style="color:#75715e"></span>				<span style="color:#75715e">//bp指向的对象是Derived对象，那么，bp-&gt;print(5.88);调用的应该是Derived::print(double)，假设不成立。
+</span><span style="color:#75715e"></span>				<span style="color:#75715e">//虚函数的重载不是虚函数
+</span><span style="color:#75715e">//输出：
+</span><span style="color:#75715e">//Derived print int 10                
+</span><span style="color:#75715e">//Base print double 5.88
+</span></code></pre></div><h3 id="四重载和覆盖的区别">四、重载和覆盖的区别</h3>
+<p>重载overload</p>
+<p>覆盖override</p>
+<p>C++primer中虚函数小节的示例代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">B</span> { 
+    <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f1</span>(<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">const</span>; 
+    <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f2</span>(); 
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f3</span>();
+};
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">D1</span> <span style="color:#f92672">:</span> B {
+	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f1</span>(<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">override</span>; <span style="color:#75715e">// ok: f1 matches f1 in the base
+</span><span style="color:#75715e"></span> 	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f2</span>(<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">override</span>; <span style="color:#75715e">// error: B has no f2(int) function
+</span><span style="color:#75715e"></span> 	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f3</span>() <span style="color:#66d9ef">override</span>; <span style="color:#75715e">// error: f3 not virtual
+</span><span style="color:#75715e"></span> 	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f4</span>() <span style="color:#66d9ef">override</span>; <span style="color:#75715e">// error: B doesn&#39;t have a function named f4
+</span><span style="color:#75715e"></span>};
+</code></pre></div><p>void f2(int) override; //error: B has no f2(int) function 要求同参数</p>
+<p>void f3() override;error: f3 not virtual可以看出  覆盖是只针对与虚函数而言的</p>
+<p>void f4() override; // error: B doesn&rsquo;t have a function named f4 要求同名</p>
+<p>所以 覆盖override要求  <strong>同名同参数表的虚函数</strong> 。</p>
+<p>PS.还要求：覆盖的方法的返回值必须和被覆盖的方法的返回一致(有个一个例外P537)</p>
+<h5 id="重载函数的定义">重载函数的定义：</h5>
+<p>（百度）在 <strong>相同的声明域中</strong> 的函数名相同的，而参数表不同的，即通过函数的参数表而唯一标识并且来区分函数的一种特殊的函数。</p>
+<p>（C++primer）如果同一作用域内的几个函数名字相同但形参列表不同，我们称之为重载函数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> print(<span style="color:#66d9ef">int</span> a);
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Derived</span> <span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> Base
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">void</span> print(<span style="color:#66d9ef">double</span> a);<span style="color:#75715e">//所以这条语句不是覆盖，也不满足重载函数的定义中的同一作用域
+</span><span style="color:#75715e"></span>}<span style="color:#75715e">//这应该只能算作在内层作用域定义的新函数，隐藏（hide）了外层作用域的 同名函数
+</span><span style="color:#75715e">//而在派生类（内层作用域）中覆盖的时候，如果基类中（外层作用域）有多个重载函数，同样会触发“名字的隐藏”
+</span></code></pre></div><p>此时再看之前的“虚函数的重载函数是不是虚函数？”</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Base</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> print(<span style="color:#66d9ef">int</span> a);
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">double</span> a);
+};
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Derived</span> <span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> Base
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">void</span> print(<span style="color:#66d9ef">int</span> a);<span style="color:#75715e">//是覆盖override，Base中有virtual void print(int a);
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">print</span>(<span style="color:#66d9ef">double</span> a);<span style="color:#75715e">//加关键字override报错，说明不是覆盖
+</span><span style="color:#75715e"></span>};                		<span style="color:#75715e">//说明Base中的void print(double a);不是虚函数
+</span><span style="color:#75715e"></span>				<span style="color:#75715e">//所以可以得出结论 ：虚函数的重载函数不是虚函数
+</span></code></pre></div><p><strong>那么派生类中覆盖基类中重载的函数，就要求这些重载的函数前都要加virtual</strong></p>
+<h4 id="关于覆盖的ps中的例外">关于覆盖的PS中的例外：</h4>
+<p>//待补充</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

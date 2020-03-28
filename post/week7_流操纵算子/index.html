@@ -12,8 +12,7 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Week7_流操纵算子"/>
-<meta name="twitter:description" content="zheng整数流的基数：流操纵算子dec ， oct ， hex ，setbase
-一、整数流的基数： 流操纵算子dec ， oct ， hex ，setbase。
+<meta name="twitter:description" content="一、整数流的基数： 流操纵算子dec ， oct ， hex ，setbase。
 dec十进制，oct八进制，hex十六进制，setbase自定义任意进制
 #include&lt;iostream&gt;#include&lt;iomanip&gt;//整数流的基数：流操纵算子dec,oct,hex int n = 10; cout &lt;&lt; n &lt;&lt; endl; cout &lt;&lt; hex &lt;&lt; n &lt;&lt; “\n”//流操作算子是长效的， 	&lt;&lt; dec &lt;&lt; n &lt;&lt; “\n”//即“一旦设置后就一直起作用，直到用另一个流操作算子来替代”。 	&lt;&lt; oct &lt;&lt; n &lt;&lt; endl; //输出结果： //10 //a //10 //12 注意： 使用流操纵算子需要 #include 。
 二、浮点数的精度 precision是成员函数，
@@ -24,11 +23,12 @@ setprecision是流操纵算子
 指定输出浮点数的有效位数（非定点方式输出时）
 指定输出浮点数的小数点后的位数（定点方式输出时）
 定点方式：小数点必须出现在个位数后面
-setiosflags(ios::fixed)//设置ios标记"/>
+setiosflags(ios::fixed)//设置ios标记
+resetiosflags(ios::fixed)//取消
+#include &lt;iostream&gt;#include &lt;iomanip&gt;using namespace std; int main() { double x = 1234567."/>
 
     <meta property="og:title" content="Week7_流操纵算子" />
-<meta property="og:description" content="zheng整数流的基数：流操纵算子dec ， oct ， hex ，setbase
-一、整数流的基数： 流操纵算子dec ， oct ， hex ，setbase。
+<meta property="og:description" content="一、整数流的基数： 流操纵算子dec ， oct ， hex ，setbase。
 dec十进制，oct八进制，hex十六进制，setbase自定义任意进制
 #include&lt;iostream&gt;#include&lt;iomanip&gt;//整数流的基数：流操纵算子dec,oct,hex int n = 10; cout &lt;&lt; n &lt;&lt; endl; cout &lt;&lt; hex &lt;&lt; n &lt;&lt; “\n”//流操作算子是长效的， 	&lt;&lt; dec &lt;&lt; n &lt;&lt; “\n”//即“一旦设置后就一直起作用，直到用另一个流操作算子来替代”。 	&lt;&lt; oct &lt;&lt; n &lt;&lt; endl; //输出结果： //10 //a //10 //12 注意： 使用流操纵算子需要 #include 。
 二、浮点数的精度 precision是成员函数，
@@ -39,7 +39,9 @@ setprecision是流操纵算子
 指定输出浮点数的有效位数（非定点方式输出时）
 指定输出浮点数的小数点后的位数（定点方式输出时）
 定点方式：小数点必须出现在个位数后面
-setiosflags(ios::fixed)//设置ios标记" />
+setiosflags(ios::fixed)//设置ios标记
+resetiosflags(ios::fixed)//取消
+#include &lt;iostream&gt;#include &lt;iomanip&gt;using namespace std; int main() { double x = 1234567." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://twangreal.github.io/post/week7_%E6%B5%81%E6%93%8D%E7%BA%B5%E7%AE%97%E5%AD%90/" />
 <meta property="article:published_time" content="2020-03-27T16:29:17+08:00" />
@@ -83,8 +85,7 @@ setiosflags(ios::fixed)//设置ios标记" />
         </div></div>
     </header>
     <div class="post-content">
-      <p>zheng整数流的基数：流操纵算子dec ， oct ， hex ，setbase</p>
-<h4 id="一整数流的基数">一、整数流的基数：</h4>
+      <h4 id="一整数流的基数">一、整数流的基数：</h4>
 <p>流操纵算子dec ， oct ， hex ，setbase。</p>
 <p><strong>dec十进制，oct八进制，hex十六进制，setbase自定义任意进制</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">

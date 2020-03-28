@@ -6,10 +6,26 @@
     <description>Recent content on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Mar 2020 16:29:17 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2020 14:11:44 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>week6_继承中的重载、覆盖、虚函数</title>
+      <link>https://twangreal.github.io/post/week6_%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E9%87%8D%E8%BD%BD%E8%A6%86%E7%9B%96%E8%99%9A%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Sat, 28 Mar 2020 14:11:44 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week6_%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E9%87%8D%E8%BD%BD%E8%A6%86%E7%9B%96%E8%99%9A%E5%87%BD%E6%95%B0/</guid>
+      <description>一、重载和覆盖（派生类中覆盖基类中重载的函数） “派生类可以覆盖重载函数的0个或多个实例。”
+“如果派生类希望所有的重载版本对于它来说都是可见的，那么它需要覆盖所有的版本，或者一个也不覆盖。”
+PS.using 15.5节 P546//待补充
+二、虚函数和覆盖 虚函数覆盖后还是虚函数。
+“当我们在派生类中覆盖了某个虚函数时，可以再一次使用virtual关键字指出该函数的性质。然而这么做并非必须，因为一旦某个函数被声明成虚函数，则在所有派生类中它都是虚函数。” PS.这个它指 同名同参数表的函数。
+“一个派生类的函数如果覆盖了某个继承而来的虚函数，则它的形参类型必须与被它覆盖的基类函数完全一致。”
+示例：
+#include&amp;lt;iostream&amp;gt;using namespace std; class Base { public: virtual void print(int a) { cout &amp;lt;&amp;lt; &amp;#34;Base print int &amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; } void print(char a,char b) { cout &amp;lt;&amp;lt; &amp;#34;Base print char &amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; } virtual void print(double a) { cout &amp;lt;&amp;lt; &amp;#34;Base print double &amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; } }; class Derived :public Base { public: void print(int a)//覆盖了基类中的虚函数， 	{ cout &amp;lt;&amp;lt; &amp;#34;Derived print int &amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; } void print(double a)//覆盖了基类中的虚函数， 	{ Base::print(&amp;#39;d&amp;#39;,&amp;#39;d&amp;#39;);//不加Base::就会报错，因为基类Base中的void print(char a,char b)不可见 	cout &amp;lt;&amp;lt; &amp;#34;Derived print double &amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; } }; int main() { Derived d; Base *bp = &amp;amp;d; bp-&amp;gt;print(5.</description>
+    </item>
     
     <item>
       <title>Week7_流操纵算子</title>
@@ -17,8 +33,7 @@
       <pubDate>Fri, 27 Mar 2020 16:29:17 +0800</pubDate>
       
       <guid>https://twangreal.github.io/post/week7_%E6%B5%81%E6%93%8D%E7%BA%B5%E7%AE%97%E5%AD%90/</guid>
-      <description>zheng整数流的基数：流操纵算子dec ， oct ， hex ，setbase
-一、整数流的基数： 流操纵算子dec ， oct ， hex ，setbase。
+      <description>一、整数流的基数： 流操纵算子dec ， oct ， hex ，setbase。
 dec十进制，oct八进制，hex十六进制，setbase自定义任意进制
 #include&amp;lt;iostream&amp;gt;#include&amp;lt;iomanip&amp;gt;//整数流的基数：流操纵算子dec,oct,hex int n = 10; cout &amp;lt;&amp;lt; n &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; hex &amp;lt;&amp;lt; n &amp;lt;&amp;lt; “\n”//流操作算子是长效的， 	&amp;lt;&amp;lt; dec &amp;lt;&amp;lt; n &amp;lt;&amp;lt; “\n”//即“一旦设置后就一直起作用，直到用另一个流操作算子来替代”。 	&amp;lt;&amp;lt; oct &amp;lt;&amp;lt; n &amp;lt;&amp;lt; endl; //输出结果： //10 //a //10 //12 注意： 使用流操纵算子需要 #include 。
 二、浮点数的精度 precision是成员函数，
@@ -29,7 +44,9 @@ setprecision是流操纵算子
 指定输出浮点数的有效位数（非定点方式输出时）
 指定输出浮点数的小数点后的位数（定点方式输出时）
 定点方式：小数点必须出现在个位数后面
-setiosflags(ios::fixed)//设置ios标记</description>
+setiosflags(ios::fixed)//设置ios标记
+resetiosflags(ios::fixed)//取消
+#include &amp;lt;iostream&amp;gt;#include &amp;lt;iomanip&amp;gt;using namespace std; int main() { double x = 1234567.</description>
     </item>
     
     <item>
