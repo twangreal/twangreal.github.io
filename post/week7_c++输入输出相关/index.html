@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>C&#43;&#43;输入输出相关 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C&#43;&#43;输入输出相关"/>
+<meta name="twitter:description" content="一、stream类的input相关函数 成员函数：get、getline、read、readsome、gcount、ignore、peek、unget、putback
+C&#43;&#43;标准库第2版 P768
+get 1.int istream::get() //返回读取的字符，或EOF
+2.istream&amp; istream::get(char&amp; c) //返回stream，其状态可说明是否读取成功
+3.istream&amp; istream::get(char *str, streamsize count) //不读取换行符
+4.istream&amp; istream::get(char *str, streamsize count, char delim) //不读取delim
+getline 1.istream&amp; istream::getline(char *str, streamsize count)
+2.istream&amp; istream::getline(char *str, streamsize count, char delim)
+&mdash;getline两种形式和get的3、4完全一致，只除了一点：终止读取时，读取内容 包括 换行符或delime，而非在两者之前就终止。
+&mdash;因此当换行符或delim位于count-1个字符内时，它们会 被读取 ，但 不被存储 与str内。
+PS.示例：输入“Tom Hanks,18,90”
+int a,b; char s[20],c; cin.getline(s,20,&#39;,&#39;);//用get也行，但要取走紧跟的&#39;,&#39; cin&gt;&gt;a&gt;&gt;c&gt;&gt;b; cout&lt;&lt;s&lt;&lt;endl&lt;&lt;a&lt;&lt;endl&lt;&lt;b&lt;&lt;endl; //输出： //Tom Hanks //18 //90 read //……
+二、string类的I/O getline (C&#43;&#43;标准库第2版 P713, 678)
+1.istream&amp; getline(istream&amp; strm, string&amp; str)"/>
+
+    <meta property="og:title" content="C&#43;&#43;输入输出相关" />
+<meta property="og:description" content="一、stream类的input相关函数 成员函数：get、getline、read、readsome、gcount、ignore、peek、unget、putback
+C&#43;&#43;标准库第2版 P768
+get 1.int istream::get() //返回读取的字符，或EOF
+2.istream&amp; istream::get(char&amp; c) //返回stream，其状态可说明是否读取成功
+3.istream&amp; istream::get(char *str, streamsize count) //不读取换行符
+4.istream&amp; istream::get(char *str, streamsize count, char delim) //不读取delim
+getline 1.istream&amp; istream::getline(char *str, streamsize count)
+2.istream&amp; istream::getline(char *str, streamsize count, char delim)
+&mdash;getline两种形式和get的3、4完全一致，只除了一点：终止读取时，读取内容 包括 换行符或delime，而非在两者之前就终止。
+&mdash;因此当换行符或delim位于count-1个字符内时，它们会 被读取 ，但 不被存储 与str内。
+PS.示例：输入“Tom Hanks,18,90”
+int a,b; char s[20],c; cin.getline(s,20,&#39;,&#39;);//用get也行，但要取走紧跟的&#39;,&#39; cin&gt;&gt;a&gt;&gt;c&gt;&gt;b; cout&lt;&lt;s&lt;&lt;endl&lt;&lt;a&lt;&lt;endl&lt;&lt;b&lt;&lt;endl; //输出： //Tom Hanks //18 //90 read //……
+二、string类的I/O getline (C&#43;&#43;标准库第2版 P713, 678)
+1.istream&amp; getline(istream&amp; strm, string&amp; str)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week7_c&#43;&#43;%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%9B%B8%E5%85%B3/" />
+<meta property="article:published_time" content="2020-03-30T17:39:16+08:00" />
+<meta property="article:modified_time" content="2020-03-30T17:39:16+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">C&#43;&#43;输入输出相关</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 30, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="一stream类的input相关函数">一、stream类的input相关函数</h3>
+<p>成员函数：get、getline、read、readsome、gcount、ignore、peek、unget、putback</p>
+<p>C++标准库第2版 P768</p>
+<h4 id="get">get</h4>
+<p>1.int istream::get()          //返回读取的字符，或EOF</p>
+<p>2.istream&amp; istream::get(char&amp; c)         //返回stream，其状态可说明是否读取成功</p>
+<p>3.istream&amp; istream::get(char *str, streamsize count)        //不读取换行符</p>
+<p>4.istream&amp; istream::get(char *str, streamsize count, char delim)     //不读取delim</p>
+<h4 id="getline">getline</h4>
+<p>1.istream&amp; istream::getline(char *str, streamsize count)</p>
+<p>2.istream&amp; istream::getline(char *str, streamsize count, char delim)</p>
+<p>&mdash;getline两种形式和get的3、4完全一致，只除了一点：终止读取时，读取内容 <strong>包括</strong> 换行符或delime，而非在两者之前就终止。</p>
+<p>&mdash;因此当换行符或delim位于count-1个字符内时，它们会 <strong>被读取</strong> ，但 <strong>不被存储</strong> 与str内。</p>
+<p>PS.示例：输入“Tom Hanks,18,90”</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> a,b;
+<span style="color:#66d9ef">char</span> s[<span style="color:#ae81ff">20</span>],c;
+cin.getline(s,<span style="color:#ae81ff">20</span>,<span style="color:#e6db74">&#39;,&#39;</span>);<span style="color:#75715e">//用get也行，但要取走紧跟的&#39;,&#39;
+</span><span style="color:#75715e"></span>cin<span style="color:#f92672">&gt;&gt;</span>a<span style="color:#f92672">&gt;&gt;</span>c<span style="color:#f92672">&gt;&gt;</span>b;
+cout<span style="color:#f92672">&lt;&lt;</span>s<span style="color:#f92672">&lt;&lt;</span>endl<span style="color:#f92672">&lt;&lt;</span>a<span style="color:#f92672">&lt;&lt;</span>endl<span style="color:#f92672">&lt;&lt;</span>b<span style="color:#f92672">&lt;&lt;</span>endl;
+<span style="color:#75715e">//输出：
+</span><span style="color:#75715e">//Tom Hanks
+</span><span style="color:#75715e">//18
+</span><span style="color:#75715e">//90
+</span></code></pre></div><h4 id="read">read</h4>
+<p>//……</p>
+<h3 id="二string类的io">二、string类的I/O</h3>
+<h4 id="getline-1">getline</h4>
+<p>(C++标准库第2版 P713, 678)</p>
+<p>1.istream&amp; getline(istream&amp; strm, string&amp; str)</p>
+<p>2.istream&amp; getline(istream&amp;&amp; strm, string&amp; str)</p>
+<p>3.istream&amp; getline(istream&amp; strm, string&amp; str, char delim)</p>
+<p>4.istream&amp; getline(istream&amp;&amp; strm, string&amp; str, char delim)</p>
+<p>//……待补充</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
