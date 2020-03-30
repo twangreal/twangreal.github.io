@@ -82,6 +82,24 @@ class son{ public: virtual ~son() {cout&amp;lt;&amp;lt;&amp;#34;bye from son&amp
     </item>
     
     <item>
+      <title>Week6_多态的注意事项</title>
+      <link>https://twangreal.github.io/post/week6_%E5%A4%9A%E6%80%81%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
+      <pubDate>Wed, 25 Mar 2020 18:18:49 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week6_%E5%A4%9A%E6%80%81%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
+      <description>一、在成员函数中调用虚函数 在成员函数（静态成员函数、构造函数、析构函数除外）中调用其他虚成员函数的 语句 是多态的。
+假设虚函数func2()，调用语句 func2(); 等价于 this-&amp;gt;func2() ，这个this指针是基类指针，基类指针调用虚函数，实现多态。
+同理，静态成员函数没有具体对应的对象，不能使用this指针，所以调用虚函数不会实现多态。
+二、在构造函数和析构函数中调用虚函数 在构造函数和析构函数中调用虚函数不是多态，因为 编译时即可确定调用的是那个函数 。
+如果本类有该函数，调用的就是本类的函数；
+如果本类没有，调用的就是直接基类的函数；
+如果直接基类没有，调用的就是间接基类的函数，以此类推。
+三、注意区分多态和非多态的情况 通过基类指针 或 引用 调用成员函数的语句，只有当该成员函数是虚函数时才会时多态。
+PS.静态联编，编译时就能确定调用的是哪个类的成员函数。
+只要基类中的某个函数被声明为虚函数，则派生类中的同名、同参数表的成员函数即使前面不写virtual关键字，也自动成为虚函数。</description>
+    </item>
+    
+    <item>
       <title>Week6_多态的实现原理</title>
       <link>https://twangreal.github.io/post/week6_%E5%A4%9A%E6%80%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</link>
       <pubDate>Wed, 25 Mar 2020 15:57:17 +0800</pubDate>

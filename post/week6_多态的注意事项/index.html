@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Week6_多态的注意事项 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week6_多态的注意事项"/>
+<meta name="twitter:description" content="一、在成员函数中调用虚函数 在成员函数（静态成员函数、构造函数、析构函数除外）中调用其他虚成员函数的 语句 是多态的。
+假设虚函数func2()，调用语句 func2(); 等价于 this-&gt;func2() ，这个this指针是基类指针，基类指针调用虚函数，实现多态。
+同理，静态成员函数没有具体对应的对象，不能使用this指针，所以调用虚函数不会实现多态。
+二、在构造函数和析构函数中调用虚函数 在构造函数和析构函数中调用虚函数不是多态，因为 编译时即可确定调用的是那个函数 。
+如果本类有该函数，调用的就是本类的函数；
+如果本类没有，调用的就是直接基类的函数；
+如果直接基类没有，调用的就是间接基类的函数，以此类推。
+三、注意区分多态和非多态的情况 通过基类指针 或 引用 调用成员函数的语句，只有当该成员函数是虚函数时才会时多态。
+PS.静态联编，编译时就能确定调用的是哪个类的成员函数。
+只要基类中的某个函数被声明为虚函数，则派生类中的同名、同参数表的成员函数即使前面不写virtual关键字，也自动成为虚函数。"/>
+
+    <meta property="og:title" content="Week6_多态的注意事项" />
+<meta property="og:description" content="一、在成员函数中调用虚函数 在成员函数（静态成员函数、构造函数、析构函数除外）中调用其他虚成员函数的 语句 是多态的。
+假设虚函数func2()，调用语句 func2(); 等价于 this-&gt;func2() ，这个this指针是基类指针，基类指针调用虚函数，实现多态。
+同理，静态成员函数没有具体对应的对象，不能使用this指针，所以调用虚函数不会实现多态。
+二、在构造函数和析构函数中调用虚函数 在构造函数和析构函数中调用虚函数不是多态，因为 编译时即可确定调用的是那个函数 。
+如果本类有该函数，调用的就是本类的函数；
+如果本类没有，调用的就是直接基类的函数；
+如果直接基类没有，调用的就是间接基类的函数，以此类推。
+三、注意区分多态和非多态的情况 通过基类指针 或 引用 调用成员函数的语句，只有当该成员函数是虚函数时才会时多态。
+PS.静态联编，编译时就能确定调用的是哪个类的成员函数。
+只要基类中的某个函数被声明为虚函数，则派生类中的同名、同参数表的成员函数即使前面不写virtual关键字，也自动成为虚函数。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week6_%E5%A4%9A%E6%80%81%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" />
+<meta property="article:published_time" content="2020-03-25T18:18:49+08:00" />
+<meta property="article:modified_time" content="2020-03-25T18:18:49+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Week6_多态的注意事项</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 25, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="一在成员函数中调用虚函数">一、在成员函数中调用虚函数</h3>
+<p>在成员函数（静态成员函数、构造函数、析构函数除外）中调用其他虚成员函数的 <strong>语句</strong> 是多态的。</p>
+<p>假设虚函数func2()，调用语句 <code>func2();</code> 等价于 <code>this-&gt;func2()</code> ，这个this指针是基类指针，<strong>基类指针调用虚函数，实现多态</strong>。</p>
+<p>同理，静态成员函数没有具体对应的对象，<strong>不能使用this指针</strong>，所以调用虚函数不会实现多态。</p>
+<h3 id="二在构造函数和析构函数中调用虚函数">二、在构造函数和析构函数中调用虚函数</h3>
+<p>在构造函数和析构函数中调用虚函数<strong>不是多态</strong>，因为  编译时即可确定调用的是那个函数  。</p>
+<p>如果本类有该函数，调用的就是本类的函数；</p>
+<p>如果本类没有，调用的就是<strong>直接基类</strong>的函数；</p>
+<p>如果直接基类没有，调用的就是间接基类的函数，以此类推。</p>
+<h3 id="三注意区分多态和非多态的情况">三、注意区分多态和非多态的情况</h3>
+<p>通过基类指针 或 引用 调用成员函数的语句，只有当该成员函数是虚函数时才会时多态。</p>
+<p>PS.静态联编，编译时就能确定调用的是哪个类的成员函数。</p>
+<p><strong>只要基类中的某个函数被声明为虚函数，则派生类中的同名、同参数表的成员函数即使前面不写virtual关键字，也自动成为虚函数。</strong></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
