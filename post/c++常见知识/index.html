@@ -12,60 +12,16 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="C&#43;&#43;常见知识"/>
-<meta name="twitter:description" content="1.jiegou
-2.全局变量，静态变量
-​	局部静态变量的应用（strtok的应用）
-*3.数组一般不要定义在main里，尤其是大数组。 // ？原因？
-4.位运算
-异或^ ：0^0=0, 1^1=0, 0^1=1, 1^0=1
-&ldquo;&raquo;&quot;右移n位，（等价于“除以2的n次方，在往 小 取整”）
-&ldquo;&laquo;&quot;左移n位，（等价于“乘以2的n次方）
-5.输入输出相关（C:gets、getc、getchar、scanf）
-​	(1) char line[20]; scanf(&quot;%s&quot;,line); 字符串数组名前不加&amp;，其他类型数组如int、double要加&amp; 。
-​	(2) cin.get();/ scanf(&quot;%c&quot;,&amp;c);/getchar()输入一个字符，均可读取空格、回车符等
-c=cin.get(); 或 cin.get(c);
-int getchar(void);
-char c;
-while((c=cin.get())!=EOF){}
-while((c=getchar())!=EOF){}
-while(scanf(&quot;%c&rdquo;,&amp;c)!=EOF){}
-注意：不要同时使用cin、scanf，也不要同时使用cout、printf ！
-int getc (FILE __F)* 从文件读入一个字符，
-getc(stdin)等价于getchar()等价于scanf(&quot;%c&rdquo;,&amp;c)等价于cin.get()
-(3) gets gets() 函数的功能是从输入缓冲区中读取一个字符串存储到字符指针变量 str 所指向的内存空间。
-char gets (char str);**
-从标准输入 stdin 读取一行，并把它存储在 str 所指向的字符串中。(可以读取字符串中可以有空格)
-如果成功，该函数返回 str。如果发生错误或者到达文件末尾时还未读取任何字符，则返回 NULL。
-注意：避免数组越界！
-注意： gets() 会读取换行符，但 不会 存储到str中。"/>
+<meta name="twitter:description" content="1.结构（C） 结构声明 (structure declaration)
+struct book { char title[MAXTITL]; char author[MAXAUTL]; float value; }; struct book library;// 它把 library 声明为一个使用 book 结构设计的结构变量。 对结构使用 typedef:
+typedef struct comlex { float real; float imag; } COMPLEX; 这样就可以用类型 COMPLEX 代替 struct complex 来表示复数。
+//使用 typedef 来命名一个结构类型时, 可省去结构的标记: typedef struct (double x; double y;) rect; //假设像下面这样使用 typedef 定义的类型名: rect r1 = {3.0, 6.0}; rect r2; r2 = r1; //这被翻译成: struct {double x; double y;} r1 = {3."/>
 
     <meta property="og:title" content="C&#43;&#43;常见知识" />
-<meta property="og:description" content="1.jiegou
-2.全局变量，静态变量
-​	局部静态变量的应用（strtok的应用）
-*3.数组一般不要定义在main里，尤其是大数组。 // ？原因？
-4.位运算
-异或^ ：0^0=0, 1^1=0, 0^1=1, 1^0=1
-&ldquo;&raquo;&quot;右移n位，（等价于“除以2的n次方，在往 小 取整”）
-&ldquo;&laquo;&quot;左移n位，（等价于“乘以2的n次方）
-5.输入输出相关（C:gets、getc、getchar、scanf）
-​	(1) char line[20]; scanf(&quot;%s&quot;,line); 字符串数组名前不加&amp;，其他类型数组如int、double要加&amp; 。
-​	(2) cin.get();/ scanf(&quot;%c&quot;,&amp;c);/getchar()输入一个字符，均可读取空格、回车符等
-c=cin.get(); 或 cin.get(c);
-int getchar(void);
-char c;
-while((c=cin.get())!=EOF){}
-while((c=getchar())!=EOF){}
-while(scanf(&quot;%c&rdquo;,&amp;c)!=EOF){}
-注意：不要同时使用cin、scanf，也不要同时使用cout、printf ！
-int getc (FILE __F)* 从文件读入一个字符，
-getc(stdin)等价于getchar()等价于scanf(&quot;%c&rdquo;,&amp;c)等价于cin.get()
-(3) gets gets() 函数的功能是从输入缓冲区中读取一个字符串存储到字符指针变量 str 所指向的内存空间。
-char gets (char str);**
-从标准输入 stdin 读取一行，并把它存储在 str 所指向的字符串中。(可以读取字符串中可以有空格)
-如果成功，该函数返回 str。如果发生错误或者到达文件末尾时还未读取任何字符，则返回 NULL。
-注意：避免数组越界！
-注意： gets() 会读取换行符，但 不会 存储到str中。" />
+<meta property="og:description" content="1.结构（C） 结构声明 (structure declaration)
+struct book { char title[MAXTITL]; char author[MAXAUTL]; float value; }; struct book library;// 它把 library 声明为一个使用 book 结构设计的结构变量。 对结构使用 typedef:
+typedef struct comlex { float real; float imag; } COMPLEX; 这样就可以用类型 COMPLEX 代替 struct complex 来表示复数。
+//使用 typedef 来命名一个结构类型时, 可省去结构的标记: typedef struct (double x; double y;) rect; //假设像下面这样使用 typedef 定义的类型名: rect r1 = {3.0, 6.0}; rect r2; r2 = r1; //这被翻译成: struct {double x; double y;} r1 = {3." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://twangreal.github.io/post/c&#43;&#43;%E5%B8%B8%E8%A7%81%E7%9F%A5%E8%AF%86/" />
 <meta property="article:published_time" content="2020-03-30T16:45:11+08:00" />
@@ -105,19 +61,99 @@ char gets (char str);**
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          1 min read
+          3 min read
         </div></div>
     </header>
     <div class="post-content">
-      <p>1.jiegou</p>
-<p>2.全局变量，静态变量</p>
-<p>​	局部静态变量的应用（strtok的应用）</p>
-<p>*3.<strong>数组一般不要定义在main里，尤其是大数组。</strong> //  ？原因？</p>
-<p>4.位运算</p>
+      <h4 id="1结构c">1.结构（C）</h4>
+<p>结构声明 (structure declaration)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> book {
+	<span style="color:#66d9ef">char</span> title[MAXTITL];
+	<span style="color:#66d9ef">char</span> author[MAXAUTL];
+    <span style="color:#66d9ef">float</span> value;
+};
+<span style="color:#66d9ef">struct</span> book library;<span style="color:#75715e">// 它把 library 声明为一个使用 book 结构设计的结构变量。
+</span></code></pre></div><p><strong>对结构使用 typedef:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> comlex {
+	<span style="color:#66d9ef">float</span> real;
+	<span style="color:#66d9ef">float</span> imag;
+} COMPLEX;
+</code></pre></div><p><strong>这样就可以用类型 COMPLEX 代替 struct complex 来表示复数。</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//使用 typedef 来命名一个结构类型时, 可省去结构的标记:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> (<span style="color:#66d9ef">double</span> x; <span style="color:#66d9ef">double</span> y;) rect;
+
+<span style="color:#75715e">//假设像下面这样使用 typedef 定义的类型名:
+</span><span style="color:#75715e"></span>rect r1 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">3.0</span>, <span style="color:#ae81ff">6.0</span>};
+rect r2;
+r2 <span style="color:#f92672">=</span> r1;
+<span style="color:#75715e">//这被翻译成:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> {<span style="color:#66d9ef">double</span> x; <span style="color:#66d9ef">double</span> y;} r1 <span style="color:#f92672">=</span> {<span style="color:#ae81ff">3.0</span>, <span style="color:#ae81ff">6.0</span>};
+<span style="color:#66d9ef">struct</span> {<span style="color:#66d9ef">double</span> x; <span style="color:#66d9ef">double</span> y;}  r2;
+r2 <span style="color:#f92672">=</span> r1;
+</code></pre></div><p><strong>注意</strong>：如果两个结构的声明都不使用标记, 但是使用同样的成员 (成员名和类型都匹配), 那么 C 认为这两个结构具有同样的类型, 因此将 r1 赋给 r2 是一个正确的操作。</p>
+<p><strong>PS.</strong>  C++中定义类的关键字“struct” “class”。</p>
+<p>格式：关键字 类名  类体。（不同于结构，类名不能省略，类体部分可以为空）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Sales_data</span>{<span style="color:#75715e">/* …… */</span>} accum, trans, <span style="color:#f92672">*</span>salesptr;
+<span style="color:#75715e">//与上一条语句等价，但可能更好，建议定义类和定义变量分开！
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Sales_data</span>{<span style="color:#75715e">/* …… */</span>};
+Sales_data accum, trans, <span style="color:#f92672">*</span>salesptr;
+</code></pre></div><p>C++中定义类struct和class的唯一区别就是<strong>默认的访问权限</strong> ：第一个访问说明符前的成员是public（struct）还是private（class）。</p>
+<p><strong>PS2.</strong> 关于定义在类内部的函数是隐式的inline函数。</p>
+<h4 id="2静态变量">2.静态变量</h4>
+<p>&mdash;全局变量都是静态变量。</p>
+<p>&mdash;局部变量定义时如果前面加了“static”关键字，那么该局部变量也是静态变量。</p>
+<p>静态变量的存放地址，在整个程序运行期间，都是固定不变的；</p>
+<p>非静态变量（一定是局部变量）的 <strong>地址</strong> 在每次函数调用时都可能不同，在函数的一次执行期间不变。</p>
+<p><strong>如果未明确初始化，则静态变量会被自动初始化成全0（每个比特都是0），局部非静态变量的值随机。</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Func</span>(){
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> n<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>;<span style="color:#75715e">//静态变量只初始化一次！！
+</span><span style="color:#75715e"></span>    cout<span style="color:#f92672">&lt;&lt;</span>n<span style="color:#f92672">&lt;&lt;</span>endl;
+    <span style="color:#f92672">++</span>n;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    Func();Func();Func();<span style="color:#75715e">//4
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;			 <span style="color:#75715e">//5
+</span><span style="color:#75715e"></span>}						 <span style="color:#75715e">//6							
+</span></code></pre></div><p><strong>静态变量的应用：strtok的实现</strong></p>
+<h5 id="strtok的使用">strtok的使用：</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+	<span style="color:#66d9ef">char</span> str[] <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;- This, a sample string, OK.&#34;</span>;
+	<span style="color:#75715e">//下面要从str逐个抽取出被&#34; ,.-&#34;这几个字符分隔的字串
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> strtok (str,<span style="color:#e6db74">&#34; ,.-&#34;</span>); 
+	<span style="color:#66d9ef">while</span> ( p <span style="color:#f92672">!=</span> NULL){ <span style="color:#75715e">//只要p不为NULL，就说明找到了一个子串
+</span><span style="color:#75715e"></span>		cout <span style="color:#f92672">&lt;&lt;</span> p <span style="color:#f92672">&lt;&lt;</span> endl;
+		p <span style="color:#f92672">=</span> strtok(NULL, <span style="color:#e6db74">&#34; ,.-&#34;</span>);<span style="color:#75715e">//后续调用，第一个参数必须是NULL
+</span><span style="color:#75715e"></span>	}
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>char * strtok( char * s, const char * ct )    strtok 函数在s中搜索由ct中的字符界定的记号。</p>
+<p>对strtok( char * s, const char * ct )进行一系列调用，可以把字符串s分成许多记号，这些记号中以ct中的字符为分界符。第一次调用时，s为非空。它搜索s，找到不包含ct中字符的第一个记号，将s中的下一个字符替换为&rsquo;\0&rsquo;，并返回指向记号的指针。随后，每次调用strtok函数时（由s的值是否为NULL指示），均返回下一个不包含ct中字符的记号。当s中没有这样的记号时，返回NULL。<strong>每次调用时字符串ct可以不同。</strong></p>
+<h5 id="strtok的实现">strtok的实现：</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">Strtok</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> p,<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> sep){
+	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> start ; <span style="color:#75715e">//本次查找子串的起点，局部静态变量！
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span>(p)
+	start <span style="color:#f92672">=</span> p;
+	<span style="color:#66d9ef">for</span>(; <span style="color:#f92672">*</span>start <span style="color:#f92672">&amp;&amp;</span> strchr(sep,<span style="color:#f92672">*</span>start); <span style="color:#f92672">++</span> start); <span style="color:#75715e">//跳过分隔符号
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span>( <span style="color:#f92672">*</span> start <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+		<span style="color:#66d9ef">return</span> NULL;
+	<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> q <span style="color:#f92672">=</span> start;
+	<span style="color:#66d9ef">for</span>(; <span style="color:#f92672">*</span>start <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>strchr(sep,<span style="color:#f92672">*</span>start); <span style="color:#f92672">++</span> start); <span style="color:#75715e">//跳过非分隔符号
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span>( <span style="color:#f92672">*</span> start) {
+		<span style="color:#f92672">*</span> start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+		<span style="color:#f92672">++</span> start;
+	}
+	<span style="color:#66d9ef">return</span> q;
+}
+</code></pre></div><p>PS. char* strchr (const char*, int)来查找字符串中是否有符合的字符。</p>
+<h4 id="3数组一般不要定义在main里尤其是大数组---原因">*3.<strong>数组一般不要定义在main里，尤其是大数组。</strong> //  ？原因？</h4>
+<h4 id="4位运算">4.位运算</h4>
 <p>异或^  ：0^0=0, 1^1=0, 0^1=1, 1^0=1</p>
 <p>&ldquo;&raquo;&quot;右移n位，（等价于“除以2的n次方，在往 <strong>小</strong> 取整”）</p>
 <p>&ldquo;&laquo;&quot;左移n位，（等价于“乘以2的n次方）</p>
-<p>5.输入输出相关（C:gets、getc、getchar、scanf）</p>
+<h4 id="5输入输出相关cgetsgetcgetcharscanf">5.输入输出相关（C:gets、getc、getchar、scanf）</h4>
 <p>​	(1) <code>char line[20]; scanf(&quot;%s&quot;,line);</code> 字符串数组名前不加&amp;，其他类型数组如int、double要加&amp;  。</p>
 <p>​	(2) <code>cin.get();/ scanf(&quot;%c&quot;,&amp;c);/getchar()</code>输入一个字符，<strong>均可读取空格、回车符等</strong></p>
 <p>c=cin.get(); 或 cin.get(c);</p>
@@ -153,11 +189,11 @@ char gets (char str);**
 </span><span style="color:#75715e">//i love you
 </span><span style="color:#75715e">//Y
 </span><span style="color:#75715e">//ch = Y
-</span></code></pre></div><p>(4) cin.get 和 cin.getline详见 <a href="">week7_C++输入输出相关</a></p>
-<p>6.函数返回值 T&amp;</p>
+</span></code></pre></div><p>(4) cin.get 和 cin.getline详见 <a href="https://twangreal.github.io/post/week7_c++%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%9B%B8%E5%85%B3/">week7_C++输入输出相关</a></p>
+<h4 id="6函数返回值-t">6.函数返回值 T&amp;</h4>
 <p>P246  返回*this的成员函数（-&gt; P200 6.3.2有返回值函数）</p>
 <p>P202 引用返回左值（P121 左值和右值）</p>
-<p>7.有符号整数</p>
+<h4 id="7有符号整数">7.有符号整数</h4>
 <p>首位时符号位，负1正0</p>
 <p>余下位为 数的绝对值二进制码 <strong>取反</strong> ，再加1。</p>
 <p>例：1 0x00000001   -1 0x11111111</p>
@@ -168,7 +204,7 @@ char gets (char str);**
 </span><span style="color:#75715e">//所以n2的值为2
 </span></code></pre></div><p>PS.数据类型精度（从高到低）</p>
 <p>double&gt;long long&gt;int&gt;short&gt;char</p>
-<p>8.字符型常量</p>
+<h4 id="8字符型常量">8.字符型常量</h4>
 <p>’a&rsquo;,&lsquo;A'等</p>
 <p><img src="https://twangreal.github.io/C++_image/zifuchangliang.jpg" alt="'\n&rsquo;,'\r&rsquo;,'\t&rsquo;,'\b&rsquo;,'\\','\'','\0&rsquo;,'\ddd&rsquo;,'\xhh&rsquo;"></p>
 <p>字符串常量：是用双引号括起来的一串字符  &ldquo;abc&rdquo;, &ldquo;a&rdquo;, &ldquo;123456&rdquo;</p>
@@ -176,9 +212,18 @@ char gets (char str);**
 <p>例如：#define MAX_NUM 1000</p>
 <p>#define MYINT i=5；  //</p>
 <p>注意：避免直接再程序中使用数值常量，而用符号常量来替代，这样便于修改。</p>
-<ol start="9">
-<li>&amp;&amp;和|| 是 <strong>短路计算</strong> 的。</li>
-</ol>
+<h4 id="9和-是-短路计算-的">9.&amp;&amp;和|| 是 <strong>短路计算</strong> 的。</h4>
+<h4 id="10字符串库函数stringh">10.字符串库函数&lt;string.h&gt;</h4>
+<p>头文件&lt;string.h&gt;中定义了两组字符串函数：一组str开头，一组mem开头。</p>
+<p>第一组：s 和 t 的类型为 char *； cs 和 ct 的类型为 const char * ；n 的类型为 size_t ；c 的类型为 int（将被转换成 cha r类型）。</p>
+<p><img src="https://twangreal.github.io/C++_image/string_func1.jpg" alt=""></p>
+<p><img src="https://twangreal.github.io/C++_image/string_func2.jpg" alt=""></p>
+<p>第二组：s 和 t 的类型均为 void * ，cs 和 ct 均为 const * ，n的类型为 size_t ，c的类型为 int（将被转换成 unsigned char 类型）。</p>
+<p><img src="https://twangreal.github.io/C++_image/string_func3.jpg" alt=""></p>
+<h4 id="11指针">11.指针</h4>
+<h4 id="12typedef">12.typedef</h4>
+<p>//……</p>
+<h4 id="13atof和sprintf">13.atof和sprintf</h4>
 
     </div>
     <div class="post-footer">

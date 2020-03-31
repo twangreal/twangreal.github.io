@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>C&#43;&#43;输入输出相关</title>
+      <title>week7_C&#43;&#43;输入输出相关</title>
       <link>https://twangreal.github.io/post/week7_c&#43;&#43;%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Mon, 30 Mar 2020 17:39:16 +0800</pubDate>
       
@@ -39,32 +39,10 @@ int a,b; char s[20],c; cin.getline(s,20,&amp;#39;,&amp;#39;);//用get也行，�
       <pubDate>Mon, 30 Mar 2020 16:45:11 +0800</pubDate>
       
       <guid>https://twangreal.github.io/post/c&#43;&#43;%E5%B8%B8%E8%A7%81%E7%9F%A5%E8%AF%86/</guid>
-      <description>1.jiegou
-2.全局变量，静态变量
-​	局部静态变量的应用（strtok的应用）
-*3.数组一般不要定义在main里，尤其是大数组。 // ？原因？
-4.位运算
-异或^ ：0^0=0, 1^1=0, 0^1=1, 1^0=1
-&amp;ldquo;&amp;raquo;&amp;quot;右移n位，（等价于“除以2的n次方，在往 小 取整”）
-&amp;ldquo;&amp;laquo;&amp;quot;左移n位，（等价于“乘以2的n次方）
-5.输入输出相关（C:gets、getc、getchar、scanf）
-​	(1) char line[20]; scanf(&amp;quot;%s&amp;quot;,line); 字符串数组名前不加&amp;amp;，其他类型数组如int、double要加&amp;amp; 。
-​	(2) cin.get();/ scanf(&amp;quot;%c&amp;quot;,&amp;amp;c);/getchar()输入一个字符，均可读取空格、回车符等
-c=cin.get(); 或 cin.get(c);
-int getchar(void);
-char c;
-while((c=cin.get())!=EOF){}
-while((c=getchar())!=EOF){}
-while(scanf(&amp;quot;%c&amp;rdquo;,&amp;amp;c)!=EOF){}
-注意：不要同时使用cin、scanf，也不要同时使用cout、printf ！
-int getc (FILE __F)* 从文件读入一个字符，
-getc(stdin)等价于getchar()等价于scanf(&amp;quot;%c&amp;rdquo;,&amp;amp;c)等价于cin.get()
-(3) gets gets() 函数的功能是从输入缓冲区中读取一个字符串存储到字符指针变量 str 所指向的内存空间。
-char gets (char str);**
-从标准输入 stdin 读取一行，并把它存储在 str 所指向的字符串中。(可以读取字符串中可以有空格)
-如果成功，该函数返回 str。如果发生错误或者到达文件末尾时还未读取任何字符，则返回 NULL。
-注意：避免数组越界！
-注意： gets() 会读取换行符，但 不会 存储到str中。</description>
+      <description>1.结构（C） 结构声明 (structure declaration)
+struct book { char title[MAXTITL]; char author[MAXAUTL]; float value; }; struct book library;// 它把 library 声明为一个使用 book 结构设计的结构变量。 对结构使用 typedef:
+typedef struct comlex { float real; float imag; } COMPLEX; 这样就可以用类型 COMPLEX 代替 struct complex 来表示复数。
+//使用 typedef 来命名一个结构类型时, 可省去结构的标记: typedef struct (double x; double y;) rect; //假设像下面这样使用 typedef 定义的类型名: rect r1 = {3.0, 6.0}; rect r2; r2 = r1; //这被翻译成: struct {double x; double y;} r1 = {3.</description>
     </item>
     
     <item>
