@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>C&#43;&#43;指针 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C&#43;&#43;指针"/>
+<meta name="twitter:description" content="指针 一、获取对象的地址 取地址符 &amp;
+int ival=42; int *p = &amp;ival; 二、指针值 指针的值应属于下列4种状态之一：
+1.指向一个对象；
+2.指向紧邻对象所占空间的下一位置；
+3.空指针；
+4.无效指针，也就是上述情况之外的其他值；
+三、利用指针访问对象 解引用符 *
+int ival = 42; int *p = &amp;ival; cout&lt;&lt; *p; //由符号* 得到指针p 所指向的对象，输出42 注意： 解引用操作 仅适用于那些确实指向了某个对象的有效指针。（指针值状态1）
+四、空指针 空指针（null pointer）不指向任何对象。
+生成空指针方法：
+int *p1 = nullptr; //等价于 int *p1 = 0; int *p2 = 0; //直接将p2初始化为字面常量0 //过去的C程序会需要对NULL做预处理来给指针赋值，这个预处理变量在头文件cstdlib中定义（C&#43;&#43;primer P49） int *p3 = NULL; //等价于 int *p3 = 0; PS.实际 在IDE中的C&#43;&#43;程序中可以直接写 int *p3 = NULL; 而不必加 特定 的头文件。//为什么？"/>
+
+    <meta property="og:title" content="C&#43;&#43;指针" />
+<meta property="og:description" content="指针 一、获取对象的地址 取地址符 &amp;
+int ival=42; int *p = &amp;ival; 二、指针值 指针的值应属于下列4种状态之一：
+1.指向一个对象；
+2.指向紧邻对象所占空间的下一位置；
+3.空指针；
+4.无效指针，也就是上述情况之外的其他值；
+三、利用指针访问对象 解引用符 *
+int ival = 42; int *p = &amp;ival; cout&lt;&lt; *p; //由符号* 得到指针p 所指向的对象，输出42 注意： 解引用操作 仅适用于那些确实指向了某个对象的有效指针。（指针值状态1）
+四、空指针 空指针（null pointer）不指向任何对象。
+生成空指针方法：
+int *p1 = nullptr; //等价于 int *p1 = 0; int *p2 = 0; //直接将p2初始化为字面常量0 //过去的C程序会需要对NULL做预处理来给指针赋值，这个预处理变量在头文件cstdlib中定义（C&#43;&#43;primer P49） int *p3 = NULL; //等价于 int *p3 = 0; PS.实际 在IDE中的C&#43;&#43;程序中可以直接写 int *p3 = NULL; 而不必加 特定 的头文件。//为什么？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/c&#43;&#43;%E6%8C%87%E9%92%88/" />
+<meta property="article:published_time" content="2020-04-01T13:30:47+08:00" />
+<meta property="article:modified_time" content="2020-04-01T13:30:47+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">C&#43;&#43;指针</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 1, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="指针">指针</h3>
+<h4 id="一获取对象的地址">一、获取对象的地址</h4>
+<p>取地址符 &amp;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> ival<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>;
+<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>ival;
+</code></pre></div><h4 id="二指针值">二、指针值</h4>
+<p>指针的值应属于下列4种状态之一：</p>
+<p>1.指向一个对象；</p>
+<p>2.指向紧邻对象所占空间的下一位置；</p>
+<p>3.空指针；</p>
+<p>4.无效指针，也就是上述情况之外的其他值；</p>
+<h4 id="三利用指针访问对象">三、利用指针访问对象</h4>
+<p>解引用符 *</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> ival <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;
+<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>ival;
+cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>p;   <span style="color:#75715e">//由符号* 得到指针p 所指向的对象，输出42
+</span></code></pre></div><p><strong>注意：</strong> 解引用操作 仅适用于那些确实指向了某个对象的有效指针。（指针值状态1）</p>
+<h4 id="四空指针">四、空指针</h4>
+<p>空指针（null pointer）不指向任何对象。</p>
+<p>生成空指针方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>p1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;  <span style="color:#75715e">//等价于 int *p1 = 0;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>p2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;   <span style="color:#75715e">//直接将p2初始化为字面常量0
+</span><span style="color:#75715e">//过去的C程序会需要对NULL做预处理来给指针赋值，这个预处理变量在头文件cstdlib中定义（C++primer P49）
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>p3 <span style="color:#f92672">=</span> NULL; <span style="color:#75715e">//等价于 int *p3 = 0;
+</span></code></pre></div><p>PS.实际 在IDE中的C++程序中可以直接写 int *p3 = NULL; 而不必加 <strong>特定</strong> 的头文件。//为什么？</p>
+<p><strong>问题</strong> ：在Linux环境下会怎么样？</p>
+<p>//……</p>
+<h4 id="五赋值和指针">五、赋值和指针</h4>
+<p>一般使用</p>
+<h4 id="六其他操作">六、其他操作</h4>
+<p>1.作为条件。 任何非0指针对应的条件之都是true 。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">if</span>(p1)
+    <span style="color:#75715e">//.....
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(p2)
+    <span style="color:#75715e">//.....
+</span></code></pre></div><p>2.对于两个 <strong>类型相同</strong> 的 <strong>合法指针</strong> ，可以用相等操作符（==）或不相等操作符（！=）来比较它们，结果是布尔类型。</p>
+<p>3.指针 T * p;</p>
+<p>p+n 表示 往下n个步长的地址，而p[n]等价于*(p+n)，表示p初始地址往下n个步长的地址 存储的数据对象。</p>
+<p>p+n的值为  p地址值+n*sizeof（T）</p>
+<h4 id="七void-指针">七、void* 指针</h4>
+<p>void * 指针是一种特殊的指针类型，可用于存放任意对象的地址。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">double</span> obj <span style="color:#f92672">=</span><span style="color:#ae81ff">3.14</span>, <span style="color:#f92672">*</span>pd <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>obj;
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> pv <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>obj;
+pv <span style="color:#f92672">=</span> pd;
+</code></pre></div><p>由于类型是void，不能确定步长，所以p++、p&ndash;、p+n等均无定义，*p也无定义，不能直接操作指向的对象。</p>
+<p>常用于函数形参来接收、传递各种类型的指针，在函数体中通过强制类型转换回原来的类型，接着再进行操作。（C++ primer P144）</p>
+<p>例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">memset</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> dest, <span style="color:#66d9ef">int</span> ch, <span style="color:#66d9ef">int</span> n );
+</code></pre></div><h4 id="八指针大小">八、指针大小</h4>
+<p>通常为4字节（32位），也有8字节（64位）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">char</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x65</span>;<span style="color:#75715e">//一个字节大小
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>p;
+p<span style="color:#f92672">=</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>) <span style="color:#f92672">&amp;</span>c;<span style="color:#75715e">//int为4字节，c只有1字节的内容，强制转换成4字节，赋给指针p，此时p的4字节中只有前一字节有确定值，后三字节的值未知
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>p;<span style="color:#75715e">//所以n值不确定
+</span><span style="color:#75715e">//ps.如果指针大小是8字节，则 p=(long long *) &amp;c;  //long long为8字节
+</span></code></pre></div><h4 id="九指针和const">九、指针和const</h4>
+<p>1.指向常量的指针</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">double</span> pi <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14</span>;<span style="color:#75715e">//pi是个常量，它的值不能改变！
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">double</span> <span style="color:#f92672">*</span>ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>pi;  <span style="color:#75715e">//错误，ptr是普通指针
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">double</span> <span style="color:#f92672">*</span>cptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>pi;  <span style="color:#75715e">//正确，cptr指向一个双精度常量
+</span><span style="color:#75715e"></span><span style="color:#f92672">*</span>cptr <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;   <span style="color:#75715e">//错误，cptr指向常量，不能改变其值
+</span></code></pre></div><p>2.const指针：一旦初始化，它指向的地址就不能再改变。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> errNumb <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> curErr <span style="color:#f92672">=</span> errNumb; <span style="color:#75715e">//curErr将一直指向errNumb
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">double</span> pi <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14159</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">double</span> <span style="color:#f92672">*</span><span style="color:#66d9ef">const</span> pip <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>pi; <span style="color:#75715e">//pip将一直指向pi，且无法改变pi的值
+</span></code></pre></div><h4 id="十指针和数组">十、指针和数组</h4>
+<p>C++中，指针和数组有非常紧密的联系。使用数组时，编译器一般会将数组转换成指针。</p>
+<p>通常情况，通过取地址符&amp; 来获得对象的地址给指针赋值，数组元素也是对象，所以</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> num[<span style="color:#ae81ff">3</span>]<span style="color:#f92672">=</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>};
+<span style="color:#66d9ef">int</span>  <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>num[<span style="color:#ae81ff">0</span>];<span style="color:#75715e">//指向第一个元素
+</span></code></pre></div><p>但数组还有一个 <strong>特性</strong>  ：很多用到数组名的地方，编译器将自动将其 <strong>替换</strong> 为一个指向该数组首元素的指针，所以可以这样：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> num[<span style="color:#ae81ff">3</span>]<span style="color:#f92672">=</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>};
+<span style="color:#66d9ef">int</span>  <span style="color:#f92672">*</span>p2 <span style="color:#f92672">=</span> num;<span style="color:#75715e">//等价于 p2 = &amp;num[0];
+</span></code></pre></div><p><strong>NOTE：</strong> 在大多数表达式中，使用数组类型的对象其实是使用一个指向该数组首元素的指针。</p>
+<p>//。。。。P105</p>
+<h4 id="十一函数指针">十一、函数指针</h4>
+<p>1.声明函数指针</p>
+<p>2.使用函数指针</p>
+<p>3.重载函数指针</p>
+<p>4.函数指针形参</p>
+<p>5.返回指向函数的指针</p>
+<p>6.auto和decltype用于函数指针类型</p>
+<p>P223.返回指向函数的指针//。。。</p>
+<h4 id="十二指向指针的指针">十二、指向指针的指针</h4>
+<p>//。。。。</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

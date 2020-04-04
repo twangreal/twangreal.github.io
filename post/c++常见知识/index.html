@@ -148,7 +148,8 @@ Sales_data accum, trans, <span style="color:#f92672">*</span>salesptr;
 	<span style="color:#66d9ef">return</span> q;
 }
 </code></pre></div><p>PS. char* strchr (const char*, int)来查找字符串中是否有符合的字符。</p>
-<h4 id="3数组一般不要定义在main里尤其是大数组---原因">*3.<strong>数组一般不要定义在main里，尤其是大数组。</strong> //  ？原因？</h4>
+<h4 id="3数组一般不要定义在main里尤其是大数组">3.<strong>数组一般不要定义在main里，尤其是大数组。</strong></h4>
+<p>全局变量在 <strong>静态存储区</strong> 分配内存，局部变量是在 <strong>栈</strong> 上分配内存空间的。（c语言程序在运行时会动态创建一个堆栈段，里面存放着调用栈，保存着函数的调用关系和局部变量。）如果数组太大，可能会造成栈溢出。所以最好在mian 函数外部定义这个大数组。</p>
 <h4 id="4位运算">4.位运算</h4>
 <p>异或^  ：0^0=0, 1^1=0, 0^1=1, 1^0=1</p>
 <p>&ldquo;&raquo;&quot;右移n位，（等价于“除以2的n次方，在往 <strong>小</strong> 取整”）</p>
@@ -221,13 +222,37 @@ Sales_data accum, trans, <span style="color:#f92672">*</span>salesptr;
 <p>第二组：s 和 t 的类型均为 void * ，cs 和 ct 均为 const * ，n的类型为 size_t ，c的类型为 int（将被转换成 unsigned char 类型）。</p>
 <p><img src="https://twangreal.github.io/C++_image/string_func3.jpg" alt=""></p>
 <h4 id="11指针和数组">11.指针和数组</h4>
-<p>见 <a href="">C++指针</a></p>
+<p>见 <a href="https://twangreal.github.io/post/C++%E6%8C%87%E9%92%88/">C++指针</a></p>
 <h4 id="12typedef">12.typedef</h4>
 <p>//……</p>
 <h4 id="13atof和sprintf">13.atof和sprintf</h4>
 <p>//,,&hellip;&hellip;..</p>
 <h4 id="14sort和qsort">14.sort和qsort</h4>
-<p>//。。。。。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;cstdlib&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">qsort</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>base, size_t n_element, size_t el_size, <span style="color:#75715e">//四个参数， 需要排序的数组，
+</span><span style="color:#75715e"></span>           <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>compare)(<span style="color:#66d9ef">void</span> <span style="color:#66d9ef">const</span> <span style="color:#f92672">*</span>, <span style="color:#66d9ef">void</span> <span style="color:#66d9ef">const</span> <span style="color:#f92672">*</span> ) );<span style="color:#75715e">//元素个数，元素长度，函数指针
+</span></code></pre></div><p>函数指针应用的函数的返回值，大于零、等于零、小于零 分别表示 第1个参数 大于、等于、小于 第2个参数（PS小的参数排在前；如果要求从大到小排序，就需要对返回值进行一定的处理）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(RandomAccessIterator beg, RandomAccessIterator end);<span style="color:#75715e">//P596
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(RandomAccessIterator beg, RandomAccessIterator end, BinaryPredicate op);
+<span style="color:#75715e">//范围[beg,end)，可用于数组、容器
+</span><span style="color:#75715e">//binaryPredicate 双参判断式：1.两个参数的cmp函数；2.函数对象（function object）来实现一个排序准则
+</span><span style="color:#75715e">//C++标准库第2版P476，  例如
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PersonSortCriterion</span>{
+    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span>() (<span style="color:#66d9ef">const</span> Person<span style="color:#f92672">&amp;</span> p1, <span style="color:#66d9ef">const</span> Person<span style="color:#f92672">&amp;</span> p2) <span style="color:#66d9ef">const</span> {
+        <span style="color:#66d9ef">return</span> p1.lastname()<span style="color:#f92672">&lt;</span>p2.lastname() <span style="color:#f92672">||</span> .......  ;
+    }
+}<span style="color:#75715e">//class for function prediacate
+</span><span style="color:#75715e">//这个函数判断式的类不仅可以用于sort、stable_sort，还能用于set等 作为排序准则
+</span><span style="color:#75715e"></span>set<span style="color:#f92672">&lt;</span>Person, PersonSortCriterion<span style="color:#f92672">&gt;</span> coll;
+
+<span style="color:#75715e">//stable_sort，和sort区别：stable_sort保证相等的各元素相对次序再排序后保持不变
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">stable_sort</span>(RandomAccessIterator beg, RandomAccessIterator end);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">stable_sort</span>(RandomAccessIterator beg, RandomAccessIterator end, BinaryPredicate op);
+</code></pre></div><h4 id="15extern-c">15.extern C</h4>
+<p>//&hellip;&hellip;..</p>
+<h4 id="16maxelement-函数">16.*maxelement 函数</h4>
+<p>//，，，，</p>
 
     </div>
     <div class="post-footer">

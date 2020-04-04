@@ -6,10 +6,38 @@
     <description>Recent content on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Mar 2020 17:39:16 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2020 17:18:27 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week7_文件读写</title>
+      <link>https://twangreal.github.io/post/week7_%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/</link>
+      <pubDate>Sat, 04 Apr 2020 17:18:27 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week7_%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/</guid>
+      <description>一、字符文件读写 //字符文件读写， 即对txt文件的读写 #include &amp;lt;iostream&amp;gt;#include &amp;lt;fstream&amp;gt;#include &amp;lt;vector&amp;gt;#include &amp;lt;algorithm&amp;gt;using namespace std; int main() { vector&amp;lt;int&amp;gt; v; ifstream srcFile(&amp;#34;in.txt&amp;#34;,ios::in);//打开、创建相应文件，ios::in文件打开方式 	ofstream destFile(&amp;#34;out.txt&amp;#34;,ios::out);//打开、创建相应文件，ios::out文件打开方式  //等价于 ofstream fout; fout.open(&amp;#34;out.txt&amp;#34;,ios::out);  //判断是否打开成功 if（!fout）{ cout &amp;lt;&amp;lt; “File open error!”&amp;lt;&amp;lt;endl; } 	int x; while( srcFile &amp;gt;&amp;gt; x ) //读入，ifstream的对象代替 cin 	v.push_back(x); sort(v.begin(),v.end()); for( int i = 0;i &amp;lt; v.size();i ++ ) destFile &amp;lt;&amp;lt; v[i] &amp;lt;&amp;lt; &amp;#34; &amp;#34;; //输出写入到文件，ofstream的对象代替 cout 	destFile.close(); srcFile.close(); return 0; } 二、二进制文件读写 二进制读文件：</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;指针</title>
+      <link>https://twangreal.github.io/post/c&#43;&#43;%E6%8C%87%E9%92%88/</link>
+      <pubDate>Wed, 01 Apr 2020 13:30:47 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/c&#43;&#43;%E6%8C%87%E9%92%88/</guid>
+      <description>指针 一、获取对象的地址 取地址符 &amp;amp;
+int ival=42; int *p = &amp;amp;ival; 二、指针值 指针的值应属于下列4种状态之一：
+1.指向一个对象；
+2.指向紧邻对象所占空间的下一位置；
+3.空指针；
+4.无效指针，也就是上述情况之外的其他值；
+三、利用指针访问对象 解引用符 *
+int ival = 42; int *p = &amp;amp;ival; cout&amp;lt;&amp;lt; *p; //由符号* 得到指针p 所指向的对象，输出42 注意： 解引用操作 仅适用于那些确实指向了某个对象的有效指针。（指针值状态1）
+四、空指针 空指针（null pointer）不指向任何对象。
+生成空指针方法：
+int *p1 = nullptr; //等价于 int *p1 = 0; int *p2 = 0; //直接将p2初始化为字面常量0 //过去的C程序会需要对NULL做预处理来给指针赋值，这个预处理变量在头文件cstdlib中定义（C++primer P49） int *p3 = NULL; //等价于 int *p3 = 0; PS.实际 在IDE中的C++程序中可以直接写 int *p3 = NULL; 而不必加 特定 的头文件。//为什么？</description>
+    </item>
     
     <item>
       <title>week7_C&#43;&#43;输入输出相关</title>
