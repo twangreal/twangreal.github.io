@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Week7_函数模板 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week7_函数模板"/>
+<meta name="twitter:description" content="1、用函数模板解决： template &lt;class 类型参数1，class 类型参数2,……&gt; 返回值类型 模板名 (形参表) { //函数体 }; //示例： template&lt;class T&gt; void Swap(T &amp; x,T &amp; y){ T tmp = x; x = y; y = tmp; } int main(){ int n = 1,m = 2; Swap(n,m); //编译器自动生成 void Swap(int &amp; ,int &amp; )函数 	double f = 1.2,g = 2.3; Swap(f,g); //编译器自动生成 void Swap(double &amp; ,double &amp; )函数 	return 0; } 2.函数模板中可以有不止一个类型参数。 template&lt;class T1, class T2&gt; T2 print(T1 arg1, T2 arg2){ cout&lt;&lt; arg1 &lt;&lt; &#34; &#34;&lt;&lt; arg2&lt;&lt;endl; return arg2; } 3."/>
+
+    <meta property="og:title" content="Week7_函数模板" />
+<meta property="og:description" content="1、用函数模板解决： template &lt;class 类型参数1，class 类型参数2,……&gt; 返回值类型 模板名 (形参表) { //函数体 }; //示例： template&lt;class T&gt; void Swap(T &amp; x,T &amp; y){ T tmp = x; x = y; y = tmp; } int main(){ int n = 1,m = 2; Swap(n,m); //编译器自动生成 void Swap(int &amp; ,int &amp; )函数 	double f = 1.2,g = 2.3; Swap(f,g); //编译器自动生成 void Swap(double &amp; ,double &amp; )函数 	return 0; } 2.函数模板中可以有不止一个类型参数。 template&lt;class T1, class T2&gt; T2 print(T1 arg1, T2 arg2){ cout&lt;&lt; arg1 &lt;&lt; &#34; &#34;&lt;&lt; arg2&lt;&lt;endl; return arg2; } 3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week7_%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/" />
+<meta property="article:published_time" content="2020-04-05T13:08:13+08:00" />
+<meta property="article:modified_time" content="2020-04-05T13:08:13+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Week7_函数模板</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 5, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="1用函数模板解决">1、用函数模板解决：</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">类型参数1，</span><span style="color:#a6e22e">class</span> <span style="color:#960050;background-color:#1e0010">类型参数</span><span style="color:#ae81ff">2</span>,<span style="color:#960050;background-color:#1e0010">……</span><span style="color:#f92672">&gt;</span>
+<span style="color:#960050;background-color:#1e0010">返回值类型</span> <span style="color:#960050;background-color:#1e0010">模板名</span> (<span style="color:#960050;background-color:#1e0010">形参表</span>) {
+	<span style="color:#75715e">//函数体
+</span><span style="color:#75715e"></span>};
+<span style="color:#75715e">//示例：
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> 
+<span style="color:#66d9ef">void</span> Swap(T <span style="color:#f92672">&amp;</span> x,T <span style="color:#f92672">&amp;</span> y){
+    T tmp <span style="color:#f92672">=</span> x;
+    x <span style="color:#f92672">=</span> y;
+    y <span style="color:#f92672">=</span> tmp;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+	<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,m <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+	Swap(n,m); <span style="color:#75715e">//编译器自动生成 void Swap(int &amp; ,int &amp; )函数
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">double</span> f <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.2</span>,g <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.3</span>;
+	Swap(f,g); <span style="color:#75715e">//编译器自动生成 void Swap(double &amp; ,double &amp; )函数
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h3 id="2函数模板中可以有不止一个类型参数">2.函数模板中可以有不止一个类型参数。</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T1</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T2</span><span style="color:#f92672">&gt;</span>
+T2 print(T1 arg1, T2 arg2){
+	cout<span style="color:#f92672">&lt;&lt;</span> arg1 <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">&lt;&lt;</span> arg2<span style="color:#f92672">&lt;&lt;</span>endl;
+	<span style="color:#66d9ef">return</span> arg2; 
+}
+</code></pre></div><p>3.求数组最大元素的MaxElement函数模板</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> 
+T MaxElement(T a[], <span style="color:#66d9ef">int</span> size) { <span style="color:#75715e">//size是数组元素个数
+</span><span style="color:#75715e"></span>    T tmpMax <span style="color:#f92672">=</span> a[<span style="color:#ae81ff">0</span>];
+	<span style="color:#66d9ef">for</span>( <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;i <span style="color:#f92672">&lt;</span> size;<span style="color:#f92672">++</span>i)
+		<span style="color:#66d9ef">if</span>( tmpMax <span style="color:#f92672">&lt;</span> a[i] )
+			tmpMax <span style="color:#f92672">=</span> a[i];
+	<span style="color:#66d9ef">return</span> tmpMax;
+}
+</code></pre></div><p>PS.由 <strong>模板</strong> 生成函数的过程 成为 <strong>模板的实例化</strong> 。（模板的实例化 即 编译到调用模板的语句时 把模板中的类型T换成实参的类型，生成函数）</p>
+<h3 id="4不通过参数实例化模板">4.不通过参数实例化模板</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+T Inc(T n){
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> n;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {    <span style="color:#75715e">//明确指出 模板需要的类型T。。。“ 函数名&lt;替换的类型名&gt;(参数) ”
+</span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> Inc<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">4</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>; <span style="color:#75715e">//输出 2.5
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h3 id="5函数模板可以-重载-只要它们的形参表或类型参数表不同即可">5.函数模板可以 <strong>重载</strong> ，只要它们的形参表或类型参数表不同即可。</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T1</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T2</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> print(T1 arg1, T2 arg2) { 
+	cout<span style="color:#f92672">&lt;&lt;</span> arg1 <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">&lt;&lt;</span> arg2<span style="color:#f92672">&lt;&lt;</span>endl; 
+}
+<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> print(T arg1, T arg2) { 
+	cout<span style="color:#f92672">&lt;&lt;</span> arg1 <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">&lt;&lt;</span> arg2<span style="color:#f92672">&lt;&lt;</span>endl; 
+}
+<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>,<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T2</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> print(T arg1, T arg2) { 
+	cout<span style="color:#f92672">&lt;&lt;</span> arg1 <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">&lt;&lt;</span> arg2<span style="color:#f92672">&lt;&lt;</span>endl; 
+}
+</code></pre></div><h3 id="6函数模板和函数的次序">6.函数模板和函数的次序</h3>
+<p>在有多个函数和函数模板名字相同的情况下，编译器如下处理一条函数调用语句</p>
+<ol>
+<li>
+<p>先找参数完全匹配的普通函数(非由模板实例化而得的函数)。</p>
+</li>
+<li>
+<p>再找参数完全匹配的模板函数。</p>
+</li>
+<li>
+<p>再找实参数经过自动类型转换后能够匹配的普通函数。</p>
+</li>
+<li>
+<p>上面的都找不到，则报错。</p>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> 
+T Max( T a, T b) {
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;TemplateMax&#34;</span> <span style="color:#f92672">&lt;&lt;</span>endl; <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>,<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T2</span><span style="color:#f92672">&gt;</span> 
+T Max( T a, T2 b) {
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;TemplateMax2&#34;</span> <span style="color:#f92672">&lt;&lt;</span>endl; <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">Max</span>(<span style="color:#66d9ef">double</span> a, <span style="color:#66d9ef">double</span> b){
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;MyMax&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, j<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>;
+	Max( <span style="color:#ae81ff">1.2</span>,<span style="color:#ae81ff">3.4</span>); <span style="color:#75715e">// 输出MyMax
+</span><span style="color:#75715e"></span>	Max(i, j); <span style="color:#75715e">//输出TemplateMax
+</span><span style="color:#75715e"></span>	Max( <span style="color:#ae81ff">1.2</span>, <span style="color:#ae81ff">3</span>); <span style="color:#75715e">//输出TemplateMax2
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+}
+</code></pre></div><h3 id="7匹配模板函数时不进行类型自动转换">7.匹配模板函数时，不进行类型自动转换</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+T myFunction( T arg1, T arg2){ 
+    cout<span style="color:#f92672">&lt;&lt;</span>arg1<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">&lt;&lt;</span>arg2<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">return</span> arg1;
+}
+<span style="color:#960050;background-color:#1e0010">……</span>
+myFunction( <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>); <span style="color:#75715e">//ok：int替换T
+</span><span style="color:#75715e"></span>myFunction( <span style="color:#ae81ff">5.8</span>, <span style="color:#ae81ff">8.4</span>); <span style="color:#75715e">//ok：double替换T
+</span><span style="color:#75715e"></span>myFunction( <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">8.4</span>); <span style="color:#75715e">//error，no matching function for call to &#39;myFunction(int, double)&#39;
+</span></code></pre></div><p><strong>PS.</strong> 如果int x,y; 那么 Max(x,y) 调用的时模板一（同时存在 模板一 和 模板二 时）；只存在 模板一 或者 模板二 时，都能调用 生成函数.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> <span style="color:#75715e">//模板一
+</span><span style="color:#75715e"></span>T Max( T a, T b) {
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;TemplateMax&#34;</span> <span style="color:#f92672">&lt;&lt;</span>endl; <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+<span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>,<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T2</span><span style="color:#f92672">&gt;</span> <span style="color:#75715e">//模板二
+</span><span style="color:#75715e"></span>T Max( T a, T2 b) {
+	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;TemplateMax2&#34;</span> <span style="color:#f92672">&lt;&lt;</span>endl; <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h3 id="8函数模板示例map">8.函数模板示例：Map</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>,<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pred</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> Map(T s, T e, T x, Pred op) {
+	<span style="color:#66d9ef">for</span>(; s <span style="color:#f92672">!=</span> e; <span style="color:#f92672">++</span>s,<span style="color:#f92672">++</span>x) 
+		<span style="color:#f92672">*</span>x <span style="color:#f92672">=</span> op(<span style="color:#f92672">*</span>s);
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Cube</span>(<span style="color:#66d9ef">int</span> x) { 
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> x <span style="color:#f92672">*</span> x; 
+}
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">Square</span>(<span style="color:#66d9ef">double</span> x) { 
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> x; 
+}
+<span style="color:#66d9ef">int</span> a[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>}, b[<span style="color:#ae81ff">5</span>];
+<span style="color:#66d9ef">double</span> d[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> { <span style="color:#ae81ff">1.1</span>,<span style="color:#ae81ff">2.1</span>,<span style="color:#ae81ff">3.1</span>,<span style="color:#ae81ff">4.1</span>,<span style="color:#ae81ff">5.1</span>} , c[<span style="color:#ae81ff">5</span>];
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+    Map(a,a<span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>,b,Square);
+	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; <span style="color:#f92672">++</span>i) 
+        cout <span style="color:#f92672">&lt;&lt;</span> b[i] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span>;
+	cout <span style="color:#f92672">&lt;&lt;</span> endl;
+	Map(a,a<span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>,b,Cube);
+	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; <span style="color:#f92672">++</span>i) 
+        cout <span style="color:#f92672">&lt;&lt;</span> b[i] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span>;
+	cout <span style="color:#f92672">&lt;&lt;</span> endl;
+	Map(d,d<span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>,c,Square);
+	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; <span style="color:#f92672">++</span>i) 
+        cout <span style="color:#f92672">&lt;&lt;</span> c[i] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;,&#34;</span>;
+	cout <span style="color:#f92672">&lt;&lt;</span> endl;
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+}
+<span style="color:#75715e">//输出：
+</span><span style="color:#75715e">//1,4,9,16,25,
+</span><span style="color:#75715e">//1,8,27,64,125,
+</span><span style="color:#75715e">//1.21,4.41,9.61,16.81,26.01,
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">//调用模板分析
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>,<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pred</span><span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">void</span> Map(T s, T e, T x, Pred op) {
+	<span style="color:#66d9ef">for</span>(; s <span style="color:#f92672">!=</span> e; <span style="color:#f92672">++</span>s,<span style="color:#f92672">++</span>x)
+		<span style="color:#f92672">*</span>x <span style="color:#f92672">=</span> op(<span style="color:#f92672">*</span>s);
+}
+<span style="color:#66d9ef">int</span> a[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>}, b[<span style="color:#ae81ff">5</span>];
+Map(a,a<span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>,b,Square); <span style="color:#75715e">//实例化出以下函数:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Map</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> s, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> e, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> x, <span style="color:#66d9ef">double</span> ( <span style="color:#f92672">*</span>op)(<span style="color:#66d9ef">double</span>)) {<span style="color:#75715e">//op函数指针
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span>(; s <span style="color:#f92672">!=</span> e; <span style="color:#f92672">++</span>s,<span style="color:#f92672">++</span>x)
+	<span style="color:#f92672">*</span>x <span style="color:#f92672">=</span> op(<span style="color:#f92672">*</span>s);
+}
+</code></pre></div>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

@@ -6,10 +6,51 @@
     <description>Recent content on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Apr 2020 17:18:27 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2020 16:28:51 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week7_类模板与派生、友元和静态成员变量的关系</title>
+      <link>https://twangreal.github.io/post/week7_%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%8E%E6%B4%BE%E7%94%9F%E5%8F%8B%E5%85%83%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Sun, 05 Apr 2020 16:28:51 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week7_%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%8E%E6%B4%BE%E7%94%9F%E5%8F%8B%E5%85%83%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%85%B3%E7%B3%BB/</guid>
+      <description>类模板与派生 一、类模板与派生 • 类模板从类模板派生
+• 类模板从模板类派生
+• 类模板从普通类派生
+• 普通类从模板类派生
+1.类模板从 “类模板” 派生 //示例1： template &amp;lt;class T1,class T2&amp;gt; class A { T1 v1; T2 v2; }; template &amp;lt;class T1,class T2&amp;gt; class B:public A&amp;lt;T2,T1&amp;gt; { T1 v3; T2 v4; }; template &amp;lt;class T&amp;gt; class C:public B&amp;lt;T,T&amp;gt; { T v5; }; int main() { B&amp;lt;int,double&amp;gt; obj1; //=》 class B&amp;lt;int,double&amp;gt;:public A&amp;lt;double,int&amp;gt;{ int v3; double v4; } 	C&amp;lt;int&amp;gt; obj2; //=》 class C&amp;lt;int&amp;gt;:public B&amp;lt;int,int&amp;gt;{ int v5; }  //=》 class A&amp;lt;int,int&amp;gt;{.</description>
+    </item>
+    
+    <item>
+      <title>Week7_类模板</title>
+      <link>https://twangreal.github.io/post/week7_%E7%B1%BB%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Sun, 05 Apr 2020 14:57:42 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week7_%E7%B1%BB%E6%A8%A1%E6%9D%BF/</guid>
+      <description>1.问题的提出 • 为了多快好省地定义出一批相似的类,可以定义类模板,然后由类模板生成不同的类。
+• 数组是一种常见的数据类型，元素可以是：– 整数，– 学生，– 字符串，– ……
+• 考虑一个 可变长数组类 ，需要提供的基本操作：
+– len()：查看数组的长度
+– getElement(int index)：获取其中的一个元素
+– setElement(int index)：对其中的一个元素进行赋值
+– ……
+• 这些数组类，除了 元素的类型不同 之外，其他的完全相同。
+• 类模板：在定义类的时候，加上一个/多个类型参数。在使用类模板时，指定类型参数应该如何替换成具体类型，编译器据此生成相应的模板类。
+2.类模板的定义 类模板定义时，类型参数表中 class 和 typename 都可以，一回事。
+template &amp;lt;class 类型参数1, class 类型参数2，……&amp;gt; //类型参数表 class 类模板名{ //成员函数和成员变量 }; template &amp;lt;typename 类型参数1,typename 类型参数2，……&amp;gt;//类型参数表 class 类模板名{ //成员函数和成员变量 }; //类模板里成员函数的写法： template &amp;lt;class 类型参数1，class 类型参数2，……&amp;gt; //类型参数表 返回值类型 类模板名&amp;lt;类型参数名列表&amp;gt;::成员函数名（参数表） { …… } //用类模板定义对象的写法： 类模板名 &amp;lt;真实类型参数表&amp;gt; 对象名(构造函数实参表); 类模板示例： Pair 类模板</description>
+    </item>
+    
+    <item>
+      <title>Week7_函数模板</title>
+      <link>https://twangreal.github.io/post/week7_%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Sun, 05 Apr 2020 13:08:13 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week7_%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF/</guid>
+      <description>1、用函数模板解决： template &amp;lt;class 类型参数1，class 类型参数2,……&amp;gt; 返回值类型 模板名 (形参表) { //函数体 }; //示例： template&amp;lt;class T&amp;gt; void Swap(T &amp;amp; x,T &amp;amp; y){ T tmp = x; x = y; y = tmp; } int main(){ int n = 1,m = 2; Swap(n,m); //编译器自动生成 void Swap(int &amp;amp; ,int &amp;amp; )函数 	double f = 1.2,g = 2.3; Swap(f,g); //编译器自动生成 void Swap(double &amp;amp; ,double &amp;amp; )函数 	return 0; } 2.函数模板中可以有不止一个类型参数。 template&amp;lt;class T1, class T2&amp;gt; T2 print(T1 arg1, T2 arg2){ cout&amp;lt;&amp;lt; arg1 &amp;lt;&amp;lt; &amp;#34; &amp;#34;&amp;lt;&amp;lt; arg2&amp;lt;&amp;lt;endl; return arg2; } 3.</description>
+    </item>
     
     <item>
       <title>Week7_文件读写</title>
