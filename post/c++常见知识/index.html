@@ -226,7 +226,11 @@ Sales_data accum, trans, <span style="color:#f92672">*</span>salesptr;
 <h4 id="12typedef">12.typedef</h4>
 <p>//……</p>
 <h4 id="13atof和sprintf">13.atof和sprintf</h4>
-<p>//,,&hellip;&hellip;..</p>
+<p>一句话**：sprintf类似printf用法。</p>
+<p><code>sprintf(s, &quot;%d&quot;, 123); //打印整数到字符串</code></p>
+<p><code>sprintf(s, &quot;%f&quot;, 3.1415926);//打印浮点数到字符串 </code></p>
+<p><code>char* who = &quot;I&quot;; char* whom = &quot;China&quot;; sprintf(s, &quot;%s love %s.&quot;, who, whom); //连接字符串，产生：&quot;I love China. &quot;</code></p>
+<p>详见 <a href="https://blog.csdn.net/qq_32175379/article/details/70787885">https://blog.csdn.net/qq_32175379/article/details/70787885</a></p>
 <h4 id="14sort和qsort">14.sort和qsort</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;cstdlib&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">qsort</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>base, size_t n_element, size_t el_size, <span style="color:#75715e">//四个参数， 需要排序的数组，
