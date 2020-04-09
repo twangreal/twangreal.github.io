@@ -6,10 +6,30 @@
     <description>Recent content in Posts on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Apr 2020 13:57:25 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2020 16:09:09 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week8_函数对象</title>
+      <link>https://twangreal.github.io/post/week8_%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Thu, 09 Apr 2020 16:09:09 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week8_%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1/</guid>
+      <description>一、函数对象   若一个类重载了运算符“()”，则该类的对象就成为函数对象。
+  函数对象是个对象，但是用起来看上去象函数调用 cout &amp;lt;&amp;lt; average(3,2,3); ，实际上也执行了函数调用CMyAverage::operator()(int a1, int a2, int a3 )。
+  class CMyAverage { public: double operator()( int a1, int a2, int a3 ) { //重载 () 运算符 	return (double)(a1 + a2+a3) / 3; } }; CMyAverage average; //函数对象 cout &amp;lt;&amp;lt; average(3,2,3); // average.operator()(3,2,3) 用起来看上去 像函数调用，输出 2.66667 二、函数对象的应用 1.STL里有以下模板：（ 对应Accumulate源代码2，） template&amp;lt;class InIt, class T, class Pred&amp;gt; T accumulate(InIt first, InIt last, T val, Pred pr);</description>
+    </item>
+    
+    <item>
+      <title>Week8_顺序容器</title>
+      <link>https://twangreal.github.io/post/week8_%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/</link>
+      <pubDate>Thu, 09 Apr 2020 14:50:09 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week8_%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/</guid>
+      <description>一、动态数组vector 1.vector中常用的成员函数    成员函数 作用     vector() 无参构造函数，将容器初始化为空   vector( int n ) 将容器初始化为有 n 个元素   vector( int n, const T &amp;amp; val ) 假定元素的类型是T，此构造函数将容器初始化为由 n 给元素，每个元素的值都是 val   vector( iterator first, iterator last) first和last可以是其他容器的迭代器。一般来说，本构造函数初始化的结果就是将vector容器的内容变成与其他容器上的区间 [ first, last)一致   void clear() 删除所有元素   bool empty() 判断容器是否为空   void pop_back() 删除容器末尾的元素   void push_back(const T &amp;amp; val ) 将val添加到容器的末尾   int size() 返回容器中元素的个数   T &amp;amp; front() 返回容器中第一个元素的引用   T &amp;amp; back() 返回容器中最后一个元素的引用   iterator insert(iterator i, const T &amp;amp; val ) 将val插入迭代器 i 指向的位置   iterator insert(iterator i, iterator first, iterator last) 将其他容器上的区间 [ first, last) 中的元素插入迭代器 i 指向的位置   iterator erase(iterator i ) 删除迭代器 i 指向的元素，返回值是被删除元素后面的元素的迭代器   iterator erase(iterator first, iterator last) 删除容器中的区间 [ first, last)   void swap(vector&amp;amp; v) 将容器自身的内容和另一个同类型的容器v互换    ​</description>
+    </item>
     
     <item>
       <title>Week8_STL概述</title>
@@ -488,7 +508,7 @@ PS3.常量型成员变量和引用型成员变量必须用构造函数的初始�
 从大到小：sort(数组名+n1,数组名+n2,greater&amp;lt;T&amp;gt;());//T为数组的类型
 进阶——自定义规则排序：sort(数组名+n1,数组名+n2,自定义规则名());//T为数组的类型
 自定义规则形式：
-struct 规则名{bool operator() (const T &amp;amp;a1, const T &amp;amp;a2 ) const{return ;//这里定义排序规则	}};//示例1：从大到小排struct Rule{bool operator() (const int &amp;amp;a1, const int &amp;amp;a2 ) const{return a1&amp;gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 }};//示例2：有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面struct P{char name[10];int age;};//结构Pstruct Rule{bool operator() (const P &amp;amp;a1, const P &amp;amp;a2 ) const{if(a1.</description>
+struct 规则名{ //C++ “函数对象”概念	bool operator() (const T &amp;amp;a1, const T &amp;amp;a2 ) const{return ;//这里定义排序规则	}};//示例1：从大到小排struct Rule{bool operator() (const int &amp;amp;a1, const int &amp;amp;a2 ) const{return a1&amp;gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 }};//示例2：有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面struct P{char name[10];int age;};//结构Pstruct Rule{bool operator() (const P &amp;amp;a1, const P &amp;amp;a2 ) const{if(a1.</description>
     </item>
     
     <item>

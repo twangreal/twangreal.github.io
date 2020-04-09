@@ -19,7 +19,7 @@
 从大到小：sort(数组名&#43;n1,数组名&#43;n2,greater&lt;T&gt;());//T为数组的类型
 进阶——自定义规则排序：sort(数组名&#43;n1,数组名&#43;n2,自定义规则名());//T为数组的类型
 自定义规则形式：
-struct 规则名{bool operator() (const T &amp;a1, const T &amp;a2 ) const{return ;//这里定义排序规则	}};//示例1：从大到小排struct Rule{bool operator() (const int &amp;a1, const int &amp;a2 ) const{return a1&gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 }};//示例2：有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面struct P{char name[10];int age;};//结构Pstruct Rule{bool operator() (const P &amp;a1, const P &amp;a2 ) const{if(a1."/>
+struct 规则名{ //C&#43;&#43; “函数对象”概念	bool operator() (const T &amp;a1, const T &amp;a2 ) const{return ;//这里定义排序规则	}};//示例1：从大到小排struct Rule{bool operator() (const int &amp;a1, const int &amp;a2 ) const{return a1&gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 }};//示例2：有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面struct P{char name[10];int age;};//结构Pstruct Rule{bool operator() (const P &amp;a1, const P &amp;a2 ) const{if(a1."/>
 
     <meta property="og:title" content="第十二、十三周" />
 <meta property="og:description" content="第十二、十三周学习总结 MOOC程序设计与算法（一） 一、知识点 1.STL(standard template library) sort排序 :
@@ -29,7 +29,7 @@ struct 规则名{bool operator() (const T &amp;a1, const T &amp;a2 ) const{ret
 从大到小：sort(数组名&#43;n1,数组名&#43;n2,greater&lt;T&gt;());//T为数组的类型
 进阶——自定义规则排序：sort(数组名&#43;n1,数组名&#43;n2,自定义规则名());//T为数组的类型
 自定义规则形式：
-struct 规则名{bool operator() (const T &amp;a1, const T &amp;a2 ) const{return ;//这里定义排序规则	}};//示例1：从大到小排struct Rule{bool operator() (const int &amp;a1, const int &amp;a2 ) const{return a1&gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 }};//示例2：有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面struct P{char name[10];int age;};//结构Pstruct Rule{bool operator() (const P &amp;a1, const P &amp;a2 ) const{if(a1." />
+struct 规则名{ //C&#43;&#43; “函数对象”概念	bool operator() (const T &amp;a1, const T &amp;a2 ) const{return ;//这里定义排序规则	}};//示例1：从大到小排struct Rule{bool operator() (const int &amp;a1, const int &amp;a2 ) const{return a1&gt;a2;//a1的值大于a2，返回true，表示a1能排在a2前；否则返回法拉瑟，表示a1不能排在a2前 }};//示例2：有两个成员变量的结构组成的数组排序，姓名、年龄，年龄大的排前面，年龄相同的姓名字典序小的排前面struct P{char name[10];int age;};//结构Pstruct Rule{bool operator() (const P &amp;a1, const P &amp;a2 ) const{if(a1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://twangreal.github.io/post/%E7%AC%AC%E5%8D%81%E4%BA%8C%E5%8D%81%E4%B8%89%E5%91%A8/" />
 <meta property="article:published_time" content="2020-03-11T16:29:51+08:00" />
@@ -84,8 +84,8 @@ struct 规则名{bool operator() (const T &amp;a1, const T &amp;a2 ) const{ret
 <p>从大到小：<code>sort(数组名+n1,数组名+n2,greater&lt;T&gt;());//T为数组的类型</code></p>
 <p>进阶——自定义规则排序：sort(数组名+n1,数组名+n2,自定义规则名());//T为数组的类型</p>
 <p><strong>自定义规则形式</strong>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">struct</span> <span style="color:#960050;background-color:#1e0010">规则名</span>{
-	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">operator</span>() (<span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>a1, <span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>a2 ) <span style="color:#66d9ef">const</span>{
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">struct</span> <span style="color:#960050;background-color:#1e0010">规则名</span>{   <span style="color:#75715e">//C++ “函数对象”概念
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">operator</span>() (<span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>a1, <span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>a2 ) <span style="color:#66d9ef">const</span>{
 		<span style="color:#66d9ef">return</span> ;<span style="color:#75715e">//这里定义排序规则
 </span><span style="color:#75715e"></span>	}
 };
