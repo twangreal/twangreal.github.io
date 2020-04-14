@@ -188,7 +188,13 @@
 }
 </code></pre></div><h3 id="二双向队列deque">二、双向队列deque</h3>
 <p><strong>所有适用于 vector的操作都适用于 deque。</strong></p>
+<p>在deque 中，随机存取任何元素都能在常数时间内完成（但慢于 vector ）；</p>
 <p>deque还有 push_front（将元素插入到前面） 和   pop_front(删除最前面的元素）操作，复杂度是O(1)</p>
+<h4 id="ps相比-vector的优点">PS.相比 vector的优点：</h4>
+<p>vector在头部增删元素都很慢，在尾部增删元素的性能较好；</p>
+<p>而 deque在头尾增删元素都具有较好的性能。</p>
+<h4 id="思考题-deque是如何实现它相比-vector-的优势的">思考题： deque是如何实现它相比 vector 的优势的？</h4>
+<p><a href="https://2d.hep.com.cn/187722/25">deque优势</a></p>
 <h3 id="三双向链表-list">三、双向链表 list</h3>
 <ul>
 <li>

@@ -61,7 +61,7 @@ typedef struct comlex { float real; float imag; } COMPLEX; 这样就可以用类
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          3 min read
+          4 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -257,6 +257,31 @@ Sales_data accum, trans, <span style="color:#f92672">*</span>salesptr;
 <p>//&hellip;&hellip;..</p>
 <h4 id="16maxelement-函数">16.*maxelement 函数</h4>
 <p>//，，，，</p>
+<h4 id="17常量迭代器">17.常量迭代器</h4>
+<p>即 不能通过常量迭代器 修改其指向的对象。（但是可以通用其它的 非常量迭代器 来修改该对象）</p>
+<p>PS. 迭代器都可以进行 ++ 操作。</p>
+<table>
+<thead>
+<tr>
+<th>迭代器种类</th>
+<th>支持的操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正向迭代器</td>
+<td>++p, p++, *p, ==, !=</td>
+</tr>
+<tr>
+<td>双向迭代器</td>
+<td>正向迭代器的操作  加上  &ndash;p, p&ndash;</td>
+</tr>
+<tr>
+<td>随机访问迭代器</td>
+<td>双向迭代器的操作  加上  p+=i, p-=i, p+i, p-i, p[i]   （i 是一个整型变量或常量）</td>
+</tr>
+</tbody>
+</table>
 
     </div>
     <div class="post-footer">

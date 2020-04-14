@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Week9_注意知识点 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week9_注意知识点"/>
+<meta name="twitter:description" content="一、关联容器   头文件   pair 模板
+//pari&lt;T1, T2&gt; 类型 等价于： struct{ T1 first; T2 second; }; //例如：pair&lt;int, double&gt; a; 等价于： struct{ int first; double second; } a; //对象 a 可以对其成员做赋值等操作： a.first = 1; a.second = 93.93;   insert 成员函数返回值 —— pair&lt; set&lt;T&gt;::iterator , bool &gt;
+//不同容器的insert不同，待补充。。。。。
+插入成功：pair&lt; 指向插入的对象 的迭代器 , true&gt;
+插入失败：pair&lt; 指向容器中存在的、和要插入对象相同的对象 的迭代器, false&gt;
+  map成员函数 []
+map&lt;T1,T2&gt; mp; mp[ key ]; 作用：查找 map 容器中 关键字为 key 的对象，若存在，则返回该对象的 second 成员；若不存在，则插入一个 first 值为 key ，second 成员由无参构造函数初始化值，然后再返回该对象的 second 成员。"/>
+
+    <meta property="og:title" content="Week9_注意知识点" />
+<meta property="og:description" content="一、关联容器   头文件   pair 模板
+//pari&lt;T1, T2&gt; 类型 等价于： struct{ T1 first; T2 second; }; //例如：pair&lt;int, double&gt; a; 等价于： struct{ int first; double second; } a; //对象 a 可以对其成员做赋值等操作： a.first = 1; a.second = 93.93;   insert 成员函数返回值 —— pair&lt; set&lt;T&gt;::iterator , bool &gt;
+//不同容器的insert不同，待补充。。。。。
+插入成功：pair&lt; 指向插入的对象 的迭代器 , true&gt;
+插入失败：pair&lt; 指向容器中存在的、和要插入对象相同的对象 的迭代器, false&gt;
+  map成员函数 []
+map&lt;T1,T2&gt; mp; mp[ key ]; 作用：查找 map 容器中 关键字为 key 的对象，若存在，则返回该对象的 second 成员；若不存在，则插入一个 first 值为 key ，second 成员由无参构造函数初始化值，然后再返回该对象的 second 成员。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/week9_%E6%B3%A8%E6%84%8F%E7%9F%A5%E8%AF%86%E7%82%B9/" />
+<meta property="article:published_time" content="2020-04-13T18:19:36+08:00" />
+<meta property="article:modified_time" content="2020-04-13T18:19:36+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Week9_注意知识点</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 13, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="一关联容器">一、关联容器</h3>
+<ol>
+<li>
+<p>头文件 <!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>pair 模板</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//pari&lt;T1, T2&gt; 类型 等价于：
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span>{
+    T1 first;
+    T2 second;
+};
+<span style="color:#75715e">//例如：pair&lt;int, double&gt; a; 等价于：
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span>{
+    <span style="color:#66d9ef">int</span> first;
+    <span style="color:#66d9ef">double</span> second;
+} a;
+<span style="color:#75715e">//对象 a 可以对其成员做赋值等操作：
+</span><span style="color:#75715e"></span>a.first <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+a.second <span style="color:#f92672">=</span> <span style="color:#ae81ff">93.93</span>;
+</code></pre></div></li>
+<li>
+<p>insert 成员函数返回值 —— <code>pair&lt; set&lt;T&gt;::iterator , bool &gt;</code></p>
+<p>//不同容器的insert不同，待补充。。。。。</p>
+<p>插入成功：pair&lt; 指向插入的对象 的迭代器 , true&gt;</p>
+<p>插入失败：pair&lt; 指向容器中存在的、和要插入对象相同的对象 的迭代器, false&gt;</p>
+</li>
+<li>
+<p>map成员函数 []</p>
+<p><code>map&lt;T1,T2&gt; mp; mp[ key ];</code>  作用：查找 map 容器中 关键字为 key 的对象，若存在，则返回该对象的 second 成员；若不存在，则插入一个 first 值为 key ，second 成员由无参构造函数初始化值，然后再返回该对象的 second 成员。</p>
+</li>
+</ol>
+<h3 id="二迭代器">二、迭代器</h3>
+<p>正向迭代器：、反向迭代器，双向迭代器，随机访问迭代器。</p>
+<table>
+<thead>
+<tr>
+<th>迭代器种类</th>
+<th>支持的操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正向迭代器</td>
+<td>++p, p++, *p, ==, !=</td>
+</tr>
+<tr>
+<td>双向迭代器</td>
+<td>正向迭代器的操作  加上  &ndash;p, p&ndash;</td>
+</tr>
+<tr>
+<td>随机访问迭代器</td>
+<td>双向迭代器的操作  加上  p+=i, p-=i, p+i, p-i, p[i]   （i 是一个整型变量或常量）</td>
+</tr>
+</tbody>
+</table>
+<p>注意：反向迭代器（ reverse_iterator ）的 ++ 操作——使 迭代器从后向前 移动一位。</p>
+<h3 id="三容器适配器">三、容器适配器</h3>
+<h3 id="四算法">四、算法</h3>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
