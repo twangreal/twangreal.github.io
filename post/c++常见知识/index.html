@@ -282,6 +282,15 @@ Sales_data accum, trans, <span style="color:#f92672">*</span>salesptr;
 </tr>
 </tbody>
 </table>
+<h4 id="18模板">18.模板</h4>
+<p>在模板中写迭代器时，最好在前面加上 typename关键字，否则可能会编译错。VS可能无此问题，但是Dev C++和服务器上的编译环境会有这个问题。</p>
+<h4 id="19make_pair">19.make_pair</h4>
+<p>make_pair(val1, val2) //返回一个pair，带有 val1 和val2 的类型和数值</p>
+<p>例如：std::make_pair(42,'@') 效果等价于 std::pair&lt;int,char&gt;(42,'@')</p>
+<p>PS.关于pair，见C++标准库第2版 P61</p>
+<h4 id="20容器">20.容器</h4>
+<p>set容器中元素的值不能改变，map容器中元素的关键字成员不能改变。</p>
+<p>因为set和map中不能有重复元素，这些值如果可以改变，那么再容器中就可能出现重复元素，所以这些值被设定为read-only</p>
 
     </div>
     <div class="post-footer">

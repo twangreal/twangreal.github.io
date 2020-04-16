@@ -6,10 +6,33 @@
     <description>Recent content on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Apr 2020 18:19:36 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2020 16:16:36 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HPLSPSLSP_第一章 测试网络搭建</title>
+      <link>https://twangreal.github.io/post/hplspslsp_%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Tue, 14 Apr 2020 16:16:36 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/hplspslsp_%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA/</guid>
+      <description>一、虚拟机     主机A 主机B     机器名 ernest-laptop localhost-hztest20   IP地址 192.168.1.5 192.168.1.6   MAC     系统 centos7 fedora31   网络 桥接 桥接    二、telnet实现远程登陆 主机A、B均需要下载 telnet 包 和 xinetd 包。
+   情况 命令 需要     1 主机A：telnet 192.168.1.6 echo (1) 开启echo服务——在/etc/xinetd.d/下的echo-stream文件中把disable的值改为 no （默认为yes），然后输入命令 systemctl restart xinetd.service； (2) 开启防火墙端口7——命令：firewall-cmd &amp;ndash;add-post=7/tcp &amp;ndash;permanent 和 firewall-cmd &amp;ndash;reload   2 主机A：telnet 192.</description>
+    </item>
+    
+    <item>
+      <title>Week1-3知识点整理</title>
+      <link>https://twangreal.github.io/post/week1-3%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</link>
+      <pubDate>Mon, 13 Apr 2020 19:12:05 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/week1-3%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</guid>
+      <description>1.引用 （1）引用类型要求与之绑定的对象类型严格匹配。（两个例外）
+例外：
+  继承、多态——引用类型为基类，绑定对象类型为派生类；
+  初始化常量的引用时允许用任意表达式作为初始值，只要该表达式的结果能转化成引用的类型即可。
+  int i = 42; const int &amp;amp;r1 = i; // 正确 const int &amp;amp;r2 = 42; // 正确 const int &amp;amp;r3 = r1 * 2; // 正确  double dval = 3.14; // int &amp;amp;a = dval; // 编译错误，因为普通引用的类型要与对象类型一致 const int &amp;amp;b = dval; // 编译正确 //c++的自动类型转换机制中，当用一个double去初始化int时，会舍弃掉小数转换为int。在上面的例子中，编译后的代码实际是这样的： double dval = 3.14; const int temp = dval; // 由double生成了一个临时的整形常量 const int &amp;amp;b = temp; // 让b绑定这个临时量 引用自</description>
+    </item>
     
     <item>
       <title>Week9_注意知识点</title>
@@ -18,12 +41,13 @@
       
       <guid>https://twangreal.github.io/post/week9_%E6%B3%A8%E6%84%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
       <description>一、关联容器   头文件   pair 模板
-//pari&amp;lt;T1, T2&amp;gt; 类型 等价于： struct{ T1 first; T2 second; }; //例如：pair&amp;lt;int, double&amp;gt; a; 等价于： struct{ int first; double second; } a; //对象 a 可以对其成员做赋值等操作： a.first = 1; a.second = 93.93;   insert 成员函数返回值 —— pair&amp;lt; set&amp;lt;T&amp;gt;::iterator , bool &amp;gt;
+//pari&amp;lt;T1, T2&amp;gt; 类型 等价于： struct{ T1 first; T2 second; }; //例如：pair&amp;lt;int, double&amp;gt; a; 等价于： struct{ int first; double second; } a; //对象 a 可以对其成员做赋值等操作： a.first = 1; a.second = 93.93; 注意：make_pair make_pair(val1, val2) //返回一个pair，带有 val1 和val2 的类型和数值。
+例如：std::make_pair(42,&#39;@&#39;) 效果等价于 std::pair&amp;lt;int,char&amp;gt;(42,&#39;@&#39;)
+PS.关于pair，见C++标准库第2版 P61
+  insert 成员函数返回值 —— pair&amp;lt; set&amp;lt;T&amp;gt;::iterator , bool &amp;gt;
 //不同容器的insert不同，待补充。。。。。
 插入成功：pair&amp;lt; 指向插入的对象 的迭代器 , true&amp;gt;
-插入失败：pair&amp;lt; 指向容器中存在的、和要插入对象相同的对象 的迭代器, false&amp;gt;
-  map成员函数 []
-map&amp;lt;T1,T2&amp;gt; mp; mp[ key ]; 作用：查找 map 容器中 关键字为 key 的对象，若存在，则返回该对象的 second 成员；若不存在，则插入一个 first 值为 key ，second 成员由无参构造函数初始化值，然后再返回该对象的 second 成员。</description>
+插入失败：pair&amp;lt; 指向容器中存在的、和要插入对象相同的对象 的迭代器, false&amp;gt;</description>
     </item>
     
     <item>

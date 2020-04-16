@@ -13,21 +13,23 @@
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Week9_注意知识点"/>
 <meta name="twitter:description" content="一、关联容器   头文件   pair 模板
-//pari&lt;T1, T2&gt; 类型 等价于： struct{ T1 first; T2 second; }; //例如：pair&lt;int, double&gt; a; 等价于： struct{ int first; double second; } a; //对象 a 可以对其成员做赋值等操作： a.first = 1; a.second = 93.93;   insert 成员函数返回值 —— pair&lt; set&lt;T&gt;::iterator , bool &gt;
+//pari&lt;T1, T2&gt; 类型 等价于： struct{ T1 first; T2 second; }; //例如：pair&lt;int, double&gt; a; 等价于： struct{ int first; double second; } a; //对象 a 可以对其成员做赋值等操作： a.first = 1; a.second = 93.93; 注意：make_pair make_pair(val1, val2) //返回一个pair，带有 val1 和val2 的类型和数值。
+例如：std::make_pair(42,&#39;@&#39;) 效果等价于 std::pair&lt;int,char&gt;(42,&#39;@&#39;)
+PS.关于pair，见C&#43;&#43;标准库第2版 P61
+  insert 成员函数返回值 —— pair&lt; set&lt;T&gt;::iterator , bool &gt;
 //不同容器的insert不同，待补充。。。。。
 插入成功：pair&lt; 指向插入的对象 的迭代器 , true&gt;
-插入失败：pair&lt; 指向容器中存在的、和要插入对象相同的对象 的迭代器, false&gt;
-  map成员函数 []
-map&lt;T1,T2&gt; mp; mp[ key ]; 作用：查找 map 容器中 关键字为 key 的对象，若存在，则返回该对象的 second 成员；若不存在，则插入一个 first 值为 key ，second 成员由无参构造函数初始化值，然后再返回该对象的 second 成员。"/>
+插入失败：pair&lt; 指向容器中存在的、和要插入对象相同的对象 的迭代器, false&gt;"/>
 
     <meta property="og:title" content="Week9_注意知识点" />
 <meta property="og:description" content="一、关联容器   头文件   pair 模板
-//pari&lt;T1, T2&gt; 类型 等价于： struct{ T1 first; T2 second; }; //例如：pair&lt;int, double&gt; a; 等价于： struct{ int first; double second; } a; //对象 a 可以对其成员做赋值等操作： a.first = 1; a.second = 93.93;   insert 成员函数返回值 —— pair&lt; set&lt;T&gt;::iterator , bool &gt;
+//pari&lt;T1, T2&gt; 类型 等价于： struct{ T1 first; T2 second; }; //例如：pair&lt;int, double&gt; a; 等价于： struct{ int first; double second; } a; //对象 a 可以对其成员做赋值等操作： a.first = 1; a.second = 93.93; 注意：make_pair make_pair(val1, val2) //返回一个pair，带有 val1 和val2 的类型和数值。
+例如：std::make_pair(42,&#39;@&#39;) 效果等价于 std::pair&lt;int,char&gt;(42,&#39;@&#39;)
+PS.关于pair，见C&#43;&#43;标准库第2版 P61
+  insert 成员函数返回值 —— pair&lt; set&lt;T&gt;::iterator , bool &gt;
 //不同容器的insert不同，待补充。。。。。
 插入成功：pair&lt; 指向插入的对象 的迭代器 , true&gt;
-插入失败：pair&lt; 指向容器中存在的、和要插入对象相同的对象 的迭代器, false&gt;
-  map成员函数 []
-map&lt;T1,T2&gt; mp; mp[ key ]; 作用：查找 map 容器中 关键字为 key 的对象，若存在，则返回该对象的 second 成员；若不存在，则插入一个 first 值为 key ，second 成员由无参构造函数初始化值，然后再返回该对象的 second 成员。" />
+插入失败：pair&lt; 指向容器中存在的、和要插入对象相同的对象 的迭代器, false&gt;" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://twangreal.github.io/post/week9_%E6%B3%A8%E6%84%8F%E7%9F%A5%E8%AF%86%E7%82%B9/" />
 <meta property="article:published_time" content="2020-04-13T18:19:36+08:00" />
@@ -67,7 +69,7 @@ map&lt;T1,T2&gt; mp; mp[ key ]; 作用：查找 map 容器中 关键字为 key �
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
-          1 min read
+          2 min read
         </div></div>
     </header>
     <div class="post-content">
@@ -91,7 +93,11 @@ map&lt;T1,T2&gt; mp; mp[ key ]; 作用：查找 map 容器中 关键字为 key �
 <span style="color:#75715e">//对象 a 可以对其成员做赋值等操作：
 </span><span style="color:#75715e"></span>a.first <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 a.second <span style="color:#f92672">=</span> <span style="color:#ae81ff">93.93</span>;
-</code></pre></div></li>
+</code></pre></div><h5 id="注意make_pair">注意：make_pair</h5>
+<p>make_pair(val1, val2) //返回一个pair，带有 val1 和val2 的类型和数值。</p>
+<p>例如：std::make_pair(42,'@') 效果等价于 std::pair&lt;int,char&gt;(42,'@')</p>
+<p>PS.关于pair，见C++标准库第2版 P61</p>
+</li>
 <li>
 <p>insert 成员函数返回值 —— <code>pair&lt; set&lt;T&gt;::iterator , bool &gt;</code></p>
 <p>//不同容器的insert不同，待补充。。。。。</p>
@@ -101,6 +107,10 @@ a.second <span style="color:#f92672">=</span> <span style="color:#ae81ff">93.93<
 <li>
 <p>map成员函数 []</p>
 <p><code>map&lt;T1,T2&gt; mp; mp[ key ];</code>  作用：查找 map 容器中 关键字为 key 的对象，若存在，则返回该对象的 second 成员；若不存在，则插入一个 first 值为 key ，second 成员由无参构造函数初始化值，然后再返回该对象的 second 成员。</p>
+</li>
+<li>
+<p>set容器中元素的值不能改变，map容器中元素的关键字成员不能改变。</p>
+<p>​	——因为set和map中不能有重复元素，这些值如果可以改变，那么再容器中就可能出现重复元素，所以这些值被设定为read-only 。</p>
 </li>
 </ol>
 <h3 id="二迭代器">二、迭代器</h3>
@@ -128,8 +138,95 @@ a.second <span style="color:#f92672">=</span> <span style="color:#ae81ff">93.93<
 </tbody>
 </table>
 <p>注意：反向迭代器（ reverse_iterator ）的 ++ 操作——使 迭代器从后向前 移动一位。</p>
+<p>注意2：在模板中写迭代器时，最好在前面加上 typename关键字，否则可能会编译错。VS可能无此问题，但是Dev C++和服务器上的编译环境会有这个问题。</p>
 <h3 id="三容器适配器">三、容器适配器</h3>
+<h4 id="stack">stack</h4>
+<ol>
+<li>stack 是后进先出的数据结构，只能插入，删除，访问栈顶的元素。</li>
+<li>可用 vector, list, deque来实现。缺省情况下，用deque实现。 用 vector和deque实现，比用list实现性能好。</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cont</span> <span style="color:#f92672">=</span> deque<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> 
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">stack</span> { 
+<span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>}; 
+</code></pre></div><p>stack 上可以进行以下操作：</p>
+<p>push 插入元素；</p>
+<p>pop 弹出元素；</p>
+<p>top 返回栈顶元素的引用</p>
+<h4 id="queue">queue</h4>
+<ol>
+<li>和stack 基本类似，可以用 list和deque实现。缺省情况下用deque实现。</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cont</span> <span style="color:#f92672">=</span> deque<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> 
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">queue</span> {
+<span style="color:#960050;background-color:#1e0010">……</span>
+};
+</code></pre></div><ol start="2">
+<li>同样也有push, pop, top函数。
+但是push发生在队尾；pop, top发生在队头。先进先出。</li>
+<li>有 back成员函数可以返回队尾元素的引用</li>
+</ol>
+<h4 id="priority_queue">priority_queue</h4>
+<ol>
+<li>
+<p>和 queue类似，可以用vector和deque实现。缺省情况下用vector实现。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Container</span> <span style="color:#f92672">=</span> vector<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Compare</span> <span style="color:#f92672">=</span> less<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> 
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">priority_queue</span>; 
+</code></pre></div></li>
+<li>
+<p>priority_queue 通常用堆排序技术实现，保证最大的元素总是在最前面。即执行pop操作时，删除的是最大的元素；执行top操作时，返回的是最大元素的常引用。默认的元素比较器是 less<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>push、pop 时间复杂度O(logn)  top()时间复杂度O(1)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//priority_queue
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;queue&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() 
+{
+ priority_queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> pq1;
+ pq1.push(<span style="color:#ae81ff">3.2</span>); pq1.push(<span style="color:#ae81ff">9.8</span>); pq1.push(<span style="color:#ae81ff">9.8</span>); pq1.push(<span style="color:#ae81ff">5.4</span>);
+ <span style="color:#66d9ef">while</span>( <span style="color:#f92672">!</span>pq1.empty() ) {
+     cout <span style="color:#f92672">&lt;&lt;</span> pq1.top() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>; 
+     pq1.pop();
+ } <span style="color:#75715e">//上面输出 9.8 9.8 5.4 3.2
+</span><span style="color:#75715e"></span> cout <span style="color:#f92672">&lt;&lt;</span> endl;
+   
+    priority_queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span>,vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span>,greater<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> pq2;
+ pq2.push(<span style="color:#ae81ff">3.2</span>); pq2.push(<span style="color:#ae81ff">9.8</span>); pq2.push(<span style="color:#ae81ff">9.8</span>); pq2.push(<span style="color:#ae81ff">5.4</span>);
+ <span style="color:#66d9ef">while</span>( <span style="color:#f92672">!</span>pq2.empty() ) {
+     cout <span style="color:#f92672">&lt;&lt;</span> pq2.top() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>; 
+     pq2.pop();
+ }
+ <span style="color:#75715e">//上面输出 3.2 5.4 9.8 9.8
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ol>
+<h4 id="容器适配器的元素个数">容器适配器的元素个数</h4>
+<p>stack,queue,priority_queue 都有empty() 成员函数用于判断适配器是否为空；size() 成员函数返回适配器中元素个数。</p>
 <h3 id="四算法">四、算法</h3>
+<ol>
+<li>
+<p>STL中的算法大致可以分为以下七类：</p>
+<p>1)不变序列算法    （适用于所有容器）<br>
+2)变值算法  （不适用于关联容器）<br>
+3)删除算法   （不适用于关联容器）<br>
+4)变序算法   （不适用于关联容器）<br>
+5)排序算法   （不适用于关联容器）<br>
+6)有序区间算法  （需要 <strong>随机访问迭代器</strong> ，所以不适用于关联容器和 list ）<br>
+7)数值算法   （需要 <strong>随机访问迭代器</strong> ，所以不适用于关联容器和 list ）</p>
+</li>
+<li>
+<p>大多重载的算法都是有两个版本的，其中一个是用“==”判断元素是否相等，或用“&lt;”来比较大小；而另一个版本多出来一个类型参数“Pred”，以及函数形参“Pred op”,该版本通过表达式“op(x,y)”的返回值是ture还是false，来判断x是否“等于”y，或者x是否“小于”y。如下面的有两个版本的min_element:</p>
+<p>​	iterate min_element(iterate first,iterate last);</p>
+<p>​	iterate min_element(iterate first,iterate last, Pred op);</p>
+</li>
+</ol>
+<p>//biaoge</p>
+<ol start="3">
+<li>C++标准库（第2版）P505</li>
+</ol>
 
     </div>
     <div class="post-footer">

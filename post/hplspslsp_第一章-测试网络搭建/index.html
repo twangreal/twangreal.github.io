@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>HPLSPSLSP_第一章 测试网络搭建 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HPLSPSLSP_第一章 测试网络搭建"/>
+<meta name="twitter:description" content="一、虚拟机     主机A 主机B     机器名 ernest-laptop localhost-hztest20   IP地址 192.168.1.5 192.168.1.6   MAC     系统 centos7 fedora31   网络 桥接 桥接    二、telnet实现远程登陆 主机A、B均需要下载 telnet 包 和 xinetd 包。
+   情况 命令 需要     1 主机A：telnet 192.168.1.6 echo (1) 开启echo服务——在/etc/xinetd.d/下的echo-stream文件中把disable的值改为 no （默认为yes），然后输入命令 systemctl restart xinetd.service； (2) 开启防火墙端口7——命令：firewall-cmd &ndash;add-post=7/tcp &ndash;permanent 和 firewall-cmd &ndash;reload   2 主机A：telnet 192."/>
+
+    <meta property="og:title" content="HPLSPSLSP_第一章 测试网络搭建" />
+<meta property="og:description" content="一、虚拟机     主机A 主机B     机器名 ernest-laptop localhost-hztest20   IP地址 192.168.1.5 192.168.1.6   MAC     系统 centos7 fedora31   网络 桥接 桥接    二、telnet实现远程登陆 主机A、B均需要下载 telnet 包 和 xinetd 包。
+   情况 命令 需要     1 主机A：telnet 192.168.1.6 echo (1) 开启echo服务——在/etc/xinetd.d/下的echo-stream文件中把disable的值改为 no （默认为yes），然后输入命令 systemctl restart xinetd.service； (2) 开启防火墙端口7——命令：firewall-cmd &ndash;add-post=7/tcp &ndash;permanent 和 firewall-cmd &ndash;reload   2 主机A：telnet 192." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/hplspslsp_%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA/" />
+<meta property="article:published_time" content="2020-04-14T16:16:36+08:00" />
+<meta property="article:modified_time" content="2020-04-14T16:16:36+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">HPLSPSLSP_第一章 测试网络搭建</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 14, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="一虚拟机">一、虚拟机</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>主机A</th>
+<th>主机B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>机器名</td>
+<td>ernest-laptop</td>
+<td>localhost-hztest20</td>
+</tr>
+<tr>
+<td>IP地址</td>
+<td>192.168.1.5</td>
+<td>192.168.1.6</td>
+</tr>
+<tr>
+<td>MAC</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>系统</td>
+<td>centos7</td>
+<td>fedora31</td>
+</tr>
+<tr>
+<td>网络</td>
+<td>桥接</td>
+<td>桥接</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二telnet实现远程登陆">二、telnet实现远程登陆</h3>
+<p>主机A、B均需要下载 telnet 包 和 xinetd 包。</p>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>命令</th>
+<th>需要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>主机A：telnet 192.168.1.6 echo</td>
+<td>(1) 开启echo服务——在/etc/xinetd.d/下的echo-stream文件中把disable的值改为 no （默认为yes），然后输入命令 systemctl restart xinetd.service； (2) 开启防火墙端口7——命令：firewall-cmd &ndash;add-post=7/tcp &ndash;permanent  和 firewall-cmd &ndash;reload</td>
+</tr>
+<tr>
+<td>2</td>
+<td>主机A：telnet 192.168.1.6</td>
+<td>(1) 开启 telnet 服务——在/etc/xinetd.d/下的 telnet 文件中把disable的值改为 no （默认为yes，若没有该文件就新建一个），然后输入命令 systemctl restart xinetd.service；   (2) 开启防火墙端口22——命令：firewall-cmd &ndash;add-post=22/tcp &ndash;permanent  和 firewall-cmd &ndash;reload</td>
+</tr>
+<tr>
+<td>3</td>
+<td>主机B：telnet 192.168.1.5 echo</td>
+<td>同情况1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>主机B：telnet 192.168.1.5</td>
+<td>(1) 开启 telnet 服务——在/etc/xinetd.d/下的 telnet 文件中把disable的值改为 no （默认为yes，若没有该文件就新建一个），然后输入命令 systemctl restart xinetd.service；  (2) 图形界面找到防火墙设置 ——》 区域 ——》public ——》 服务——》telnet 前打勾  （或者在public——》端口 中添加tcp协议的23端口）</td>
+</tr>
+</tbody>
+</table>
+<p>telnet文件：</p>
+<pre><code># default: yes
+# description: The telnet server servestelnet sessions; it uses \
+#      unencrypted username/password pairs for authentication.
+service telnet
+{
+ flags           = REUSE
+ socket_type     = stream
+ wait            = no
+ user            = root
+ server          =/usr/sbin/in.telnetd
+ log_on_failure  += USERID
+ disable         = no
+}
+</code></pre><h4 id="ps关于防火墙的设置">PS.关于防火墙的设置</h4>
+<p>其实在命令行中输命令是和图形界面中的设置是一样的、对应的。</p>
+<p>如图：<img src="https://twangreal.github.io/Linux/firewalld.jpg" alt="firewalld_setting"></p>
+<p>firewall-cmd后面省略了 &ndash;zone=public（对应界面中的 “区域——》public”），接着是 &ndash;query（表示查询，还有&ndash;add、&ndash;remove、&ndash;reload等），后面紧跟 -port（对应界面中public右边，其中的端口，类似可以跟 -service）。</p>
+<p>所以“图形界面找到防火墙设置 ——》 区域 ——》public ——》 服务——》telnet 前打勾” 对应的命令应该为 firewall-cmd &ndash;zone=public &ndash;add-service=telnet ；</p>
+<p>“图形界面找到防火墙设置 ——》 区域 ——》public ——》 端口——》添加 tcp 协议23号端口” 对应的命令为 firewall-cmd &ndash;zone=public &ndash;add-port=23/tcp ；</p>
+<p>但这是临时的，重启后就会还原，界面上方的 “配置：运行时” 可以下拉选择 “永久”， 对应命令 &ndash;permanent 。</p>
+<h4 id="小结">小结：</h4>
+<p>实现远程登录需要两点：</p>
+<ol>
+<li>开启相应的服务；</li>
+<li>打开相应的防火墙端口 或者服务 等等。</li>
+</ol>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
