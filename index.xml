@@ -22,16 +22,16 @@
     </item>
     
     <item>
-      <title>Week1-3知识点整理</title>
-      <link>https://twangreal.github.io/post/week1-3%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</link>
+      <title>Chapter1-4知识点整理</title>
+      <link>https://twangreal.github.io/post/chapter1-4%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</link>
       <pubDate>Mon, 13 Apr 2020 19:12:05 +0800</pubDate>
       
-      <guid>https://twangreal.github.io/post/week1-3%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</guid>
-      <description>1.引用 （1）引用类型要求与之绑定的对象类型严格匹配。（两个例外）
+      <guid>https://twangreal.github.io/post/chapter1-4%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</guid>
+      <description>一、引用 （1）引用类型要求与之绑定的对象类型严格匹配。（两个例外）
 例外：
   继承、多态——引用类型为基类，绑定对象类型为派生类；
   初始化常量的引用时允许用任意表达式作为初始值，只要该表达式的结果能转化成引用的类型即可。
-  int i = 42; const int &amp;amp;r1 = i; // 正确 const int &amp;amp;r2 = 42; // 正确 const int &amp;amp;r3 = r1 * 2; // 正确  double dval = 3.14; // int &amp;amp;a = dval; // 编译错误，因为普通引用的类型要与对象类型一致 const int &amp;amp;b = dval; // 编译正确 //c++的自动类型转换机制中，当用一个double去初始化int时，会舍弃掉小数转换为int。在上面的例子中，编译后的代码实际是这样的： double dval = 3.14; const int temp = dval; // 由double生成了一个临时的整形常量 const int &amp;amp;b = temp; // 让b绑定这个临时量 引用自</description>
+  int i = 42; const int &amp;amp;r1 = i; // 正确 const int &amp;amp;r2 = 42; // 正确 const int &amp;amp;r3 = r1 * 2; // 正确  double dval = 3.14; // int &amp;amp;a = dval; // 编译错误，因为普通引用的类型要与对象类型一致 const int &amp;amp;b = dval; // 编译正确 //c++的自动类型转换机制中，当用一个double去初始化int时，会舍弃掉小数转换为int。在上面的例子中，编译后的代码实际是这样的： double dval = 3.14; const int temp = dval; // 由double生成了一个临时的整形常量 const int &amp;amp;b = temp; // 让b绑定这个临时量 ​	———— 引用自</description>
     </item>
     
     <item>

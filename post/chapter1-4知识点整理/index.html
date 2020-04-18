@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Chapter1-4知识点整理 // twangreal的博客</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="twangreal" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://twangreal.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Chapter1-4知识点整理"/>
+<meta name="twitter:description" content="一、引用 （1）引用类型要求与之绑定的对象类型严格匹配。（两个例外）
+例外：
+  继承、多态——引用类型为基类，绑定对象类型为派生类；
+  初始化常量的引用时允许用任意表达式作为初始值，只要该表达式的结果能转化成引用的类型即可。
+  int i = 42; const int &amp;r1 = i; // 正确 const int &amp;r2 = 42; // 正确 const int &amp;r3 = r1 * 2; // 正确  double dval = 3.14; // int &amp;a = dval; // 编译错误，因为普通引用的类型要与对象类型一致 const int &amp;b = dval; // 编译正确 //c&#43;&#43;的自动类型转换机制中，当用一个double去初始化int时，会舍弃掉小数转换为int。在上面的例子中，编译后的代码实际是这样的： double dval = 3.14; const int temp = dval; // 由double生成了一个临时的整形常量 const int &amp;b = temp; // 让b绑定这个临时量 ​	———— 引用自"/>
+
+    <meta property="og:title" content="Chapter1-4知识点整理" />
+<meta property="og:description" content="一、引用 （1）引用类型要求与之绑定的对象类型严格匹配。（两个例外）
+例外：
+  继承、多态——引用类型为基类，绑定对象类型为派生类；
+  初始化常量的引用时允许用任意表达式作为初始值，只要该表达式的结果能转化成引用的类型即可。
+  int i = 42; const int &amp;r1 = i; // 正确 const int &amp;r2 = 42; // 正确 const int &amp;r3 = r1 * 2; // 正确  double dval = 3.14; // int &amp;a = dval; // 编译错误，因为普通引用的类型要与对象类型一致 const int &amp;b = dval; // 编译正确 //c&#43;&#43;的自动类型转换机制中，当用一个double去初始化int时，会舍弃掉小数转换为int。在上面的例子中，编译后的代码实际是这样的： double dval = 3.14; const int temp = dval; // 由double生成了一个临时的整形常量 const int &amp;b = temp; // 让b绑定这个临时量 ​	———— 引用自" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://twangreal.github.io/post/chapter1-4%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" />
+<meta property="article:published_time" content="2020-04-13T19:12:05+08:00" />
+<meta property="article:modified_time" content="2020-04-13T19:12:05+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://twangreal.github.io/"><img class="app-header-avatar" src="/personal/cyberpunk1.jpg" alt="twangreal" /></a>
+      <h1>twangreal的博客</h1>
+      <p>面向对象程序设计基于三个基本概念：数据抽象、继承和动态绑定。  后台开发：编程语言、编译调试、网络通信、常用类库、HTTP协议、进程通信。</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/twangreal" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Chapter1-4知识点整理</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 13, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          5 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="一引用">一、引用</h3>
+<p>（1）引用类型要求与之绑定的对象类型严格匹配。（两个例外）</p>
+<p>例外：</p>
+<ol>
+<li>
+<p>继承、多态——引用类型为基类，绑定对象类型为派生类；</p>
+</li>
+<li>
+<p>初始化常量的引用时允许用任意表达式作为初始值，只要该表达式的结果能转化成引用的类型即可。</p>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>r1 <span style="color:#f92672">=</span> i;      <span style="color:#75715e">// 正确
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>r2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;     <span style="color:#75715e">// 正确
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>r3 <span style="color:#f92672">=</span> r1 <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// 正确
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">double</span> dval <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14</span>;
+<span style="color:#75715e">// int &amp;a = dval;    // 编译错误，因为普通引用的类型要与对象类型一致
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>b <span style="color:#f92672">=</span> dval; <span style="color:#75715e">// 编译正确
+</span><span style="color:#75715e">//c++的自动类型转换机制中，当用一个double去初始化int时，会舍弃掉小数转换为int。在上面的例子中，编译后的代码实际是这样的：
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">double</span> dval <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> dval; <span style="color:#75715e">// 由double生成了一个临时的整形常量
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>b <span style="color:#f92672">=</span> temp;   <span style="color:#75715e">// 让b绑定这个临时量
+</span></code></pre></div><p>​																																					———— <a href="https://blog.csdn.net/Colsum/article/details/79095462">引用自</a></p>
+<p>（2）引用初始化引用，绑定的是同一个变量</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> a<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>b <span style="color:#f92672">=</span> a;
+<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>c <span style="color:#f92672">=</span> b;<span style="color:#75715e">//b 和 c 都是绑定了变量 a
+</span></code></pre></div><p>（3）强制类型转换</p>
+<p>p9 强制类型转换（char &amp;）后用于初始化引用。// <strong>注意：慎用！</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> cc <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">&amp;</span>r <span style="color:#f92672">=</span> cc;<span style="color:#75715e">//error
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">&amp;</span>r2 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span>) cc;<span style="color:#75715e">//error
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">&amp;</span>r3 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">&amp;</span>) cc;
+    r3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;b&#39;</span>;
+    printf(<span style="color:#e6db74">&#34;%c&#34;</span>,cc);
+    printf(<span style="color:#e6db74">&#34;%c&#34;</span>,r3);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}<span style="color:#75715e">//输出：ab
+</span></code></pre></div><p><strong>为什么？</strong> r3 绑定的是谁？</p>
+<p><img src="https://twangreal.github.io/C++_image/bind_who.jpg" alt="疑惑"></p>
+<p>//。。。。C++primer 第5版 P55</p>
+<p>（4）引用和指针</p>
+<p><img src="https://twangreal.github.io/C++_image/referencAnaPointer.jpg" alt="bijiao"></p>
+<h3 id="二内联函数inline函数缺省函数重载">二、内联函数inline、函数缺省、函数重载</h3>
+<p>只能最右连续若干个参数缺省。</p>
+<h3 id="三动态内存分配">三、动态内存分配</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">T <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> T;
+<span style="color:#66d9ef">delete</span> p;
+T <span style="color:#f92672">*</span> p2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> T[len];
+<span style="color:#66d9ef">delete</span> [] p2;
+
+T <span style="color:#f92672">**</span>q;
+q<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> T<span style="color:#f92672">*</span>[row];
+<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span>row;<span style="color:#f92672">++</span>i)
+    q[i] <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> T[col];
+<span style="color:#75715e">//new T 返回的是 T* 类型
+</span></code></pre></div><h5 id="注意">注意：</h5>
+<ol>
+<li>delete的指针必须是指向动态内存分配的指针；</li>
+<li>在delete 释放内存空间后，指针仍指向那片空间，并不安全，所有在delete后加上 <code>p=nullptr</code>，让指针变成空指针。</li>
+</ol>
+<h3 id="四类和对象">四、类和对象</h3>
+<h4 id="1struct-和-class">1.struct 和 class</h4>
+<h4 id="2类访问范围privatepublicprotected">2.类访问范围：private、public、protected</h4>
+<h4 id="3构造函数">3.构造函数</h4>
+<ol>
+<li>
+<p>默认构造函数</p>
+</li>
+<li>
+<p>构造函数的重载</p>
+</li>
+<li>
+<p>复制构造函数</p>
+<p>（1）<code>A(A a)</code> 只要参数的类型是当前类，就会被认为是复制构造函数，但这样 “参数是当前类的对象” 是不对的， 需要是 当前类的对象的引用 <code>A(A &amp;a)</code> ，最好是 <code>A(const A &amp;a)</code> 。</p>
+<p>（2）被调用的 3 种情况：</p>
+<pre><code>     *  初始化同类型对象；
+     *  函数形参是一个对象，则会调用该类的复制构造函数；
+</code></pre>
+<ul>
+<li>函数返回值是一个对象，则会调用该类的复制构造函数。</li>
+</ul>
+</li>
+<li>
+<p>类型转换构造函数</p>
+<p>一种特殊的构造函数，只有一个参数（且类型不是当前类，即不是复制构造函数）的构造函数就可以被认为是  类型转换构造函数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//在初始化，给对象赋值（即需要一个临时对象）时被调用
+</span><span style="color:#75715e"></span>Complex c1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>;<span style="color:#75715e">//调用类型转换构造函数
+</span><span style="color:#75715e"></span>   
+Complex <span style="color:#a6e22e">c2</span>(<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">8</span>);
+c2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>;<span style="color:#75715e">//调用类型转换构造函数
+</span></code></pre></div></li>
+<li>
+<p>成员初值表/初始化列表</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//成员逐一初始化
+</span><span style="color:#75715e"></span>Complex<span style="color:#f92672">::</span>Complex(<span style="color:#66d9ef">const</span> Complex <span style="color:#f92672">&amp;</span>c)<span style="color:#f92672">:</span>length(c.length),next(c.next){}
+</code></pre></div></li>
+</ol>
+<h4 id="4析构函数">4.析构函数</h4>
+<ul>
+<li>
+<p>在对象消亡时自动调用。</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#f92672">~</span>T(){
+ <span style="color:#75715e">//.....//善后工作，如：在对象生成期间用了new运算符动态分配了内存空间，那么在析构函数中就要delete释放它
+</span><span style="color:#75715e"></span>}
+</code></pre></div></li>
+<li>
+<p>对象何时消亡？—— 对象的生存期</p>
+<ul>
+<li>
+<p>P44</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;istream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Demo</span> {
+    <span style="color:#66d9ef">int</span> id;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    Demo(<span style="color:#66d9ef">int</span> i){
+        id <span style="color:#f92672">=</span> i;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;id = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> id <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;constructed&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+    }
+    <span style="color:#f92672">~</span>Demo(){
+        cout <span style="color:#f92672">&lt;&lt;</span>  <span style="color:#e6db74">&#34;id = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> id <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;destructed&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+    }
+};
+Demo <span style="color:#a6e22e">d1</span>(<span style="color:#ae81ff">1</span>);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Func</span>(){
+    <span style="color:#66d9ef">static</span> Demo d2(<span style="color:#ae81ff">2</span>);
+    Demo d3(<span style="color:#ae81ff">3</span>);
+    cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;func&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+    Demo d4(<span style="color:#ae81ff">4</span>);
+    d4 <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;<span style="color:#75715e">//赋值，临时对象id=6
+</span><span style="color:#75715e"></span>    cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;main&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+    {
+        Demo d5(<span style="color:#ae81ff">5</span>);<span style="color:#75715e">//局部对象 id=5
+</span><span style="color:#75715e"></span>    }
+    Func(); <span style="color:#75715e">//函数中有 局部对象 id=3， 静态局部对象 id=2
+</span><span style="color:#75715e"></span>    cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;main ends&#34;</span> <span style="color:#f92672">&lt;&lt;</span>endl;
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;<span style="color:#75715e">//main函数结束后先析构main中的对象，原id=4，后被修改为6，
+</span><span style="color:#75715e"></span>}<span style="color:#75715e">//再接着整个程序结束，向上析构 全局对象 和 静态对象，按定义的位置顺序从下往上
+</span><span style="color:#75715e">//id = 1 constructed
+</span><span style="color:#75715e">//id = 4 constructed
+</span><span style="color:#75715e">//id = 6 constructed
+</span><span style="color:#75715e">//id = 6 destructed
+</span><span style="color:#75715e">//main
+</span><span style="color:#75715e">//id = 5 constructed
+</span><span style="color:#75715e">//id = 5 destructed
+</span><span style="color:#75715e">//id = 2 constructed
+</span><span style="color:#75715e">//id = 3 constructed
+</span><span style="color:#75715e">//func
+</span><span style="color:#75715e">//id = 3 destructed
+</span><span style="color:#75715e">//main ends
+</span><span style="color:#75715e">//id = 6 destructed
+</span><span style="color:#75715e">//id = 2 destructed
+</span><span style="color:#75715e">//id = 1 destructed
+</span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="五this-指针">五、this 指针</h3>
+<p>成员函数中用于指向当前对象的指针；静态成员函数中没有this指针。</p>
+<pre><code>1. 起初用于 C++翻译成 C 再编译；
+2. 当前作用：处理类的成员函数、成员函数的调用—— this 指针指向成员函数作用的 **对象** 。
+ * 非静态成员函数 实际上 的形参个数比表面上多一个，多了一个 “this 指针” ；
+ * 由于 静态成员函数 不作用于某个具体的对象，所以其没有 this 指针。
+</code></pre>
+<h3 id="六封闭类">六、封闭类</h3>
+<ol>
+<li>
+<p>概念：包含成员对象 的类 就是封闭类</p>
+</li>
+<li>
+<p>封闭类的对象 生成 和 消亡：</p>
+<ul>
+<li>生成，通过 <strong>封闭类的构造函数的初始化列表</strong> 。 成员对象 构造函数执行次序 与 <strong>类定义中的声明次序一致</strong> ，与 初始化列表中的次序无关；</li>
+<li>消亡，先封闭类析构，后成员对象析构。</li>
+</ul>
+</li>
+<li>
+<p>封闭类的复制构造函数：</p>
+<p><strong>封闭类的对象，如果是用默认复制构造函数初始化的，那么它包含的成员对象也会用复制构造函数初始化。</strong></p>
+</li>
+</ol>
+<p>PS.虽然 初始化列表中的次序 可以和 类定义中的声明次序 不一致，但编译时会得到 warning，因为在某些情况下会出错。例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	A()<span style="color:#f92672">:</span>a(<span style="color:#ae81ff">1</span>),b(a)
+	{
+		cout<span style="color:#f92672">&lt;&lt;</span>a<span style="color:#f92672">&lt;&lt;</span>endl ;
+		cout<span style="color:#f92672">&lt;&lt;</span>b<span style="color:#f92672">&lt;&lt;</span>endl ;
+	}
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">int</span> a,b;<span style="color:#75715e">//
+</span><span style="color:#75715e"></span>};
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+	A a ;
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}<span style="color:#75715e">//输出：
+</span><span style="color:#75715e">//1 -858993460
+</span><span style="color:#75715e">//1
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+	A()<span style="color:#f92672">:</span>a(<span style="color:#ae81ff">1</span>),b(a)
+	{
+		cout<span style="color:#f92672">&lt;&lt;</span>a<span style="color:#f92672">&lt;&lt;</span>endl ;
+		cout<span style="color:#f92672">&lt;&lt;</span>b<span style="color:#f92672">&lt;&lt;</span>endl ;
+	}
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+	<span style="color:#66d9ef">int</span> b,a;
+};
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
+	A a ;
+	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}<span style="color:#75715e">//输出：
+</span><span style="color:#75715e">//1 
+</span><span style="color:#75715e">//-858993460
+</span></code></pre></div><p>所以 有一条准则：初始化列表中初始化顺序和它们在类中声明的顺序保持一致。</p>
+<h3 id="七常量对象常量成员函数">七、常量对象、常量成员函数</h3>
+<h4 id="1常量对象">（1）常量对象</h4>
+<p><code>const Complex c;</code> ；</p>
+<h4 id="2常量成员函数">（2）常量成员函数</h4>
+<p><code>void setValue() const;</code> ， <code>void Complex::setValue() const {/*...*/}</code> ；</p>
+<pre><code>1. 常量对象可以执行 常量成员函数、构造函数、析构函数；
+2. 常量成员函数 不允许调用同类的其它 **非**常量成员函数（静态函数除外）；
+</code></pre>
+<p><strong>注意：</strong> 常量成员函数的核心是不改变 <strong>当前作用对象</strong>（即 *this 指向的对象 ）的非静态成员变量的值。</p>
+<p><strong>注意2：</strong> 普通对象也可以调用常量成员函数。</p>
+<p><strong>注意3：</strong> 好习惯—— 如果一个成员函数没有调用非常量成员函数，也没有修改成员变量的值，那么将其写成 <strong>常量成员函数</strong> 是个好的习惯。</p>
+<h4 id="3成员函数的重载">（3）成员函数的重载</h4>
+<ul>
+<li>两个函数，名字和参数表都一样，但一个是const ，一个不是，算重载。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CTest</span>{
+<span style="color:#66d9ef">int</span> n;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    CTest()<span style="color:#f92672">:</span>n(<span style="color:#ae81ff">1</span>) {}
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">GetValue</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> n;}
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">GetValue</span>() { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>n;}<span style="color:#75715e">//当这条语句注释后，obj1和obj2都会调用 GetValue() const
+</span><span style="color:#75715e"></span>};
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    <span style="color:#66d9ef">const</span> CTest obj1;
+    CTest obj2;
+    cout<span style="color:#f92672">&lt;&lt;</span> obj1.GetVaule() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">&lt;&lt;</span> obj2.GetValue();<span style="color:#75715e">//常量对象obj1调用了常量成员函数 GetValue() const ， 非常量对象obj2调用了非常量成员函数 GetValue()
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}<span style="color:#75715e">//输出：1，2
+</span></code></pre></div><h4 id="4mutable成员变量">（4）mutable成员变量</h4>
+<ul>
+<li>
+<p>可以在 <strong>常量成员函数</strong> 中修改的成员变量。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CTest</span>{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">bool</span> GetDate() <span style="color:#66d9ef">const</span>{
+      m_n1<span style="color:#f92672">++</span>;
+        <span style="color:#66d9ef">return</span> m_b2;
+    }
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">mutable</span> <span style="color:#66d9ef">int</span> m_n1;<span style="color:#75715e">//声明为mutable变量，就可以在常量成员函数中修改该成员变量的值
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">bool</span> m_b2;
+}
+</code></pre></div><p><strong>注意：</strong> 常量对象中的mutable成员变量的值也是可以在常量成员函数中修改的。</p>
+</li>
+<li>
+<p>在C++中，mutable 也是为了突破 const 的限制而设置的。被mutable修饰的变量，将永远处于可变的状态，即使在一个 const 函数中。<a href="https://blog.csdn.net/aaa123524457/article/details/80967330">引用自</a></p>
+</li>
+</ul>
+<h3 id="八const-成员和引用成员">八、const 成员和引用成员</h3>
+<ul>
+<li>类中的 const 成员变量 和 引用型成员变量 <strong>必须</strong> 在构造函数的 <strong>初始化列表</strong> 中进行初始化。</li>
+</ul>
+<h3 id="九友元">九、友元</h3>
+<h4 id="1友元函数">（1）友元函数</h4>
+<ul>
+<li>把一些函数（）声明为某个类的友元，这些函数就是这个类的友元函数，友元函数可以访问该类的 <strong>私有成员</strong> 。</li>
+</ul>
+<p><strong>注意</strong> ：不能把其他类的 <strong>私有成员函数</strong> 声明为友元。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">//声明
+</span><span style="color:#75715e">//全局函数：
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">friend</span> T <span style="color:#a6e22e">funcname</span> (<span style="color:#960050;background-color:#1e0010">参数表</span>);
+<span style="color:#75715e">//其他类
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">friend</span> T <span style="color:#66d9ef">typename</span><span style="color:#f92672">::</span>funcname (<span style="color:#960050;background-color:#1e0010">常数表</span>);
+</code></pre></div><p><strong>注意</strong> ：通常是把已经定义好的函数在某个类中声明为友元，当然，也可以在类中声明友元函数的同时 定义该友元函数。</p>
+<p><strong>注意：</strong> 有需要时，将一个类提前声明。但是，尽管可以提前声明，在一个类的定义出现之前，仍然不能有任何会 <strong>导致该类对象被生成</strong> 的语句。这种情况下，可以使用该类的 <strong>指针</strong> 或 <strong>引用</strong> 。</p>
+<h4 id="2友元类">（2）友元类</h4>
+<p>在一个类（类A）中 将另一个类（类B） 声明为自己的友元，那么类B中的所有成员函数都可以访问类A的私有成员变量。</p>
+<p>注意：友元关系不能传递，不能继承。（两个类之间的友元关系，是单方向的、只作用于两个类的）</p>
+<h4 id="3友元声明位置">（3）友元声明位置</h4>
+<ul>
+<li>无关在类中的 private 范围下，还是public ，或者 protected ，可以在类中任意位置声明友元。（由于类的友元不是类的成员，所以不受 访问控制符（private， public，protected   ）影响。 ）</li>
+</ul>
+<h3 id="九在多个文件中使用类">九、在多个文件中使用类</h3>
+<p>​	在有多个文件的 C++ 程序中，如果多个 .cpp 文件都用到同一个类，可以将类的定义卸载一个头文件中，然后在各个 .cpp 文件中包含该头文件。</p>
+<ul>
+<li><strong>注意：</strong>
+<ul>
+<li>类的 <strong>非内联成员函数</strong> 的函数体只能出现在 某一个 .cpp 文件中， 不能放在头文件中被多个 .cpp 文件文件包含，否则链接时会发生错误。</li>
+<li>类的 <strong>内联函数</strong> 的函数体最好写在头文件中，…… ，内联函数放在头文件中被多个 .cpp 文件包含，不会导致重复定义的错误。</li>
+</ul>
+</li>
+</ul>
+<h3 id="十运算符重载">十、运算符重载</h3>
+<h4 id="1运算符重载的概念和原理">（1）运算符重载的概念和原理</h4>
+<ul>
+<li>
+<p>运算符重载的实质是编写以运算符作为名称的 <strong>函数</strong> 。</p>
+</li>
+<li>
+<p>包含被重载的运算符的表达式  会被编译成对运算符函数的调用，运算符的操作数成为函数调用时的实参，运算的结果就是函数的返回值。</p>
+</li>
+<li>
+<p>运算符可以被多次重载。</p>
+</li>
+<li>
+<p>可重载为 全局函数 或 成员函数（一般来说，倾向于重载为成员函数）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#960050;background-color:#1e0010">返回类型</span> <span style="color:#66d9ef">operator</span> <span style="color:#960050;background-color:#1e0010">运算符</span> (<span style="color:#960050;background-color:#1e0010">参数表</span>){
+    <span style="color:#75715e">//...
+</span><span style="color:#75715e"></span>}
+</code></pre></div></li>
+<li>
+<p>参数个数—— 成员函数重载运算符的参数个数等于运算符的目数减一 ； 全局函数重载运算符的参数个数就等于运算符的目数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">//例如： +重载为全局函数， -重载为成员函数
+</span><span style="color:#75715e"></span>c<span style="color:#f92672">=</span>a<span style="color:#f92672">+</span>b; <span style="color:#960050;background-color:#1e0010">等价于</span> c<span style="color:#f92672">=</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span> (a,b);
+c<span style="color:#f92672">=</span>a<span style="color:#f92672">-</span>b; <span style="color:#960050;background-color:#1e0010">等价于</span> c<span style="color:#f92672">=</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">-</span> (b);
+</code></pre></div></li>
+</ul>
+<h4 id="2重载赋值运算符">（2）重载赋值运算符“=”</h4>
+<p><strong>注意：</strong> 尽量保持运算符原本的特性。（即 重载“=”  的函数返回值为 对象的引用）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">MyString <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span> (<span style="color:#66d9ef">const</span> MyStirng){}
+<span style="color:#75715e">//***
+</span><span style="color:#75715e"></span>MyString a,b,c;
+a<span style="color:#f92672">=</span>b<span style="color:#f92672">=</span>c;<span style="color:#75715e">//c先赋值给b，b再赋值给a//为什么？——根据常用语义，a=b=c表示三者相等，先执行a=b的话无法保证三者相等。相对地，a+b+c是先执行a+b的。
+</span><span style="color:#75715e"></span>(a<span style="color:#f92672">=</span>b)<span style="color:#f92672">=</span>c;<span style="color:#75715e">//a=b的返回值 作为 左值 接受c的赋值，这就需要=返回值为对象的引用
+</span></code></pre></div><h4 id="3浅拷贝-和-深拷贝">（3）浅拷贝 和 深拷贝</h4>
+<ul>
+<li>需要考虑 浅拷贝深拷贝 问题，通常就是在进行赋值操作的对象中的成员有指针时。
+<ul>
+<li>浅拷贝，是指 两个对象的指针指向了同一内存地址；（……）</li>
+<li>深拷贝，解决浅拷贝不安全的方式——将一个对象中指针成员变量指向的内容复制到另一个对象中指针成员变量指向的地方。</li>
+</ul>
+</li>
+<li>注意：<strong>默认复制构造函数</strong> 执行的是 浅拷贝。</li>
+</ul>
+<h4 id="4运算符重载为友元函数">（4）运算符重载为友元函数</h4>
+<ul>
+<li>
+<p>在重载为成员函数不可用时，将运算符重载为友元函数。</p>
+<ul>
+<li>
+<p>例如：5+c; 而 c 为一个自定义类Complex的对象。这时候，显然没办法在 int 类中写 重载+的成员函数，而且全局函数又没办法访问对象 c 的私有成员，所以将 + 重载为类Complex的友元函数。</p>
+</li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>{
+<span style="color:#75715e">//    ......
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">friend</span> Complex <span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">const</span> Complex <span style="color:#f92672">&amp;</span>b){
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Complex</span>(a<span style="color:#f92672">+</span>b.num);<span style="color:#75715e">//返回一个Complex的临时对象
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h4 id="5长度可变的整型数组类">（5）长度可变的整型数组类</h4>
+<ul>
+<li>该数组类应该有的特点：
+<ul>
+<li>数组的元素个数可以在初始化该对象时指定；</li>
+<li>可以动态往数组中添加元素；</li>
+<li>使用该类时不用担心动态内存分配和释放问题；</li>
+<li>能够像使用数组那样使用动态数组类对象，如可以通过下标访问元素。</li>
+</ul>
+</li>
+<li>P74实例</li>
+</ul>
+<h4 id="6流插入流提取-运算符重载">（6）流插入、流提取 运算符重载</h4>
+<ul>
+<li>左移运算符&laquo; ，右移运算符&raquo; 在C++中被重载了，所以可以和cout、cin一起使用，用于输出、输入，又常被成为流插入、流提取运算符。（ostream类和cout都是在头文件iostream中声明的，ostream类将&laquo; 重载为成员函数，且重载了多次）</li>
+<li>用户通常就将&laquo; ， &raquo; 重载为全局函数，或者某个类的友元函数。</li>
+</ul>
+<h4 id="7类型转换运算符的重载">（7）类型转换运算符的重载</h4>
+<ul>
+<li>
+<p>作用—— 将对象自动转换为 某个数据类型（如int， double等）</p>
+</li>
+<li>
+<p>类型的名字 就是 类型转换运算符</p>
+<ul>
+<li>
+<p>例如在类中重载为成员函数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">operator</span> <span style="color:#a6e22e">double</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>real;<span style="color:#75715e">//or return real;
+</span><span style="color:#75715e"></span>}
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>显示转换 和 自动转换，都行</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Complex</span>{
+<span style="color:#66d9ef">double</span> real,imag;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    Complex(<span style="color:#66d9ef">double</span> r<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>,<span style="color:#66d9ef">double</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)<span style="color:#f92672">:</span>real(r),imag(i) {}
+    <span style="color:#66d9ef">operator</span> <span style="color:#a6e22e">double</span>(){
+        <span style="color:#66d9ef">return</span>  real;
+    }
+    
+};
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    Complex c(<span style="color:#ae81ff">1.2</span>, <span style="color:#ae81ff">3.4</span>);
+    cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">double</span>(c) <span style="color:#f92672">&lt;&lt;</span>endl;<span style="color:#75715e">//输出：1.2
+</span><span style="color:#75715e"></span>    cout<span style="color:#f92672">&lt;&lt;</span> (<span style="color:#66d9ef">double</span>)c<span style="color:#f92672">&lt;&lt;</span>endl;<span style="color:#75715e">//输出：1.2
+</span><span style="color:#75715e"></span>    cout<span style="color:#f92672">&lt;&lt;</span> c <span style="color:#f92672">&lt;&lt;</span>endl;<span style="color:#75715e">//输出：1.2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">double</span> n<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>c;
+    cout<span style="color:#f92672">&lt;&lt;</span>n;<span style="color:#75715e">//输出：2.2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h4 id="8重载自增自减运算符">（8）重载自增、自减运算符</h4>
+<ul>
+<li>
+<p>C++规定：++、&ndash; 重载时，允许写一个增加了 <strong>无用 int 类型形参</strong> 的版本，来区分前置、后置，参数正常的为前置，多一个 int 的为后置。</p>
+<ul>
+<li>
+<p>例如：P79</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Demo</span>{
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> n;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    Demo(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)<span style="color:#f92672">:</span>n(i){}
+    Demo <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">++</span>();
+    Demo <span style="color:#66d9ef">operator</span><span style="color:#f92672">++</span>(<span style="color:#66d9ef">int</span>);
+    <span style="color:#66d9ef">friend</span> Demo <span style="color:#f92672">&amp;</span> <span style="color:#66d9ef">operator</span><span style="color:#f92672">--</span>(Demo <span style="color:#f92672">&amp;</span>);
+    <span style="color:#66d9ef">friend</span> Demo <span style="color:#66d9ef">operator</span><span style="color:#f92672">--</span>(Demo <span style="color:#f92672">&amp;</span>,<span style="color:#66d9ef">int</span>);
+};
+<span style="color:#75715e">//……
+</span><span style="color:#75715e"></span>Demo <span style="color:#66d9ef">operator</span><span style="color:#f92672">--</span>(Demo <span style="color:#f92672">&amp;</span> d,<span style="color:#66d9ef">int</span>){
+    Demo <span style="color:#a6e22e">tmp</span>(d);
+    d.n<span style="color:#f92672">--</span>;
+    <span style="color:#66d9ef">return</span> tmp;
+}
+<span style="color:#75715e">//……
+</span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>a++返回 变量a 自增前的 copy临时对象； ++a 返回 变量a 的引用。</p>
+</li>
+<li>
+<p>PS.由于后置的重载函数返回的 是 临时对象，前置的是引用，所以返回较复杂的类的对象时，要比返回引用花费更多的时间，此时 前置 比 后置 运算更快。一般倾向于使用 前置。（对于整型变量这样的，前置后置没声明差别。迭代器是对象。）</p>
+</li>
+</ul>
+<h4 id="9注意事项">（9）注意事项</h4>
+<ol>
+<li>
+<p>重载后运算符的含义应该符合 <strong>原有用法习惯</strong> ；</p>
+</li>
+<li>
+<p>运算符重载不改变运算符的优先级；</p>
+</li>
+<li>
+<p>以下运算符不能被重载：“ . ”、“ .* ”、“ :: ”、“ ?: ”、sizeof</p>
+</li>
+<li>
+<p>重载运算符“ () ”、“ [] ”、“ -&gt; ” 或者赋值运算符 “ = ” 时，只能将他们重载为 <strong>成员函数</strong> ，不能重载为全局函数。</p>
+</li>
+</ol>
+<p><strong>注意：</strong> 不允许定义新运算符。</p>
+<p>PS. “ .* ” 是 **成员指针运算符** ，“ ?: ” 是条件运算符，“ . ” 和 “ -&gt; ” 是成员访问运算符。</p>
+<p>PS. 类成员指针（“ .* ”、“ -&gt;* ”）C++primer第5版 P739 。（疑问：什么时候有用？）</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
