@@ -6,10 +6,19 @@
     <description>Recent content in Posts on twangreal的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Apr 2020 16:16:36 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2020 19:42:50 +0800</lastBuildDate>
     
 	<atom:link href="https://twangreal.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>阅读书单</title>
+      <link>https://twangreal.github.io/post/%E9%98%85%E8%AF%BB%E4%B9%A6%E5%8D%95/</link>
+      <pubDate>Sun, 19 Apr 2020 19:42:50 +0800</pubDate>
+      
+      <guid>https://twangreal.github.io/post/%E9%98%85%E8%AF%BB%E4%B9%A6%E5%8D%95/</guid>
+      <description>已读书籍：  《新标准 C++ 程序设计》. 郭炜.  正在阅读：  《剑指offer》 《Linux 高性能服务器编程》 《算法笔记》 《大话数据结构》  </description>
+    </item>
     
     <item>
       <title>HPLSPSLSP_第一章 测试网络搭建</title>
